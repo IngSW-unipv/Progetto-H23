@@ -5,6 +5,9 @@ public abstract class Piatto {
 	private String nome;
 	private int quantita;
 	
+
+
+
 	public Piatto(double prezzo, String nome, int quantita) {
 		super();
 		this.prezzo = prezzo;
@@ -27,5 +30,8 @@ public abstract class Piatto {
 	
 	public double getPrezzo() {
 		return prezzo;
+	}
+	public String getNome() {
+		return nome;
 	}
 }

@@ -6,12 +6,10 @@ import alimenti.Piatto;
 import ordine.*;
 
 public class Cliente extends Persona{
-	private ArrayList<Ordine> ordini;
 	Menu menu;
 	
 	public Cliente(String nome) {
 		super(nome);
-		this.ordini=new ArrayList<>();
 		this.menu=null;
 	}
 	
@@ -32,6 +30,10 @@ public class Cliente extends Persona{
 		long t=System.currentTimeMillis();
 		o.setTempo(t);
 		ordini.add(o);
+	}
+	
+	public Ordine getUltimoOrdine () {
+		return ordini.get(ordini.size() - 1);
 	}
 	
 	public void scegliMenu(Menu m) {
