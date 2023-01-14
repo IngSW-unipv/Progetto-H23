@@ -49,7 +49,7 @@ public class Ristorante {
 			return true;
 		}
 		catch(NoPostiException e) {
-			e.stampaErrore();
+			System.out.println(e.getMessage());
 			return false;
 		}
 	}

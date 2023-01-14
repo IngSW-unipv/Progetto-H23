@@ -6,7 +6,7 @@ import alimenti.Piatto;
 
 public class AYCE extends Menu{
 
-	public AYCE(ArrayList<Piatto> alimenti, double costo) {
+	public AYCE(double costo) {
 		super();
 		this.costo=costo;
 	}

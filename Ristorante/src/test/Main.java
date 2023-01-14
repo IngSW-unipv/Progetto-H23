@@ -3,6 +3,8 @@ package test;
 import java.util.ArrayList;
 
 import alimenti.*;
+import menu.AYCE;
+import menu.Menu;
 import ordine.Ordine;
 import persone.Cliente;
 import persone.Dipendente;
@@ -32,24 +34,27 @@ public class Main {
 
 
 		}
+		
+		Menu m = new AYCE(30);
 
 		Piatto p1 = new Primo(16.50, "Pizza margherita", 6);
 		Piatto p2 = new Secondo (10.00, "Fritto misto", 4);
 		Piatto p3 = new Antipasto (8.50, "Patatine piccole", 2);
 
-		System.out.println(p1.getQuantita());;
-
-		d.get(1).addQuantitaPiatto(p1, 4);
-
 		System.out.println(p1.getQuantita());
 
+		//d.get(1).addQuantitaPiatto(p1, 4);
 
-		c2.creaOrdine(p1, 1);
+		//System.out.println(p1.getQuantita());
+
+
+		c2.creaOrdine(p3, 1);
 		Thread.sleep(1);
-		c3.creaOrdine(p2, 1);
+		c2.creaOrdine(p2, 1);
 		Thread.sleep(1);
-		c1.creaOrdine(p3, 1);
+		c3.creaOrdine(p1, 1);
 		Thread.sleep(1);
+		
 
 		/*for (Ordine o: c1.getOrdini() ) {
 			o.stampaPiattiOrdinati();
@@ -59,26 +64,27 @@ public class Main {
 		 */
 		Dipendente d1 = d.get(1);
 
-
+	
 		d1.aggiungiOrdini();
 
-		d1.stampaOrdini();
+		//d1.stampaOrdini();
 
 		System.out.println("----------");
 
-		for (Ordine o: d1.getOrdini()) {
+		/*for (Ordine o: d1.getOrdini()) {
 			System.out.println(o.getTempo());
 		}
-
-		Thread.sleep(1);
-		c2.creaOrdine(p1, 1);
-		Thread.sleep(1);
-		c1.creaOrdine(p2, 1);
+*/
 		Thread.sleep(1);
 		c3.creaOrdine(p3, 1);
 		Thread.sleep(1);
+		c2.creaOrdine(p2, 1);
+		Thread.sleep(1);
+		c1.creaOrdine(p2, 1);
+		Thread.sleep(1);
 
 		System.out.println("------------");
+		 
 
 
 
@@ -89,7 +95,7 @@ public class Main {
 
 		d1.aggiungiOrdini();
 
-		for (Ordine o: d1.getOrdini()) {
+		/*for (Ordine o: d1.getOrdini()) {
 			System.out.println(o.getTempo());
 		}
 
@@ -109,14 +115,26 @@ public class Main {
 		for (Ordine o: c3.getOrdini()) {
 			System.out.println(o.getTempo());
 		}
+		*/
 
 		//d1.stampaOrdini();
 
 
 
 
-
-
+		//d1.aggiungiOrdini();
+		
+		d1.preparaOrdine();
+		System.out.println(p1.getQuantita());
+		
+		c3.creaOrdine(p1, 100);
+		d1.aggiungiOrdini();
+		d1.preparaOrdine();
+		System.out.println(p1.getQuantita());
+		
+		d1.preparaOrdine();
+		System.out.println(p1.getQuantita());
+		
 
 
 

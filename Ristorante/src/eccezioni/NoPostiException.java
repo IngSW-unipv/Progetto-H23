@@ -1,9 +1,10 @@
 package eccezioni;
 
 public class NoPostiException extends Exception{
-	public final String MESSAGGIO_DI_ERRORE="Posti finiti";
+	public static final String MESSAGGIO_ERRORE = "Posti finiti!";
 	
-	public void stampaErrore() {
-		System.out.println(MESSAGGIO_DI_ERRORE);
+	@Override
+	public String getMessage() {
+		return MESSAGGIO_ERRORE;
 	}
 }

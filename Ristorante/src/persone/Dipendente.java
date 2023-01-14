@@ -33,54 +33,74 @@ public class Dipendente extends Persona{
 
 
 
-	// Da sistemare dopo il sort.
 	public void aggiungiOrdini() {
-		int i = 0;
 		for (Cliente c: r.getClienti()) {
 			for (Ordine o: c.getOrdini()) {
-				ordiniAusiliario.add(i, o);
-				i++;
+				ordiniAusiliario.add(o);
+			}	
+		}
+
+		Collections.sort(ordiniAusiliario, new Comparator<Ordine>() {
+			@Override
+			public int compare(Ordine o1, Ordine o2) {
+				return (int) (o1.getTempo() - o2.getTempo());
 			}
-			Collections.sort(ordiniAusiliario, new Comparator<Ordine>() {
-				@Override
-				public int compare(Ordine o1, Ordine o2) {
-					return (int) (o1.getTempo() - o2.getTempo());
+		});
+
+		for (Ordine o: ordiniAusiliario) {
+			if (ordini.size() == 0) {
+				for(Ordine oa : ordiniAusiliario) {
+					ordini.add(oa);
 				}
-				});
-			for (Ordine o: c.getOrdini()) {
-				if (ordini.size() == 0) {
-					ordini.add(o);
-				}
-				else if (o.getTempo() > ordini.get(ordini.size() - 1).getTempo())
-					ordini.add(o);
+
 
 			}
+			else if (o.getTempo() > ordini.get(ordini.size() -1).getTempo())
+				ordini.add(o);
+
 		}
+		/*
+		System.out.println("Array ausiliario:");
+		for (Ordine o : ordiniAusiliario) {
+			System.out.println(o.getTempo() );
+			o.stampaPiattiOrdinati();
+		}
+		System.out.println("Finito");
+
+		System.out.println("Ordini aggiunti:");
+		for (Ordine o : ordini) {
+			System.out.println(o.getTempo() );
+			o.stampaPiattiOrdinati();
+		}
+		System.out.println("Finito");
+		 */
+		ordiniAusiliario.clear();
+
+
 	}
 
 	public void aggiornaStatoPiatto(Ordine o) {
 		o.setStato(true);
+		System.out.println("ordine in arrivo!");
 	}
+
 	public String getPasssword() {
 		return r.getPassword();
 	}
-	
+
 	public void preparaOrdine() {
 		for (int i = contPiatti; i<ordini.size(); i++) {
 
-			for (Piatto p: ordini.get(i).getPiattiOrdinati()) {
-				p.setQuantita(p.getQuantita()- 1);
-			}
+			aggiornaStatoPiatto(ordini.get(i));
 		}
 		contPiatti = ordini.size();
-	
 	}
 }
 
 
 
 
-	
+
 
 
 

@@ -3,6 +3,7 @@ import menu.*;
 import java.util.ArrayList;
 
 import alimenti.Piatto;
+import eccezioni.PiattoFinitoException;
 import ordine.*;
 
 public class Cliente extends Persona{
@@ -25,11 +26,21 @@ public class Cliente extends Persona{
 	}
 	
 	public void creaOrdine(Piatto p,int quantita) {
-		Ordine o=new Ordine();
-		o.addPiatto(p, quantita);
-		long t=System.currentTimeMillis();
-		o.setTempo(t);
-		ordini.add(o);
+		try {
+			if (p.getQuantita()-quantita < 0) {
+				throw new PiattoFinitoException();
+			}
+			Ordine o=new Ordine();
+			o.addPiatto(p, quantita);
+			long t=System.currentTimeMillis();
+			o.setTempo(t);
+			ordini.add(o);
+			p.setQuantita(p.getQuantita()-quantita);
+		}
+		catch(PiattoFinitoException e) {
+			System.out.println(e.getMessage());
+		}
+			
 	}
 	
 	public Ordine getUltimoOrdine () {
