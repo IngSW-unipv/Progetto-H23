@@ -3,7 +3,9 @@ package it.unipv.ingsfw.main.test;
 import java.util.ArrayList;
 
 import it.unipv.ingsfw.model.alimenti.*;
+import it.unipv.ingsfw.model.menu.ALaCarte;
 import it.unipv.ingsfw.model.menu.AYCE;
+import it.unipv.ingsfw.model.menu.IMenu;
 import it.unipv.ingsfw.model.menu.Menu;
 import it.unipv.ingsfw.model.ordine.Ordine;
 import it.unipv.ingsfw.model.persone.Cliente;
@@ -30,16 +32,18 @@ public class Main {
 		for (Dipendente dip: r.getDipendenti() ) {
 			System.out.println(dip.getNome());
 			System.out.println(dip.getPasssword());
-
-
-
 		}
 		
-		Menu m = new AYCE(30);
+		IMenu m = new AYCE(30);
+		IMenu m1=new ALaCarte();
+		
+		c1.scegliMenu(m);
+		c2.scegliMenu(m1);
+		c3.scegliMenu(m1);
 
-		Piatto p1 = new Primo(16.50, "Pizza margherita", 6);
-		Piatto p2 = new Secondo (10.00, "Fritto misto", 4);
-		Piatto p3 = new Antipasto (8.50, "Patatine piccole", 2);
+		IPiatto p1 = new Primo(16.50, "Pizza margherita", 6);
+		IPiatto p2 = new Secondo (10.00, "Fritto misto", 4);
+		IPiatto p3 = new Antipasto (8.50, "Patatine piccole", 2);
 
 		System.out.println(p1.getQuantita());
 
@@ -50,7 +54,7 @@ public class Main {
 
 		c2.creaOrdine(p3, 1);
 		Thread.sleep(1);
-		c2.creaOrdine(p2, 1);
+		c2.creaOrdine(p2, 2);
 		Thread.sleep(1);
 		c3.creaOrdine(p1, 1);
 		Thread.sleep(1);
@@ -80,7 +84,7 @@ public class Main {
 		Thread.sleep(1);
 		c2.creaOrdine(p2, 1);
 		Thread.sleep(1);
-		c1.creaOrdine(p2, 1);
+		c1.creaOrdine(p2, 3);
 		Thread.sleep(1);
 
 		System.out.println("------------");
@@ -135,9 +139,8 @@ public class Main {
 		d1.preparaOrdine();
 		System.out.println(p1.getQuantita());
 		
-
-
-
+		System.out.println(c1.chiediConto());
+		System.out.println(c2.chiediConto());
 
 
 	}

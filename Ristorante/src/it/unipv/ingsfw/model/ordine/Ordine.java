@@ -5,9 +5,9 @@ import java.util.Collections;
 import it.unipv.ingsfw.model.alimenti.*;
 import it.unipv.ingsfw.model.ausiliari.Comparatore;
 
-public class Ordine {
+public class Ordine implements IOrdine{
 	private long tempo;
-	private ArrayList<Piatto> piattiOrdinati;
+	private ArrayList<IPiatto> piattiOrdinati;
 	private boolean stato;
 	
 	public Ordine() {
@@ -16,41 +16,40 @@ public class Ordine {
 		this.piattiOrdinati = new ArrayList<>();
 		this.stato = false;
 	} 
-	
-	public void addPiatto(Piatto p, int quantita) {
+	@Override
+	public void addPiatto(IPiatto p, int quantita) {
 		
 		for(int i=0;i<quantita;i++) {
 			piattiOrdinati.add(p);
 		}
 	}
-	
-	
-
+	@Override
 	public long getTempo() {
 		return tempo;
 	}
-
+	@Override
 	public void setTempo(long tempo) {
 		this.tempo = tempo;
 	}
-
+	@Override
 	public boolean getStato() {
 		return stato;
 	}
-
+	@Override
 	public void setStato(boolean stato) {
 		this.stato = stato;
 	}
-
-	public ArrayList<Piatto> getPiattiOrdinati() {
+	@Override
+	public ArrayList<IPiatto> getPiattiOrdinati() {
 		return piattiOrdinati;
 	}
-
-	public void setPiattiOrdinati(ArrayList<Piatto> piattiOrdinati) {
+	@Override
+	public void setPiattiOrdinati(ArrayList<IPiatto> piattiOrdinati) {
 		this.piattiOrdinati = piattiOrdinati;
 	}
+	@Override
 	public void stampaPiattiOrdinati() {
-		for (Piatto p: piattiOrdinati) {
+		for (IPiatto p: piattiOrdinati) {
 			System.out.println("Nome: "+ p.getNome());
 			System.out.println("Prezzo: " + p.getPrezzo());
 			System.out.println("Quantita: " + p.getQuantita());

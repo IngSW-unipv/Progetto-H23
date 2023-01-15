@@ -8,14 +8,14 @@ public class ALaCarte extends Menu{
 
 	public ALaCarte() {
 		super();
-		costo=0;
+		conto=0;
 	}
 	
-	@Override
-	public double getConto() {/*
+	/*@Override
+	public double getConto() {
 		for(Piatto p:alimenti) {
-			costo=costo+p.getPrezzo();
-		}*/
-		return costo;
-	}
+			conto=conto+p.getPrezzo();
+		}
+		return conto;
+	}*/
 }

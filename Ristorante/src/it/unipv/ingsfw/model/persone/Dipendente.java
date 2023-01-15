@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import it.unipv.ingsfw.model.alimenti.IPiatto;
 import it.unipv.ingsfw.model.alimenti.Piatto;
+import it.unipv.ingsfw.model.ordine.IOrdine;
 import it.unipv.ingsfw.model.ordine.Ordine;
 import it.unipv.ingsfw.model.ristorante.Ristorante;
 
@@ -12,7 +14,8 @@ public class Dipendente extends Persona{
 	private Ristorante r;
 	private boolean identificato;
 	private int contPiatti;
-	private ArrayList<Ordine> ordiniAusiliario;
+	private ArrayList<IOrdine> ordiniAusiliario;
+	
 	public Dipendente(String nome, Ristorante r) {
 		super(nome);
 		this.r = r;
@@ -27,7 +30,7 @@ public class Dipendente extends Persona{
 		return false;
 	}
 
-	public void addQuantitaPiatto(Piatto p,int quantita) {
+	public void addQuantitaPiatto(IPiatto p,int quantita) {
 		p.incrementaQuantita(quantita);
 	}
 
@@ -35,21 +38,21 @@ public class Dipendente extends Persona{
 
 	public void aggiungiOrdini() {
 		for (Cliente c: r.getClienti()) {
-			for (Ordine o: c.getOrdini()) {
+			for (IOrdine o: c.getOrdini()) {
 				ordiniAusiliario.add(o);
 			}	
 		}
 
-		Collections.sort(ordiniAusiliario, new Comparator<Ordine>() {
+		Collections.sort(ordiniAusiliario, new Comparator<IOrdine>() {
 			@Override
-			public int compare(Ordine o1, Ordine o2) {
+			public int compare(IOrdine o1, IOrdine o2) {
 				return (int) (o1.getTempo() - o2.getTempo());
 			}
 		});
 
-		for (Ordine o: ordiniAusiliario) {
+		for (IOrdine o: ordiniAusiliario) {
 			if (ordini.size() == 0) {
-				for(Ordine oa : ordiniAusiliario) {
+				for(IOrdine oa : ordiniAusiliario) {
 					ordini.add(oa);
 				}
 
@@ -79,7 +82,7 @@ public class Dipendente extends Persona{
 
 	}
 
-	public void aggiornaStatoPiatto(Ordine o) {
+	public void aggiornaStatoPiatto(IOrdine o) {
 		o.setStato(true);
 		System.out.println("ordine in arrivo!");
 	}
@@ -96,20 +99,3 @@ public class Dipendente extends Persona{
 		contPiatti = ordini.size();
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

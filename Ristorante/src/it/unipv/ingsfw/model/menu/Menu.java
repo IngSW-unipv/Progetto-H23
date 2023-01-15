@@ -5,17 +5,20 @@ import it.unipv.ingsfw.model.alimenti.*;
 
 //Sistemare menu
 
-public abstract class Menu implements Ordinabile{
-	protected double costo;
+public abstract class Menu implements IMenu{
+	protected double conto;
 	//protected ArrayList<Piatto> alimenti;
 	
 	public Menu() {
 		super();
 		//this.alimenti = new ArrayList<>();
 	}
-
-	public void setCosto(double costo) {
-		this.costo = costo;
+	@Override
+	public void setConto(double conto) {
+		this.conto = conto;
 	}
-	
+	@Override
+	public double getConto() {
+		return conto;
+	}
 }
