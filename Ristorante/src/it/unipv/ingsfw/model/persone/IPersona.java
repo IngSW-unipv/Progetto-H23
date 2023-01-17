@@ -8,7 +8,7 @@ import it.unipv.ingsfw.model.ordine.Ordine;
 import it.unipv.ingsfw.model.ristorante.Ristorante;
 
 public interface IPersona {
-	public void identificati(Ristorante r) throws IOException;
+	
 	public String getNome();
 	public ArrayList<IOrdine> getOrdini();
 	public void stampaOrdini();

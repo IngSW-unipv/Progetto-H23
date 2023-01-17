@@ -33,7 +33,7 @@ public class Main {
 		System.out.println(r.getPostiLiberi());
 		for (Dipendente dip: r.getDipendenti() ) {
 			System.out.println(dip.getNome());
-			System.out.println(dip.getPasssword());
+			
 		}
 		
 		IMenu m = new AYCE(30);
@@ -50,10 +50,10 @@ public class Main {
 		//System.out.println(p1.getQuantita());
 		Dipendente d1 = d.get(1);
 		
-		d1.identificati(r);
-		c1.identificati(r);
-		c2.identificati(r);
-		c3.identificati(r);
+		d1.identificati(r.getPassword());
+		c1.accediPrenotazione(r.getPrenotazioni());
+		c2.accediPrenotazione(r.getPrenotazioni());
+		c3.accediPrenotazione(r.getPrenotazioni());
 		
 		c1.scegliMenu(m);
 		c2.scegliMenu(m1);
@@ -80,7 +80,7 @@ public class Main {
 			o.stampaPiattiOrdinati();
 		}
 	
-		d1.aggiungiOrdini();
+		d1.aggiungiOrdini(r.getClienti());
 
 		//d1.stampaOrdini();
 
@@ -143,7 +143,7 @@ public class Main {
 		System.out.println(p1.getQuantita());
 		
 		c3.creaOrdine(p1, 100);
-		d1.aggiungiOrdini();
+		d1.aggiungiOrdini(r.getClienti());
 		d1.preparaOrdine();
 		System.out.println(p1.getQuantita());
 		

@@ -22,10 +22,7 @@ public class Cliente extends Persona{
 		this.r = null;
 	}
 
-	@Override
-	public void identificati(Ristorante r) throws IOException {
-		this.r = r;
-		Map<String, Integer> m = r.getPrenotazioni();
+	public boolean accediPrenotazione(Map<String, Integer> m) throws IOException {	
 		InputStreamReader input=new InputStreamReader(System.in);
 		BufferedReader t=new BufferedReader(input);
 		System.out.print("Inserisci nome prenotazione: ");
@@ -38,6 +35,8 @@ public class Cliente extends Persona{
 
 			identificato = false;
 		this.controllaPrenotazione();
+		return identificato;
+		
 	}
 	
 	

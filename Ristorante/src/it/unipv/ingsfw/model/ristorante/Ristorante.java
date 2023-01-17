@@ -13,7 +13,7 @@ public class Ristorante {
 	private ArrayList<Dipendente> dipendenti;
 	private String nome,password;
 	private Map<String,Integer> prenotazioni;
-	
+
 	public Ristorante(String nome, String password) {
 		super();
 		this.dipendenti = new ArrayList<>();
@@ -23,27 +23,30 @@ public class Ristorante {
 		prenotazioni=new HashMap<String,Integer>();
 		postiLiberi=NUMERO_POSTI;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
-	
+
 	public void creaDipendente(String nome) {
 		Dipendente d=new Dipendente(nome, this);
 		dipendenti.add(d);
 	}
-	
+
 	/* 
 	 * Questo metodo effettua la prenotazione fornendo il nome e il numero di clienti
 	 */
 	public boolean prenotaCliente(Cliente c, int posti) {		
 		try {
-			prenotazioni.put(c.getNome(), posti);
-			
+			//if(posti<1) 
+				//throw new
 			if(postiLiberi-posti<0) {
 				throw new NoPostiException();
 			}
-			
+			prenotazioni.put(c.getNome(), posti);
+
+
+
 			postiLiberi=postiLiberi-posti;
 			clienti.add(c);
 			return true;
@@ -69,8 +72,12 @@ public class Ristorante {
 		return postiLiberi;
 	}
 
+	public void setPostiLiberi(int n) {
+		postiLiberi = n;
+	}
+
 	public String getNome() {
 		return nome;
 	}
-	
+
 }
