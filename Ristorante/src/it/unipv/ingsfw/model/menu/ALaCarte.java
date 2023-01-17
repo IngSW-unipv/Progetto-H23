@@ -11,6 +11,10 @@ public class ALaCarte extends Menu{
 		conto=0;
 	}
 	
+	public void PiattiOrdine() {
+		// Da fare uscire in ordine Primo, Secondo...
+	}
+	
 	/*@Override
 	public double getConto() {
 		for(Piatto p:alimenti) {

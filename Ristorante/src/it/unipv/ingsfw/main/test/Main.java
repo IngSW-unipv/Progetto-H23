@@ -1,5 +1,6 @@
 package it.unipv.ingsfw.main.test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import it.unipv.ingsfw.model.alimenti.*;
@@ -7,13 +8,14 @@ import it.unipv.ingsfw.model.menu.ALaCarte;
 import it.unipv.ingsfw.model.menu.AYCE;
 import it.unipv.ingsfw.model.menu.IMenu;
 import it.unipv.ingsfw.model.menu.Menu;
+import it.unipv.ingsfw.model.ordine.IOrdine;
 import it.unipv.ingsfw.model.ordine.Ordine;
 import it.unipv.ingsfw.model.persone.Cliente;
 import it.unipv.ingsfw.model.persone.Dipendente;
 import it.unipv.ingsfw.model.ristorante.Ristorante;
 
 public class Main {
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException, IOException {
 		Ristorante r = new Ristorante ("NOME", "PASSWORD");
 		r.creaDipendente("Paolo");
 		r.creaDipendente("Agostino");
@@ -37,10 +39,6 @@ public class Main {
 		IMenu m = new AYCE(30);
 		IMenu m1=new ALaCarte();
 		
-		c1.scegliMenu(m);
-		c2.scegliMenu(m1);
-		c3.scegliMenu(m1);
-
 		IPiatto p1 = new Primo(16.50, "Pizza margherita", 6);
 		IPiatto p2 = new Secondo (10.00, "Fritto misto", 4);
 		IPiatto p3 = new Antipasto (8.50, "Patatine piccole", 2);
@@ -50,6 +48,16 @@ public class Main {
 		//d.get(1).addQuantitaPiatto(p1, 4);
 
 		//System.out.println(p1.getQuantita());
+		Dipendente d1 = d.get(1);
+		
+		d1.identificati(r);
+		c1.identificati(r);
+		c2.identificati(r);
+		c3.identificati(r);
+		
+		c1.scegliMenu(m);
+		c2.scegliMenu(m1);
+		c3.scegliMenu(m1);
 
 
 		c2.creaOrdine(p3, 1);
@@ -60,14 +68,17 @@ public class Main {
 		Thread.sleep(1);
 		
 
-		/*for (Ordine o: c1.getOrdini() ) {
+		for (IOrdine o: c1.getOrdini() ) {
 			o.stampaPiattiOrdinati();
-
-
 		}
-		 */
-		Dipendente d1 = d.get(1);
-
+		
+		for (IOrdine o: c2.getOrdini() ) {
+			o.stampaPiattiOrdinati();
+		}
+		
+		for (IOrdine o: c3.getOrdini() ) {
+			o.stampaPiattiOrdinati();
+		}
 	
 		d1.aggiungiOrdini();
 
@@ -79,7 +90,7 @@ public class Main {
 			System.out.println(o.getTempo());
 		}
 */
-		Thread.sleep(1);
+		/*Thread.sleep(1);
 		c3.creaOrdine(p3, 1);
 		Thread.sleep(1);
 		c2.creaOrdine(p2, 1);
@@ -141,7 +152,6 @@ public class Main {
 		
 		System.out.println(c1.chiediConto());
 		System.out.println(c2.chiediConto());
-
-
+		
 	}
 }
