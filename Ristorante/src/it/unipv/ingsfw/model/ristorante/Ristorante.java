@@ -45,8 +45,6 @@ public class Ristorante {
 			}
 			prenotazioni.put(c.getNome(), posti);
 
-
-
 			postiLiberi=postiLiberi-posti;
 			clienti.add(c);
 			return true;

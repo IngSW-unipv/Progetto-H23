@@ -3,6 +3,7 @@ package it.unipv.ingsfw.main.test;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import it.unipv.ingsfw.controller.RistoranteController;
 import it.unipv.ingsfw.model.alimenti.*;
 import it.unipv.ingsfw.model.menu.ALaCarte;
 import it.unipv.ingsfw.model.menu.AYCE;
@@ -13,9 +14,14 @@ import it.unipv.ingsfw.model.ordine.Ordine;
 import it.unipv.ingsfw.model.persone.Cliente;
 import it.unipv.ingsfw.model.persone.Dipendente;
 import it.unipv.ingsfw.model.ristorante.Ristorante;
+import it.unipv.ingsfw.view.RistoranteGui;
 
 public class Main {
 	public static void main(String[] args) throws InterruptedException, IOException {
+		
+		RistoranteGui rg=new RistoranteGui();
+		RistoranteController rc=new RistoranteController(rg);
+		
 		Ristorante r = new Ristorante ("NOME", "PASSWORD");
 		r.creaDipendente("Paolo");
 		r.creaDipendente("Agostino");

@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Map;
 
 import it.unipv.ingsfw.model.alimenti.IPiatto;
 import it.unipv.ingsfw.model.alimenti.Piatto;
@@ -116,5 +117,11 @@ public class Dipendente extends Persona{
 			aggiornaStatoPiatto(ordini.get(i));
 		}
 		contPiatti = ordini.size();
+	}
+	
+	//da chiedere se corretto
+	//da finire
+	public void aggiungiCliente(Cliente c, int posti) {
+		
 	}
 }
