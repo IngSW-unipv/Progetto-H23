@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import it.unipv.ingsfw.model.alimenti.*;
+import it.unipv.ingsfw.model.eccezioni.InvalidQuantityException;
 import it.unipv.ingsfw.model.eccezioni.NoIdentificatoException;
 import it.unipv.ingsfw.model.eccezioni.PiattoFinitoException;
 import it.unipv.ingsfw.model.menu.*;
@@ -41,10 +42,13 @@ public class Cliente extends Persona{
 	
 	
 
-	public void creaOrdine(IPiatto p,int quantita) throws IOException {
+	public boolean creaOrdine(IPiatto p,int quantita) throws IOException {
+		
+		boolean ordineCorretto=false;
 		this.controllaPrenotazione();
 		try {
-			
+			if(quantita<1)
+				throw new InvalidQuantityException();
 			if (p.getQuantita()-quantita < 0) {
 				throw new PiattoFinitoException();
 			}
@@ -55,9 +59,12 @@ public class Cliente extends Persona{
 			o.setTempo(t);
 			ordini.add(o);
 			p.setQuantita(p.getQuantita()-quantita);
+			ordineCorretto=true;
+			return ordineCorretto;
 		}
-		catch(PiattoFinitoException e) {
+		catch(Exception e) {
 			System.out.println(e.getMessage());
+			return ordineCorretto;
 		}
 	}
 
