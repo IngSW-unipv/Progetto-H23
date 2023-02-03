@@ -21,5 +21,14 @@ public class RistoranteController {
 				rg.sceltaPersona();
 			}
 		});
+		
+		/*rg.getPasswordRistorante().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("ciao");
+			}
+			
+		});*/
 	}
 }
