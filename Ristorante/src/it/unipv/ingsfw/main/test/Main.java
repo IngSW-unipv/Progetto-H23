@@ -20,7 +20,7 @@ public class Main {
 	public static void main(String[] args) throws InterruptedException, IOException {
 		
 		RistoranteGui rg=new RistoranteGui();
-		RistoranteController rc=new RistoranteController(rg);
+		// RistoranteController rc=new RistoranteController(rg);
 		
 		Ristorante r = new Ristorante ("NOME", "PASSWORD");
 		r.creaDipendente("Paolo");
