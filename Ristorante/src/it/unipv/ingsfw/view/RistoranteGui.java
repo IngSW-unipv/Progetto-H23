@@ -5,56 +5,61 @@ import javax.swing.*;
 import javax.swing.border.Border;
 
 
-public class RistoranteGui extends JFrame{
+public class RistoranteGui {
 
-	private JPanel p,p2;
-	private JLabel lab;
-	private JButton start;
-	private JButton clienteButton,dipendenteButton,noPrenotazioneButton, aLaCarteButton, ayceButton, sceltaMenuButton, preparaTutto;
-	private JSpinner clienteNoPrenotato;
-	private JTextField nomeCliente;
-	private JPasswordField passwordRistorante;
-	private JTextArea ordini;
-	private Border bordo;
-	private int height, width;
-	private GridBagConstraints  gbc;
-	private SpinnerNumberModel value;
-	private JButton prenota, indietro;
+	protected JPanel p,p2;
+	protected JLabel lab;
+	protected JButton start;
+	protected JButton clienteButton,dipendenteButton,indietro, preparaTutto;
+	protected JSpinner clienteNoPrenotato;
+	protected JTextField nomeCliente;
+	protected Border bordo;
+	protected int height, width;
+	protected GridBagConstraints  gbc;
+	protected SpinnerNumberModel value;
+	private ClienteGui cg;
+	protected JTextArea ordini;
+	private DipendenteGui dg;
+	protected JFrame f;
 	//private Container c;
 
 	public RistoranteGui() {
-		super("Ristorante");
+		
+		f=new JFrame("Ristorante");
 		height = 400;
 		width = 800;
-		setSize(width, height);
+		f.setSize(width, height);
 		gbc = new GridBagConstraints();
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //aggiungere salvare piatti e prenotazioni in db
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //aggiungere salvare piatti e prenotazioni in db
 		p=new JPanel();
 		p2= new JPanel();
 		bordo=BorderFactory.createEmptyBorder(0,10,10,10);
 		p.setLayout(new BorderLayout());
 		p.setBorder(bordo);
-		add(p);
-		this.vediOrdini();
-		setVisible(true);
+		f.add(p);
+		
+		cg=new ClienteGui();
+		dg=new DipendenteGui();
+		
+		this.vediOrdiniR();
+		//f.setVisible(true);
 		
 	}
-
 
 	public GridBagConstraints getGbc() {
 		return gbc;
 	}
 
 	public void refreshPanel() {
-		setVisible(false);
-		this.getContentPane().removeAll();
+		f.setVisible(false);
+		f.getContentPane().removeAll();
 	}
 
 	public void startPage() {
 
 		start=new OurButton("Tocca per iniziare.");
 		start.setFont(new Font("Roman", Font.ROMAN_BASELINE, 50));
-		add(start);
+		f.add(start);
 	}
 
 	public JButton getStartButton() {
@@ -78,11 +83,11 @@ public class RistoranteGui extends JFrame{
 		p.add(lab,BorderLayout.NORTH);
 		//p.add(clienteButton,BorderLayout.EAST);
 		//p.add(dipendenteButton,BorderLayout.WEST);
-		add(p);
-		setVisible(true);
+		f.add(p);
+		f.setVisible(true);
 	}
-
-	public void identificaCliente() {
+	//messo
+	/*public void identificaCliente() {
 		refreshPanel();
 
 		lab=new OurLabel("Inserisci il nome della prenotazione", SwingConstants.CENTER);
@@ -100,9 +105,9 @@ public class RistoranteGui extends JFrame{
 		p.add(p2, BorderLayout.CENTER);
 		add(p);
 		setVisible(true);
-	}
-
-	public void identificaDipendente() {
+	}*/
+	//messo
+	/*public void identificaDipendente() {
 		refreshPanel();
 
 		lab=new OurLabel("Inserisci la password del ristorante", SwingConstants.CENTER);
@@ -118,7 +123,8 @@ public class RistoranteGui extends JFrame{
 		add(p);
 		setVisible(true);
 	}
-	public void scegliMenu() {
+	//messo
+	/*public void scegliMenu() {
 		refreshPanel();
 
 		aLaCarteButton=new OurButton("A La Carte");
@@ -136,9 +142,9 @@ public class RistoranteGui extends JFrame{
 		//p.add(dipendenteButton,BorderLayout.WEST);
 		add(p);
 		setVisible(true);
-	}
-	
-	public void clienteNoPrenotato(int max) {
+	}*/
+	//messo
+	/*public void clienteNoPrenotato(int max) {
 		refreshPanel();
 		
 		lab=new OurLabel("Inserisci il numero di posti", SwingConstants.CENTER);
@@ -146,17 +152,17 @@ public class RistoranteGui extends JFrame{
 		
 		clienteNoPrenotato = new OurSpinner(value);
 		clienteNoPrenotato.setPreferredSize(new Dimension(60, height/10));
-		sceltaMenuButton = new OurButton("Vai alla scelta del menu");
+		OurButton sceltaMenuButton = new OurButton("Vai alla scelta del menu");
 		p2.add(lab,BorderLayout.NORTH);
 		p2.add(clienteNoPrenotato,BorderLayout.EAST);
 		p.add(p2, BorderLayout.CENTER);
 		p.add(sceltaMenuButton, BorderLayout.SOUTH);
-		add(p);
-		setVisible(true);
+		f.add(p);
+		f.setVisible(true);
 		
-	}
-	
-	public void operazioniDipendente() {
+	}*/
+	//messo
+	/*public void operazioniDipendente() {
 			refreshPanel();
 			
 	        setLayout(new GridBagLayout());
@@ -181,8 +187,9 @@ public class RistoranteGui extends JFrame{
 	        //gbc.weighty = 10;
 	        add(p, gbc);
 	        setVisible(true);
-	    }
-	public void aggiungiPrenotazione(int max) {
+	    }*/
+	
+	/*public void aggiungiPrenotazione(int max) {
 		refreshPanel();
 		
 		lab=new OurLabel("Inserisci nome cliente e posti", SwingConstants.CENTER);
@@ -226,49 +233,58 @@ public class RistoranteGui extends JFrame{
         setVisible(true);
 		
 		
-	}
-	// da finire
+	}*/
+	//messo
 	public void vediOrdini() {
-		ordini=new JTextArea("No");
-		ordini.setPreferredSize(new Dimension(20, 20));
-		ordini.setLineWrap(true);
-	    ordini.setEditable(false);
-	    ordini.setVisible(true);
-		JScrollPane scroll = new JScrollPane (ordini, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		ordini=new JTextArea("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+				+ "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+				+ "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHHHHHHHHHHHHHHHHHHHH"
+				+ "HHHHHHHHHHHHHHH");
+		
+		JScrollPane scroll = new JScrollPane(ordini);
+	    scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 	  
+	    lab=new OurLabel("Ordini da preparare", SwingConstants.CENTER);
 		preparaTutto = new OurButton ("Prepara tutti gli ordini");
 		indietro = new OurButton ("Torna indietro");
-		setLayout(new GridBagLayout());
-
-        gbc.gridwidth = GridBagConstraints.REMAINDER;        //senza questo li allinea in riga
-        //gbc.anchor = GridBagConstraints.EAST;                
-        gbc.fill = GridBagConstraints.HORIZONTAL; 		//bordi bottoni allineati (prova vertical per capire)
-        p = new JPanel(new GridBagLayout());
-        
-        gbc.insets = new Insets(0, 0, 10, 0);
-     
-        p.add(scroll, gbc);
-        
-    
-        
-        gbc.insets = new Insets(0, 0, 10, 0);
-        p.add(preparaTutto, gbc);
-        gbc.insets = new Insets(0, 0, 10, 0);
-   
-        p.add(indietro, gbc);
-
-        //gbc.weighty = 10;
-        add(p, gbc);
-        setVisible(true);
 		
+		p2.add(preparaTutto, BorderLayout.NORTH);
+		p2.add(indietro, BorderLayout.SOUTH);
 		
+		p.add(lab, BorderLayout.NORTH);
+		p.add(scroll, BorderLayout.CENTER);
+		p.add(p2,BorderLayout.SOUTH);
+
+		f.add(p);
+        f.setVisible(true);	
+	}
+
+	public void identificaClienteR() {
+		refreshPanel();
+		f.add(cg.identificaCliente());
 	}
 	
-	public JButton getPrenota() {
-		return prenota;
+	public void scegliMenuR() {
+		refreshPanel();
+		f.add(cg.scegliMenu());
 	}
-
-
+	
+	public void clienteNoPrenotatoR(int max) {
+		refreshPanel();
+		f.add(cg.clienteNoPrenotato(max));
+	}
+	
+	public void identificaDipendenteR() {
+		refreshPanel();
+		f.add(dg.identificaDipendente());
+	}
+	
+	public void vediOrdiniR() {
+		//refreshPanel();
+		dg.vediOrdini();
+		//f.add(dg.vediOrdini());
+	}
+	
 	public SpinnerNumberModel getValue() {
 		return value;
 	}
@@ -277,22 +293,6 @@ public class RistoranteGui extends JFrame{
 	public JLabel getLab() {
 		return lab;
 	}
-
-
-	public JButton getaLaCarteButton() {
-		return aLaCarteButton;
-	}
-
-
-	public JButton getAyceButton() {
-		return ayceButton;
-	}
-
-
-	public JButton getSceltaMenuButton() {
-		return sceltaMenuButton;
-	}
-
 
 	public JSpinner getClienteNoPrenotato() {
 		return clienteNoPrenotato;
@@ -327,16 +327,8 @@ public class RistoranteGui extends JFrame{
 		return dipendenteButton;
 	}
 
-	public JButton getNoPrenotazioneButton() {
-		return noPrenotazioneButton;
-	}
-
 	public JTextField getNomeCliente() {
 		return nomeCliente;
-	}
-
-	public JPasswordField getPasswordRistorante() {
-		return passwordRistorante;
 	}
 
 	public Border getBordo() {
