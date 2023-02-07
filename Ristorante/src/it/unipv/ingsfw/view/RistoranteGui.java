@@ -4,7 +4,6 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-
 public class RistoranteGui {
 
 	protected JPanel p,p2;
