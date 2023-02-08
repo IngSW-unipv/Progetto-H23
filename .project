@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>Ristorante/src/it/unipv/ingsfw/view/images/goback_logo.png</name>
+			<type>1</type>
+			<location>C:/Users/gabri/Desktop/goback_logo.png</location>
+		</link>
+	</linkedResources>
 </projectDescription>
