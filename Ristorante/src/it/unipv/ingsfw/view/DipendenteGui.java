@@ -51,10 +51,10 @@ public class DipendenteGui {
 		f.add(p);
 		passwordRistorante=new JPasswordField();
 		//tornaIndietroButton = new OurButton ("Torna indietro");
-		ImageIcon img = new ImageIcon("goback_logo.png");
+		ImageIcon img = new ImageIcon("C:\\Users\\gabri\\Downloads\\icons8.png");
 		tornaIndietroButton = new JButton ();
 		tornaIndietroButton.setOpaque(false);
-		tornaIndietroButton.setContentAreaFilled(false);
+		//tornaIndietroButton.setContentAreaFilled(false);
 		tornaIndietroButton.setBorderPainted(false);
 		tornaIndietroButton.setIcon(img);
 		prenota = new OurButton("Prenota il cliente");
