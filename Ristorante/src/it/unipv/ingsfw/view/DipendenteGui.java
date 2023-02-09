@@ -50,7 +50,13 @@ public class DipendenteGui {
 		p.setBorder(bordo);
 		f.add(p);
 		passwordRistorante=new JPasswordField();
-		tornaIndietroButton = new OurButton ("Torna indietro");
+		//tornaIndietroButton = new OurButton ("Torna indietro");
+		ImageIcon img = new ImageIcon("goback_logo.png");
+		tornaIndietroButton = new JButton ();
+		tornaIndietroButton.setOpaque(false);
+		tornaIndietroButton.setContentAreaFilled(false);
+		tornaIndietroButton.setBorderPainted(false);
+		tornaIndietroButton.setIcon(img);
 		prenota = new OurButton("Prenota il cliente");
 		ordini=new JTextArea(20, 25);
 		ordini.setEditable(false);
@@ -229,12 +235,15 @@ public class DipendenteGui {
 		
 		
 		lab=new OurLabel("Ordini in arrivo", SwingConstants.CENTER);
-		//preparaTutto = new OurButton ("Prepara tutti gli ordini");
-		//ImageIcon img = new ImageIcon("C:\\Utenti\\gabri\\Desktop\\goback_logo.png");
-		tornaIndietroButton = new OurButton ("indietro");
-		//TornaIndietro.setIcon(new ImageIcon("C:\\Utenti\\gabri\\Desktop\\goback_logo.png"));
-		tornaIndietroButton.setPreferredSize(new Dimension(100, 60));
-		
+		preparaTutto = new OurButton ("Prepara tutti gli ordini");
+		/*ImageIcon img = new ImageIcon("C:\\Users\\gabri\\Downloads\\icons8.png");
+		tornaIndietroButton = new JButton ();
+		tornaIndietroButton.setOpaque(false);
+		tornaIndietroButton.setContentAreaFilled(false);
+		tornaIndietroButton.setBorderPainted(false);
+		tornaIndietroButton.setIcon(img);
+		//tornaIndietroButton.setPreferredSize(new Dimension(51, 51));
+		*/
 		
 		p = new JPanel(new GridBagLayout());
 		//p.setLayout(new BorderLayout());

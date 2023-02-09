@@ -37,7 +37,7 @@ public class RistoranteGui {
 		cg=new ClienteGui();
 		dg=new DipendenteGui();
 		
-		this.inviaOrdineR();
+		this.operazioniDipendenteR();
 		
 	}
 

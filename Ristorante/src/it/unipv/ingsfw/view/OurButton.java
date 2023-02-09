@@ -11,5 +11,7 @@ public class OurButton extends JButton {
 		setBackground(Color.WHITE);
 		setForeground(Color.RED);
 		setFont(new Font("Roman", Font.ROMAN_BASELINE, 25));
+		//setContentAreaFilled(false);
+		
 	}
 }
