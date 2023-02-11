@@ -16,9 +16,19 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>Ristorante/src/it/unipv/ingsfw/view/images/goback_logo.png</name>
+			<name>images/icons8.png</name>
 			<type>1</type>
-			<location>C:/Users/gabri/Desktop/goback_logo.png</location>
+			<location>C:/Users/gabri/git/Progetto-H23/images/icons8.png</location>
+		</link>
+		<link>
+			<name>images/sfondo-riga-ricette.png</name>
+			<type>1</type>
+			<location>C:/Users/gabri/git/Progetto-H23/images/sfondo-riga-ricette.png</location>
+		</link>
+		<link>
+			<name>Ristorante/src/images/sfondo-riga-ricette.png</name>
+			<type>1</type>
+			<location>C:/Users/gabri/git/Progetto-H23/Ristorante/src/images/sfondo-riga-ricette.png</location>
 		</link>
 	</linkedResources>
 </projectDescription>

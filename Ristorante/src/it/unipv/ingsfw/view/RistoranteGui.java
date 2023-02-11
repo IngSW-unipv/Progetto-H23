@@ -1,9 +1,10 @@
 package it.unipv.ingsfw.view;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
+import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -22,7 +23,7 @@ public class RistoranteGui {
 	private DipendenteGui dg;
 	protected JFrame f;
 	protected GridBagConstraints gbc;
-	//private Container c;
+
 
 	public RistoranteGui() {
 
@@ -52,7 +53,7 @@ public class RistoranteGui {
 	}
 
 	public void refreshPanel() {
-		Image backgroundImage = Toolkit.getDefaultToolkit().getImage("C:\\Users\\gabri\\Desktop\\sfondo-riga-ricette.png");
+		Image backgroundImage = Toolkit.getDefaultToolkit().getImage("images/sfondo-riga-ricette.png");
 		f.setVisible(false);
 		f.getContentPane().removeAll();
 		f.setContentPane(new JPanel() {
