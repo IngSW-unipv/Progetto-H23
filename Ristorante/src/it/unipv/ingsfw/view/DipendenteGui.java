@@ -55,7 +55,7 @@ public class DipendenteGui {
 		f.add(panel);
 		passwordRistorante=new JPasswordField();
 		//tornaIndietroButton = new OurButton ("Torna indietro");
-		ImageIcon img = new ImageIcon("C:\\Users\\gabri\\Downloads\\icons8.png");
+		ImageIcon img = new ImageIcon("images/icons8.png");
 		tornaIndietroButton = new JButton ();
 		tornaIndietroButton.setOpaque(false);
 		tornaIndietroButton.setContentAreaFilled(false);
@@ -85,7 +85,7 @@ public class DipendenteGui {
 		f.setVisible(true);
 	}
 	
-	public void identificaDipendente2() {
+	/*public void identificaDipendente2() {
 		//refreshPanel();
 		
 		f.setLayout(new BorderLayout());
@@ -104,7 +104,7 @@ public class DipendenteGui {
 		panel.add(background, BorderLayout.CENTER);
 		f.add(panel);
 		f.setVisible(true);
-	}
+	}*/
 
 	public JPanel operazioniDipendente() {
 		//refreshPanel();
