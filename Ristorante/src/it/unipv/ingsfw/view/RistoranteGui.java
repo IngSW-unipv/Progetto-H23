@@ -144,7 +144,7 @@ public class RistoranteGui {
 
 	public void identificaDipendenteR() {
 		refreshPanel();
-		dg.identificaDipendente2();
+		dg.identificaDipendente();
 	}
 
 	public void vediOrdiniR() {
