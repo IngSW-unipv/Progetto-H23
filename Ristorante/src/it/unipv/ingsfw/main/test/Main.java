@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import it.unipv.ingsfw.controller.RistoranteController;
+import it.unipv.ingsfw.jdbc.util.scriviDB;
 import it.unipv.ingsfw.model.alimenti.*;
 import it.unipv.ingsfw.model.menu.ALaCarte;
 import it.unipv.ingsfw.model.menu.AYCE;
@@ -18,7 +19,8 @@ import it.unipv.ingsfw.view.RistoranteGui;
 
 public class Main {
 	public static void main(String[] args) throws InterruptedException, IOException {
-		
+		scriviDB db = new scriviDB();
+		db.fai();
 		RistoranteGui rg=new RistoranteGui();
 		//RistoranteController rc=new RistoranteController(rg);
 		
@@ -158,6 +160,7 @@ public class Main {
 		
 		System.out.println(c1.chiediConto());
 		System.out.println(c2.chiediConto());
+		
 		
 	}
 }
