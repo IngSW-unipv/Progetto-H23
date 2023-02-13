@@ -21,7 +21,7 @@ public class Main {
 	public static void main(String[] args) throws InterruptedException, IOException {
 		scriviDB db = new scriviDB();
 		db.fai();
-		RistoranteGui rg=new RistoranteGui();
+		//RistoranteGui rg=new RistoranteGui();
 		//RistoranteController rc=new RistoranteController(rg);
 		
 		Ristorante r = new Ristorante ("NOME", "PASSWORD");
