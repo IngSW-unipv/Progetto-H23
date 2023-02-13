@@ -47,7 +47,11 @@ public class RistoranteGui {
 		cg=new ClienteGui();
 		dg=new DipendenteGui();
 
-		this.addDishR();
+		start=new OurButton("Tocca per iniziare.");
+		clienteButton=new OurButton("Cliente");
+		dipendenteButton=new OurButton("Dipendente");
+		
+		this.startPage();
 		f.setVisible(true);
 
 	}
@@ -79,7 +83,6 @@ public class RistoranteGui {
 		start=new OurButton("Tocca per iniziare.");
 		start.setFont(new Font("Roman", Font.ROMAN_BASELINE, 50));
 		background.add(start);*/
-		start=new OurButton("Tocca per iniziare.");
 		start.setFont(new Font("Roman", Font.ROMAN_BASELINE, 50));
 		f.add(start, BorderLayout.CENTER);
 		f.setVisible(true);
@@ -107,8 +110,7 @@ public class RistoranteGui {
 		refreshPanel();
 
 		p.setLayout(new BorderLayout());
-		clienteButton=new OurButton("Cliente");
-		dipendenteButton=new OurButton("Dipendente");
+		
 		lab=new OurLabel("Sei un cliente o un dipendente?", SwingConstants.CENTER);
 		lab.setPreferredSize(new Dimension(50,100));
 		clienteButton.setPreferredSize(new Dimension(width/4,height/6));
@@ -128,7 +130,7 @@ public class RistoranteGui {
 
 	public void identificaClienteR() {
 		refreshPanel();
-		cg.identificaCliente();
+		f.add(cg.identificaCliente());
 	}
 
 	public void scegliMenuR() {
@@ -144,13 +146,12 @@ public class RistoranteGui {
 
 	public void identificaDipendenteR() {
 		refreshPanel();
-		dg.identificaDipendente();
+		f.add(dg.identificaDipendente());
 	}
 
 	public void vediOrdiniR() {
 		refreshPanel();
-		dg.vediOrdini();
-		//f.add(dg.vediOrdini());
+		f.add(dg.vediOrdini());
 	}
 
 	public void addDishR() {
@@ -162,7 +163,7 @@ public class RistoranteGui {
 
 	public void aggiungiPrenotazioneR(int max) {
 		refreshPanel();
-		dg.aggiungiPrenotazione(max);
+		f.add(dg.aggiungiPrenotazione(max));
 	}
 
 	public void operazioniDipendenteR() {
@@ -172,6 +173,9 @@ public class RistoranteGui {
 
 	public void inviaOrdineR() {
 		cg.inviaOrdine();
+	}
+	public void popUpErrore(String s) {
+		JOptionPane.showMessageDialog(null, s, "ERRORE", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	public JLabel getLab() {
@@ -221,5 +225,19 @@ public class RistoranteGui {
 	public int getWidth() {
 		return width;
 	}
+	public JPasswordField getPasswordRistorante() {
+		return dg.getPasswordRistorante();
+	}
 
+	public JButton getAggiungiPrenotazioneButton() {
+		return dg.getAggiungiPrenotazioneButton();
+	}
+	
+	public JButton getAggiungiQuantitaButton() {
+		return dg.getAggiungiQuantitaButton();
+	}
+	
+	public JButton getVediOrdiniButton() {
+		return dg.getVediOrdiniButton();
+	}
 }

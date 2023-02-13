@@ -3,15 +3,15 @@ package it.unipv.ingsfw.main.test;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import it.unipv.ingsfw.controller.RistoranteController;
-import it.unipv.ingsfw.jdbc.util.scriviDB;
+import it.unipv.ingsfw.jdbc.bean.PiattoDAO;
 import it.unipv.ingsfw.model.alimenti.*;
 import it.unipv.ingsfw.model.menu.ALaCarte;
 import it.unipv.ingsfw.model.menu.AYCE;
 import it.unipv.ingsfw.model.menu.IMenu;
-import it.unipv.ingsfw.model.menu.Menu;
 import it.unipv.ingsfw.model.ordine.IOrdine;
-import it.unipv.ingsfw.model.ordine.Ordine;
 import it.unipv.ingsfw.model.persone.Cliente;
 import it.unipv.ingsfw.model.persone.Dipendente;
 import it.unipv.ingsfw.model.ristorante.Ristorante;
@@ -19,12 +19,14 @@ import it.unipv.ingsfw.view.RistoranteGui;
 
 public class Main {
 	public static void main(String[] args) throws InterruptedException, IOException {
-		scriviDB db = new scriviDB();
-		db.fai();
-		//RistoranteGui rg=new RistoranteGui();
-		//RistoranteController rc=new RistoranteController(rg);
 		
-		Ristorante r = new Ristorante ("NOME", "PASSWORD");
+		//PiattoDAO p= new PiattoDAO();
+		//p.selectAllAntipasti();
+		
+		Ristorante r = new Ristorante ("NOME", "PASS");
+		RistoranteGui rg=new RistoranteGui();
+		RistoranteController rc=new RistoranteController(rg,r);
+		
 		r.creaDipendente("Paolo");
 		r.creaDipendente("Agostino");
 		r.creaDipendente("Sabatino");
@@ -58,7 +60,7 @@ public class Main {
 		//System.out.println(p1.getQuantita());
 		Dipendente d1 = d.get(1);
 		
-		d1.identificati(r.getPassword());
+		//d1.identificati(r.getPassword());
 		c1.accediPrenotazione(r.getPrenotazioni());
 		c2.accediPrenotazione(r.getPrenotazioni());
 		c3.accediPrenotazione(r.getPrenotazioni());
@@ -146,7 +148,7 @@ public class Main {
 
 
 		//d1.aggiungiOrdini();
-		
+		/*
 		d1.preparaOrdine();
 		System.out.println(p1.getQuantita());
 		
@@ -161,6 +163,6 @@ public class Main {
 		System.out.println(c1.chiediConto());
 		System.out.println(c2.chiediConto());
 		
-		
+		*/
 	}
 }

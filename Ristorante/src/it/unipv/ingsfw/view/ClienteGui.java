@@ -67,7 +67,7 @@ public class ClienteGui {
 
 	}
 
-	public void identificaCliente() {
+	public JPanel identificaCliente() {
 
 		lab=new OurLabel("Inserisci il nome della prenotazione", SwingConstants.CENTER);
 		lab.setPreferredSize(new Dimension(50,100));
@@ -83,8 +83,7 @@ public class ClienteGui {
 		p.add(lab, BorderLayout.NORTH);
 		p.add(noPrenotazioneButton,BorderLayout.SOUTH);
 		p.add(p2, BorderLayout.CENTER);
-		f.add(p);
-		f.setVisible(true);
+		return p;
 
 	}
 
