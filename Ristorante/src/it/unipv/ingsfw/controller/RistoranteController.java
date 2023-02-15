@@ -86,8 +86,7 @@ public class RistoranteController {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				rg.startPage();
-				//rg.operazioniDipendenteR();
+				rg.operazioniDipendenteR();
 			}
 		});
 	}
