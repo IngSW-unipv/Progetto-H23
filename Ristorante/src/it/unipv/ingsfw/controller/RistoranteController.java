@@ -81,6 +81,15 @@ public class RistoranteController {
 				rg.vediOrdiniR();
 			}
 		});
+		
+		rg.getTornaIndietroButton().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				rg.startPage();
+				//rg.operazioniDipendenteR();
+			}
+		});
 	}
 	/*rg.getPasswordRistorante().addActionListener(new ActionListener() {
 

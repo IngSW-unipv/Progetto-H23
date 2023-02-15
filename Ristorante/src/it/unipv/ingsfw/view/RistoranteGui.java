@@ -35,11 +35,11 @@ public class RistoranteGui {
 		f.setSize(width, height);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//aggiungere salvare piatti e prenotazioni in db
-		p=new JPanel();
-		p2= new JPanel();
+		p=new OurPanel();
+		p2= new OurPanel();
 		gbc= new GridBagConstraints();
 		bordo=BorderFactory.createEmptyBorder(0,10,10,10);
-		
+
 
 		p.setBorder(bordo);
 		f.add(p);
@@ -50,7 +50,7 @@ public class RistoranteGui {
 		start=new OurButton("Tocca per iniziare.");
 		clienteButton=new OurButton("Cliente");
 		dipendenteButton=new OurButton("Dipendente");
-		
+
 		this.startPage();
 		f.setVisible(true);
 
@@ -68,7 +68,7 @@ public class RistoranteGui {
 			}
 		});
 
-		
+
 		f.pack();
 		f.setSize(width, height);
 		f.setVisible(true);
@@ -110,7 +110,7 @@ public class RistoranteGui {
 		refreshPanel();
 
 		p.setLayout(new BorderLayout());
-		
+
 		lab=new OurLabel("Sei un cliente o un dipendente?", SwingConstants.CENTER);
 		lab.setPreferredSize(new Dimension(50,100));
 		clienteButton.setPreferredSize(new Dimension(width/4,height/6));
@@ -135,7 +135,7 @@ public class RistoranteGui {
 
 	public void scegliMenuR() {
 		refreshPanel();
-//		f.setLayout(new BorderLayout());
+		//		f.setLayout(new BorderLayout());
 		f.add(cg.scegliMenu2());
 	}
 
@@ -149,16 +149,24 @@ public class RistoranteGui {
 		f.add(dg.identificaDipendente());
 	}
 
+	public JFrame getF() {
+		return f;
+	}
+
 	public void vediOrdiniR() {
+
 		refreshPanel();
 		f.add(dg.vediOrdini());
 	}
 
 	public void addDishR() {
+		f.setVisible(false);
 		refreshPanel();
-		f.setLayout(new GridBagLayout());
+		//f.setLayout(new GridBagLayout());
 		//gbc.insets = new Insets(30, 0, 0, 0);
-		f.add(dg.addDish(), gbc);
+		f.add(dg.addDish());
+		f.setVisible(true);
+
 	}
 
 	public void aggiungiPrenotazioneR(int max) {
@@ -176,6 +184,10 @@ public class RistoranteGui {
 	}
 	public void popUpErrore(String s) {
 		JOptionPane.showMessageDialog(null, s, "ERRORE", JOptionPane.INFORMATION_MESSAGE);
+	}
+
+	public JButton getTornaIndietroButton() {
+		return dg.getTornaIndietroButton();
 	}
 
 	public JLabel getLab() {
@@ -232,12 +244,21 @@ public class RistoranteGui {
 	public JButton getAggiungiPrenotazioneButton() {
 		return dg.getAggiungiPrenotazioneButton();
 	}
-	
+
 	public JButton getAggiungiQuantitaButton() {
 		return dg.getAggiungiQuantitaButton();
 	}
-	
+
 	public JButton getVediOrdiniButton() {
 		return dg.getVediOrdiniButton();
 	}
+
+
 }
+
+
+
+
+
+
+

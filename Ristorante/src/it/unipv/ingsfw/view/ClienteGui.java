@@ -49,8 +49,8 @@ public class ClienteGui {
 		f.setSize(800, 400);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //aggiungere salvare piatti e prenotazioni in db
 
-		p=new JPanel();
-		p2= new JPanel();
+		p=new OurPanel();
+		p2= new OurPanel();
 		gbc= new GridBagConstraints();
 		bordo=BorderFactory.createEmptyBorder(0,10,10,10);
 		listModel = new DefaultListModel();
