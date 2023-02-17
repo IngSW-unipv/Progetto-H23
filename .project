@@ -16,6 +16,16 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>images/art-nuvo.ttf</name>
+			<type>1</type>
+			<location>C:/Users/gabri/git/Progetto-H23/images/art-nuvo.ttf</location>
+		</link>
+		<link>
+			<name>images/background.png</name>
+			<type>1</type>
+			<location>C:/Users/gabri/git/Progetto-H23/images/background.png</location>
+		</link>
+		<link>
 			<name>images/icons8.png</name>
 			<type>1</type>
 			<location>C:/Users/gabri/git/Progetto-H23/images/icons8.png</location>
@@ -24,6 +34,11 @@
 			<name>images/sfondo-riga-ricette.png</name>
 			<type>1</type>
 			<location>C:/Users/gabri/git/Progetto-H23/images/sfondo-riga-ricette.png</location>
+		</link>
+		<link>
+			<name>images/start-page.png</name>
+			<type>1</type>
+			<location>C:/Users/gabri/git/Progetto-H23/images/start-page.png</location>
 		</link>
 	</linkedResources>
 </projectDescription>

@@ -9,10 +9,14 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 
+import it.unipv.ingsfw.view.ourComponents.OurButton;
+import it.unipv.ingsfw.view.ourComponents.OurLabel;
+import it.unipv.ingsfw.view.ourComponents.OurPanel;
+
 public class RistoranteGui {
 
 	protected JPanel p,p2;
-	protected JLabel lab;
+	protected JLabel background, lab;
 	protected JButton start;
 	protected JButton clienteButton,dipendenteButton,indietro;
 	protected JTextField nomeCliente;
@@ -23,6 +27,7 @@ public class RistoranteGui {
 	private DipendenteGui dg;
 	protected JFrame f;
 	protected GridBagConstraints gbc;
+	protected Font customFont;
 
 
 	public RistoranteGui() {
@@ -39,23 +44,42 @@ public class RistoranteGui {
 		p2= new OurPanel();
 		gbc= new GridBagConstraints();
 		bordo=BorderFactory.createEmptyBorder(0,10,10,10);
-
-
+		
 		p.setBorder(bordo);
 		f.add(p);
 
 		cg=new ClienteGui();
 		dg=new DipendenteGui();
 
-		start=new OurButton("Tocca per iniziare.");
+		start=new OurButton("");
 		clienteButton=new OurButton("Cliente");
 		dipendenteButton=new OurButton("Dipendente");
-
+		//clienteButton.setFont(customFont);
+		
+		
+		f.setLayout(new BorderLayout());
+		
+		background=new JLabel(new ImageIcon("images/start-page.png"));
+//		background.setLayout(new BorderLayout());
+		
+		
 		this.startPage();
+		f.add(background, BorderLayout.CENTER);
+		f.setLocationRelativeTo(null);
 		f.setVisible(true);
 
 	}
 
+	public void anotherRefreshPanel() {
+		f.setVisible(false);
+		f.getContentPane().removeAll();
+		background=new JLabel(new ImageIcon("images/background.png"));
+		background.setLayout(new BorderLayout());
+		f.setSize(width, height);
+		f.add(background);
+		f.setVisible(true);
+	}
+	
 	public void refreshPanel() {
 		Image backgroundImage = Toolkit.getDefaultToolkit().getImage("images/sfondo-riga-ricette.png");
 		f.setVisible(false);
@@ -75,30 +99,9 @@ public class RistoranteGui {
 	}
 
 	public void startPage() {
-		refreshPanel();
 		f.setLayout(new BorderLayout());
-		/*JLabel background=new JLabel(new ImageIcon("C:\\Users\\gabri\\Desktop\\sfondo-riga-ricette.png"));
-		f.add(background, BorderLayout.CENTER);
-		background.setLayout(new BorderLayout());
-		start=new OurButton("Tocca per iniziare.");
-		start.setFont(new Font("Roman", Font.ROMAN_BASELINE, 50));
-		background.add(start);*/
-		start.setFont(new Font("Roman", Font.ROMAN_BASELINE, 50));
+		start.setBorderPainted(false);
 		f.add(start, BorderLayout.CENTER);
-		f.setVisible(true);
-	}
-
-
-	public void startPage2() {
-
-		f.setLayout(new BorderLayout());
-		JLabel background=new JLabel(new ImageIcon("C:\\Users\\gabri\\Desktop\\sfondo-riga-ricette.png"));
-		f.add(background, BorderLayout.CENTER);
-		// background.setLayout(new FlowLayout());
-		JLabel l1=new JLabel("Here is a button");
-		JButton b1=new JButton("I am a button");
-		background.add(l1);
-		background.add(b1);
 		f.setVisible(true);
 	}
 
@@ -107,7 +110,7 @@ public class RistoranteGui {
 	}
 
 	public void sceltaPersona() {
-		refreshPanel();
+		anotherRefreshPanel();
 
 		p.setLayout(new BorderLayout());
 
@@ -115,28 +118,25 @@ public class RistoranteGui {
 		lab.setPreferredSize(new Dimension(50,100));
 		clienteButton.setPreferredSize(new Dimension(width/4,height/6));
 		dipendenteButton.setPreferredSize(new Dimension(width/4,height/6));
-		p2.setOpaque(false);
+		//p2.setOpaque(false);
 		p2.add(clienteButton,BorderLayout.EAST);
 		p2.add(dipendenteButton,BorderLayout.WEST);
-		p.setOpaque(false);
+		//p.setOpaque(false);
 		p.add(p2,BorderLayout.CENTER);
 		p.add(lab,BorderLayout.NORTH);
 		//p.add(clienteButton,BorderLayout.EAST);
 		//p.add(dipendenteButton,BorderLayout.WEST);
-		f.add(p);
+		background.add(p, BorderLayout.CENTER);
 		f.setVisible(true);
 	}
 
 
 	public void identificaClienteR() {
-		refreshPanel();
-		f.add(cg.identificaCliente());
+		aggiungiPannello(cg.identificaCliente());
 	}
 
 	public void scegliMenuR() {
-		refreshPanel();
-		//		f.setLayout(new BorderLayout());
-		f.add(cg.scegliMenu2());
+		aggiungiPannello(cg.scegliMenu());
 	}
 
 	public void clienteNoPrenotatoR(int max) {
@@ -145,8 +145,7 @@ public class RistoranteGui {
 	}
 
 	public void identificaDipendenteR() {
-		refreshPanel();
-		f.add(dg.identificaDipendente());
+		aggiungiPannello(dg.identificaDipendente());
 	}
 
 	public JFrame getF() {
@@ -154,34 +153,40 @@ public class RistoranteGui {
 	}
 
 	public void vediOrdiniR() {
-
-		refreshPanel();
-		f.add(dg.vediOrdini());
+		aggiungiPannello(dg.vediOrdini());
 	}
 
 	public void addDishR() {
-		f.setVisible(false);
-		refreshPanel();
-		//f.setLayout(new GridBagLayout());
-		//gbc.insets = new Insets(30, 0, 0, 0);
-		f.add(dg.addDish());
-		f.setVisible(true);
-
+		aggiungiPannello(dg.addDish());
 	}
 
 	public void aggiungiPrenotazioneR(int max) {
-		refreshPanel();
-		f.add(dg.aggiungiPrenotazione(max));
+		anotherRefreshPanel();
+		background.add(dg.aggiungiPrenotazione(max));
+		f.setVisible(true);
 	}
 
 	public void operazioniDipendenteR() {
-		refreshPanel();
-		f.add(dg.operazioniDipendente());
+		aggiungiPannello(dg.operazioniDipendente());
 	}
-
+	
 	public void inviaOrdineR() {
 		cg.inviaOrdine();
 	}
+	
+//	public void inviaOrdineR() {
+//		aggiungiPannello(cg.inviaOrdine());
+//	}
+//	
+	private void aggiungiPannello(JPanel panel) {
+		anotherRefreshPanel();
+		background.add(panel);
+		f.setVisible(true);
+	}
+	
+	
+	
+
 	public void popUpErrore(String s) {
 		JOptionPane.showMessageDialog(null, s, "ERRORE", JOptionPane.INFORMATION_MESSAGE);
 	}

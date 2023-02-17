@@ -25,6 +25,12 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
+import it.unipv.ingsfw.view.ourComponents.OurButton;
+import it.unipv.ingsfw.view.ourComponents.OurLabel;
+import it.unipv.ingsfw.view.ourComponents.OurPanel;
+import it.unipv.ingsfw.view.ourComponents.OurSpinner;
+import it.unipv.ingsfw.view.ourComponents.OurTextField;
+
 public class DipendenteGui {
 
 	private JPanel panel,panel2;
@@ -66,14 +72,14 @@ public class DipendenteGui {
 		//panel.setVisible(false);
 		createPanel("b");
 		//panel.removeAll();
-
+		panel.setPreferredSize(new Dimension(500, 500));
 		lab=new OurLabel("Inserisci la password del ristorante", SwingConstants.CENTER);
 		lab.setPreferredSize(new Dimension(50,100));
 		passwordRistorante.setPreferredSize(new Dimension(200,50));
 		//panel.setLayout (new BorderLayout());
-		panel2.add(passwordRistorante,BorderLayout.CENTER);
+		panel.add(passwordRistorante,BorderLayout.SOUTH);
 		panel.add(lab, BorderLayout.NORTH);
-		panel.add(panel2, BorderLayout.CENTER);
+		//panel.add(panel2, BorderLayout.CENTER);
 		return panel;
 	}
 
@@ -242,7 +248,7 @@ public class DipendenteGui {
 		gbc.insets = new Insets(0, 20, 0, 0);
 		//p.add(lab, gbc);
 		panel.add(scroll, gbc);
-		gbc.anchor = GridBagConstraints.LINE_START;
+		gbc.anchor = GridBagConstraints.CENTER;
 		gbc.gridx = 1;
 		gbc.gridy = 1;
 		panel.add(panel2,gbc);

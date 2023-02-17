@@ -28,6 +28,11 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
+import it.unipv.ingsfw.view.ourComponents.OurButton;
+import it.unipv.ingsfw.view.ourComponents.OurLabel;
+import it.unipv.ingsfw.view.ourComponents.OurPanel;
+import it.unipv.ingsfw.view.ourComponents.OurSpinner;
+
 public class ClienteGui {
 
 	private JButton noPrenotazioneButton,aLaCarteButton,ayceButton,sceltaMenuButton, addButton;

@@ -1,4 +1,4 @@
-package it.unipv.ingsfw.view;
+package it.unipv.ingsfw.view.ourComponents;
 
 
 import java.awt.Font;
