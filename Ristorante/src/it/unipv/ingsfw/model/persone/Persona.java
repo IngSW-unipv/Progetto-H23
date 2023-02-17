@@ -24,6 +24,18 @@ public abstract class Persona implements IPersona{
 	public String getNome() {
 		return nome;
 	}
+	
+	@Override
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+
+	@Override
+	public void setIdentificato(boolean b) {
+		this.identificato = b;
+	}
+	
 	@Override
 	public ArrayList<IOrdine> getOrdini() {
 		return ordini;

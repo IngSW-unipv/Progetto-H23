@@ -23,7 +23,7 @@ public class OurLabel extends JLabel {
 		}
 		setFont(customFont);
 //		setFont(new Font("Roman", Font.ROMAN_BASELINE, 25));
-		setForeground(Color.BLACK);
+		setForeground(Color.RED);
 	}
 
 		public OurLabel(String nome, int i) {
@@ -38,6 +38,6 @@ public class OurLabel extends JLabel {
 			}
 			setFont(customFont);
 //			setFont(new Font("Roman", Font.ROMAN_BASELINE, 25));
-			setForeground(Color.BLACK);
+			setForeground(Color.RED);
 		}
 }

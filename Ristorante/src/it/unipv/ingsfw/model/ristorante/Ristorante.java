@@ -13,6 +13,7 @@ public class Ristorante {
 	private ArrayList<Dipendente> dipendenti;
 	private String nome,password;
 	private Map<String,Integer> prenotazioni;
+	private double conto;
 
 	public Ristorante(String nome, String password) {
 		super();
@@ -22,15 +23,21 @@ public class Ristorante {
 		this.password = password;
 		prenotazioni=new HashMap<String,Integer>();
 		postiLiberi=NUMERO_POSTI;
+		conto = 22.90;
 	}
 
+	public double getConto() {
+		return conto;
+	}
+	
 	public String getPassword() {
 		return password;
 	}
 
-	public void creaDipendente(String nome) {
+	public Dipendente creaDipendente(String nome) {
 		Dipendente d=new Dipendente(nome, this);
 		dipendenti.add(d);
+		return d;
 	}
 
 	/* 

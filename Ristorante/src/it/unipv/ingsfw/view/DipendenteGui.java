@@ -60,6 +60,9 @@ public class DipendenteGui {
 		tornaIndietroButton.setContentAreaFilled(false);
 		tornaIndietroButton.setBorderPainted(false);
 		tornaIndietroButton.setIcon(img);
+		value = new SpinnerNumberModel (1, 1, 1, 1);
+		clienteNoPrenotato = new OurSpinner(value);
+		nomeCliente=new OurTextField();
 		prenota = new OurButton("Prenota il cliente");
 		ordini=new JTextArea(20, 25);
 		ordini.setEditable(false);
@@ -77,7 +80,7 @@ public class DipendenteGui {
 		lab.setPreferredSize(new Dimension(50,100));
 		passwordRistorante.setPreferredSize(new Dimension(200,50));
 		//panel.setLayout (new BorderLayout());
-		panel.add(passwordRistorante,BorderLayout.SOUTH);
+		panel.add(passwordRistorante,BorderLayout.CENTER);
 		panel.add(lab, BorderLayout.NORTH);
 		//panel.add(panel2, BorderLayout.CENTER);
 		return panel;
@@ -122,12 +125,9 @@ public class DipendenteGui {
 		createPanel("g");
 
 		lab=new OurLabel("Inserisci nome cliente e posti", SwingConstants.CENTER);
-		value = new SpinnerNumberModel (0, 0, max, 1);
-		clienteNoPrenotato = new OurSpinner(value);
 		clienteNoPrenotato.setPreferredSize(new Dimension(60, 40));
-		nomeCliente=new OurTextField();
 		nomeCliente.setPreferredSize(new Dimension(200,50));
-
+		value.setMaximum(max);
 		//panel.setLayout(new GridBagLayout());
 
 		gbc.gridwidth = GridBagConstraints.REMAINDER;        //senza questo li allinea in riga

@@ -24,22 +24,26 @@ public class Main {
 		//p.selectAllAntipasti();
 		
 		Ristorante r = new Ristorante ("NOME", "PASS");
+		
+		Cliente c1 = new Cliente ("GinoPippo");
+		Cliente c2 = new Cliente ("Pippo");
+		Cliente c3 = new Cliente ("Franceschina");
+
+		r.prenotaCliente(c1, 300);
+		r.prenotaCliente(c2,  100);
+		r.prenotaCliente(c3, 90);
+//		System.out.println(c1);
 		RistoranteGui rg=new RistoranteGui();
 		RistoranteController rc=new RistoranteController(rg,r);
+		
 		
 		r.creaDipendente("Paolo");
 		r.creaDipendente("Agostino");
 		r.creaDipendente("Sabatino");
 		ArrayList<Dipendente> d = r.getDipendenti();
 
-		Cliente c1 = new Cliente ("GinoPippo");
-		Cliente c2 = new Cliente ("Pippo");
-		Cliente c3 = new Cliente ("Franceschina");
-
-		r.prenotaCliente(c1, 300);
-		r.prenotaCliente(c2,  1);
-		r.prenotaCliente(c3, 10);
-
+//		System.out.println(r.getPrenotazioni());
+/*
 		System.out.println(r.getPostiLiberi());
 		for (Dipendente dip: r.getDipendenti() ) {
 			System.out.println(dip.getNome());

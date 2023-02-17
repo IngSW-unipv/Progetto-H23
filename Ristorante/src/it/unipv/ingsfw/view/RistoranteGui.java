@@ -116,8 +116,8 @@ public class RistoranteGui {
 
 		lab=new OurLabel("Sei un cliente o un dipendente?", SwingConstants.CENTER);
 		lab.setPreferredSize(new Dimension(50,100));
-		clienteButton.setPreferredSize(new Dimension(width/4,height/6));
-		dipendenteButton.setPreferredSize(new Dimension(width/4,height/6));
+		clienteButton.setPreferredSize(new Dimension(250,50));
+		dipendenteButton.setPreferredSize(new Dimension(250,50));
 		//p2.setOpaque(false);
 		p2.add(clienteButton,BorderLayout.EAST);
 		p2.add(dipendenteButton,BorderLayout.WEST);
@@ -139,9 +139,10 @@ public class RistoranteGui {
 		aggiungiPannello(cg.scegliMenu());
 	}
 
-	public void clienteNoPrenotatoR(int max) {
-		refreshPanel();
-		f.add(cg.clienteNoPrenotato(max));
+	public void clienteNoPrenotatoR(int i) {
+		anotherRefreshPanel();
+		background.add(cg.clienteNoPrenotato(i));
+		f.setVisible(true);
 	}
 
 	public void identificaDipendenteR() {
@@ -183,9 +184,6 @@ public class RistoranteGui {
 		background.add(panel);
 		f.setVisible(true);
 	}
-	
-	
-	
 
 	public void popUpErrore(String s) {
 		JOptionPane.showMessageDialog(null, s, "ERRORE", JOptionPane.INFORMATION_MESSAGE);
@@ -258,7 +256,45 @@ public class RistoranteGui {
 		return dg.getVediOrdiniButton();
 	}
 
-
+	public JButton aggiungiPrenotazioneButton() {
+		return dg.getAggiungiPrenotazioneButton();
+	}
+	
+	public JTextField getClienteDaPrenotare() {
+		return dg.getNomeCliente();
+	}
+	
+	public JSpinner getClienteNoPrenotatoD() {
+		return dg.getClienteNoPrenotato();
+	}
+	
+	public JButton getPrenotaClienteButton() {
+		return dg.getPrenota();
+	}
+	
+	public JTextField getNomeClienteField() {
+		return cg.getNomeClienteField();
+	}
+	
+	public JButton getNoPrenotazioneButton() {
+		return cg.getNoPrenotazioneButton();
+	}
+	
+	public JButton getSceltaMenuButton() {
+		return cg.getSceltaMenuButton();
+	}
+	
+	public JSpinner getClienteNoPrenotato() {
+		return cg.getClienteNoPrenotato();
+	}
+	
+	public JButton getAyceButton() {
+		return cg.getAyceButton();
+	}
+	
+	public JButton getALaCaButton() {
+		return cg.getaLaCarteButton();
+	}
 }
 
 

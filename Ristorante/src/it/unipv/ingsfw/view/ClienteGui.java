@@ -37,7 +37,7 @@ public class ClienteGui {
 
 	private JButton noPrenotazioneButton,aLaCarteButton,ayceButton,sceltaMenuButton, addButton;
 
-	private JPanel p,p2;
+	private JPanel panel,internalPanel;
 	private JLabel lab;
 	private JSpinner clienteNoPrenotato, quantPiattoSpinner;
 	private SpinnerNumberModel value;
@@ -54,58 +54,65 @@ public class ClienteGui {
 		f.setSize(800, 400);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //aggiungere salvare piatti e prenotazioni in db
 
-		p=new OurPanel();
-		p2= new OurPanel();
-		gbc= new GridBagConstraints();
+		panel=new OurPanel();
+		internalPanel= new OurPanel();
+		internalPanel = new OurPanel(new BorderLayout());
+		
 		bordo=BorderFactory.createEmptyBorder(0,10,10,10);
 		listModel = new DefaultListModel();
 
 
-		p.setBorder(bordo);
+		panel.setBorder(bordo);
 		//f.add(p);
-
+		
+		nomeClienteField=new JTextField();
 		noPrenotazioneButton= new OurButton("Non sei prenotato?");
 		aLaCarteButton=new OurButton("A La Carte");
 		ayceButton=new OurButton("All you can eat");
+		
 		sceltaMenuButton = new OurButton("Vai alla scelta del menu");
-		value = new SpinnerNumberModel (0, 0, 0, 1);
-
+		value = new SpinnerNumberModel (1, 1, 1, 1);
+		clienteNoPrenotato = new OurSpinner(value);	
+		clienteNoPrenotato.setEditor(new JSpinner.DefaultEditor(clienteNoPrenotato));
 	}
 
 	public JPanel identificaCliente() {
 
+		createPanel("b");
 		lab=new OurLabel("Inserisci il nome della prenotazione", SwingConstants.CENTER);
 		lab.setPreferredSize(new Dimension(50,100));
-		nomeClienteField=new JTextField();
 		nomeClienteField.setFont(new Font("Italic", Font.ITALIC, 20));
 		nomeClienteField.setPreferredSize(new Dimension(200,50));
 
 		//noPrenotazioneButton= new OurButton("Non sei prenotato?");
 		noPrenotazioneButton.setPreferredSize(new Dimension(200,50));
 
-		p.setLayout (new BorderLayout());
-		p2.add(nomeClienteField,BorderLayout.CENTER);
-		p.add(lab, BorderLayout.NORTH);
-		p.add(noPrenotazioneButton,BorderLayout.SOUTH);
-		p.add(p2, BorderLayout.CENTER);
-		return p;
+		//panel.setLayout (new BorderLayout());
+		//panel = new OurPanel(new BorderLayout());
+		
+		
+		internalPanel.add(nomeClienteField,BorderLayout.CENTER);
+		panel.add(lab, BorderLayout.NORTH);
+		panel.add(noPrenotazioneButton,BorderLayout.SOUTH);
+		panel.add(internalPanel, BorderLayout.CENTER);
+		return panel;
 
 	}
+
+	
 
 	public JPanel clienteNoPrenotato(int max) {
 		//refreshPanel();
 		
-		p2.setLayout(new GridBagLayout());
-		//p2.setBorder(BorderFactory.createLoweredBevelBorder());
-		//p2.setPreferredSize(new Dimension(500, 300));
+		createPanel("g");
+		value.setMaximum(max);
 		lab=new OurLabel("TAVOLO SENZA PRENOTAZIONE", SwingConstants.CENTER);
-		lab.setForeground(Color.RED);
+		//lab.setForeground(Color.RED);
 		OurLabel lab2 = new OurLabel("Inserisci numero posti:");
-		value = new SpinnerNumberModel (0, 0, max, 1);
-		clienteNoPrenotato = new OurSpinner(value);
-
+		lab2.setForeground(Color.BLACK);
+		
 		clienteNoPrenotato.setPreferredSize(new Dimension(60, 35));
-		sceltaMenuButton = new OurButton("Vai alla scelta del menu");
+		
 
 		gbc.gridx = 0;
 		gbc.gridy = 1;
@@ -113,13 +120,13 @@ public class ClienteGui {
 		gbc.weighty = 0.1;
 		gbc.anchor = GridBagConstraints.LINE_END;
 		gbc.insets = new Insets(30, 0, 0, 0);
-		p2.add(lab2, gbc);
+		panel.add(lab2, gbc);
 
 		gbc.gridx = 1;
 		gbc.gridy = 1;
 		gbc.anchor = GridBagConstraints.LINE_START;
 		gbc.insets = new Insets(30, 5, 0, 0);
-		p2.add(clienteNoPrenotato,gbc);
+		panel.add(clienteNoPrenotato,gbc);
 
 		gbc.gridx = 0;
 		gbc.gridy = 2;
@@ -127,48 +134,47 @@ public class ClienteGui {
 		gbc.weighty = 0.2;
 		gbc.gridwidth = 2;
 		gbc.anchor = GridBagConstraints.PAGE_START;
-		p2.add(sceltaMenuButton, gbc);
+		panel.add(sceltaMenuButton, gbc);
 
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		gbc.weightx = 0.0;
 		gbc.weighty = 0.0;
 
-		p2.add(lab,gbc);
+		panel.add(lab,gbc);
 		//f.add(p2);
 		//f.setVisible(true);
-		return p;
+		return panel;
 	}
 
 	public JPanel scegliMenu() {
-
-		p.setLayout(new BorderLayout());
+		createPanel("b");
+		internalPanel = new OurPanel();
+//		panel.setLayout(new BorderLayout());
 		lab=new OurLabel("Scegli tipo di menu", SwingConstants.CENTER);
 		lab.setPreferredSize(new Dimension(50,100));
-		aLaCarteButton.setPreferredSize(new Dimension(200,400/6));
-		ayceButton.setPreferredSize(new Dimension(200,400/6));
+		aLaCarteButton.setPreferredSize(new Dimension(250,400/6));
+		ayceButton.setPreferredSize(new Dimension(250,400/6));
 		
-		//p.setOpaque(false);
-		p2.setOpaque(false);
-		p.add(lab,BorderLayout.NORTH);
-		p2.add(aLaCarteButton,BorderLayout.EAST);
-		p2.add(ayceButton,BorderLayout.WEST);
-		p.add(p2,BorderLayout.CENTER);
-		p.setBackground(new Color(0,0,0, 160));
+		panel.add(lab,BorderLayout.NORTH);
+		internalPanel.add(aLaCarteButton);
+		internalPanel.add(ayceButton);
+		panel.add(internalPanel,BorderLayout.CENTER);
+		//panel.setBackground(new Color(0,0,0, 160));
 		
 		
 		//p.add(clienteButton,BorderLayout.EAST);
 		//p.add(dipendenteButton,BorderLayout.WEST);
 		//f.add(p);
 	//	f.setVisible(true);
-		return p;
+		return panel;
 	}
 	
 	public JPanel scegliMenu2() {
 		//p.setBackground(new Color(0, 0, 0, 110));
-		p.setOpaque(false);
-		p.setLayout(new GridBagLayout());
-		p.setPreferredSize(new Dimension (600, 590));
+		panel.setOpaque(false);
+		panel.setLayout(new GridBagLayout());
+		panel.setPreferredSize(new Dimension (600, 590));
 		lab=new OurLabel("Scegli tipo di menu");
 		//lab.setPreferredSize(new Dimension(100,100));
 		aLaCarteButton.setPreferredSize(new Dimension(200,400/6));
@@ -183,7 +189,7 @@ public class ClienteGui {
 //		gbc.insets = new Insets(0, 0, 0, 0);
 
 		//gbc.anchor = GridBagConstraints.PAGE_START;
-		p.add(lab, gbc);	
+		panel.add(lab, gbc);	
 		gbc.insets = new Insets(30, 0, 0, 0);
 		gbc.anchor = GridBagConstraints.LINE_END;
 		gbc.gridwidth = 1;
@@ -191,7 +197,7 @@ public class ClienteGui {
 		gbc.gridy = 1;
 //		gbc.weightx = 0.0;
 //		gbc.weighty = 0.0;
-		p.add(aLaCarteButton, gbc);
+		panel.add(aLaCarteButton, gbc);
 //		gbc.weightx = 0.0;
 //		gbc.weighty = 0.0;
 		gbc.insets = new Insets(30, 10, 0, 0);
@@ -199,7 +205,7 @@ public class ClienteGui {
 		gbc.gridy = 1;
 		gbc.anchor = GridBagConstraints.LINE_START;
 //		gbc.anchor = GridBagConstraints.LINE_END;
-		p.add(ayceButton,gbc);
+		panel.add(ayceButton,gbc);
 		
 		
 		
@@ -207,11 +213,11 @@ public class ClienteGui {
 		//p.add(dipendenteButton,BorderLayout.WEST);
 		//f.add(p);
 	//	f.setVisible(true);
-		return p;
+		return panel;
 	}
 
 	public void inviaOrdine(/*ArrayList<String> piatti*/) {
-		p = new JPanel(new GridBagLayout());
+		panel = new JPanel(new GridBagLayout());
 
 		lab = new OurLabel("Scegli cosa desideri ordinare");
 
@@ -255,18 +261,101 @@ public class ClienteGui {
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		gbc.anchor =  GridBagConstraints.LINE_START;
-		p.add(scroll, gbc);
+		panel.add(scroll, gbc);
 
 		gbc.gridx = 1;
 		gbc.gridy = 0;
 		gbc.anchor =  GridBagConstraints.LINE_END;
-		p.add(quantPiattoSpinner,gbc);
-		f.add(p);
+		panel.add(quantPiattoSpinner,gbc);
+		f.add(panel);
 		f.setVisible(true);
 
+	}
+	
+	public void createPanel (String p1) {
 
-
+		if (p1.equals("g")) {
+			panel = new OurPanel(new GridBagLayout());
+			gbc = new GridBagConstraints();
+		}
+		else if (p1.equals("b")){
+			panel = new OurPanel(new BorderLayout());
+		}
+		panel.setBorder(bordo);
+		internalPanel = new OurPanel(new BorderLayout());
 	}
 
+
+	public JButton getNoPrenotazioneButton() {
+		return noPrenotazioneButton;
+	}
+
+	public JButton getaLaCarteButton() {
+		return aLaCarteButton;
+	}
+
+	public JButton getAyceButton() {
+		return ayceButton;
+	}
+
+	public JButton getSceltaMenuButton() {
+		return sceltaMenuButton;
+	}
+
+	public JButton getAddButton() {
+		return addButton;
+	}
+
+	public JPanel getP() {
+		return panel;
+	}
+
+	public JPanel getP2() {
+		return internalPanel;
+	}
+
+	public JLabel getLab() {
+		return lab;
+	}
+
+	public JSpinner getClienteNoPrenotato() {
+		return clienteNoPrenotato;
+	}
+
+	public JSpinner getQuantPiattoSpinner() {
+		return quantPiattoSpinner;
+	}
+
+	public SpinnerNumberModel getValue() {
+		return value;
+	}
+
+	public JFrame getF() {
+		return f;
+	}
+
+	public Border getBordo() {
+		return bordo;
+	}
+
+	public GridBagConstraints getGbc() {
+		return gbc;
+	}
+
+	public JTextField getNomeClienteField() {
+		return nomeClienteField;
+	}
+
+	public JList getPiattiMenu() {
+		return piattiMenu;
+	}
+
+	public DefaultListModel getListModel() {
+		return listModel;
+	}
+
+	public JScrollPane getScroll() {
+		return scroll;
+	}
 
 }
