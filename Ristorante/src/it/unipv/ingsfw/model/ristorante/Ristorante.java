@@ -7,8 +7,9 @@ import it.unipv.ingsfw.model.eccezioni.NoPostiException;
 import it.unipv.ingsfw.model.persone.*;
 
 public class Ristorante {
-	public final int NUMERO_POSTI=500;
+	public final int NUMERO_POSTI= 500;
 	private int postiLiberi;
+	private int progressivo;
 	private ArrayList<Cliente> clienti;
 	private ArrayList<Dipendente> dipendenti;
 	private String nome,password;
@@ -24,18 +25,19 @@ public class Ristorante {
 		prenotazioni=new HashMap<String,Integer>();
 		postiLiberi=NUMERO_POSTI;
 		conto = 22.90;
+		progressivo = 1;
 	}
 
 	public double getConto() {
 		return conto;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
 
 	public Dipendente creaDipendente(String nome) {
-		Dipendente d=new Dipendente(nome, this);
+		Dipendente d=new Dipendente(nome);
 		dipendenti.add(d);
 		return d;
 	}
@@ -46,7 +48,7 @@ public class Ristorante {
 	public boolean prenotaCliente(Cliente c, int posti) {		
 		try {
 			//if(posti<1) 
-				//throw new
+			//throw new
 			if(postiLiberi-posti<0) {
 				throw new NoPostiException();
 			}
@@ -61,6 +63,26 @@ public class Ristorante {
 			return false;
 		}
 	}
+
+	public void prenotaClientenoPrenotazione (int posti) {
+		try {
+			//if(posti<1) 
+			//throw new
+			if(postiLiberi-posti<0) {
+				throw new NoPostiException();
+			}
+			Cliente c = new Cliente("Tavolo " + progressivo);
+			progressivo++;
+			c.setIdentificato(true);
+
+			postiLiberi=postiLiberi-posti;
+			clienti.add(c);
+		}
+		catch(NoPostiException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
 	public ArrayList<Cliente> getClienti () {
 		return clienti;
 	}

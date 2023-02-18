@@ -22,7 +22,7 @@ public class Dipendente extends Persona{
 	private int contPiatti;
 	private ArrayList<IOrdine> ordiniAusiliario;
 
-	public Dipendente(String nome, Ristorante r) {
+	public Dipendente(String nome /*Ristorante r */) {
 		super(nome);
 		//this.r = r;
 		logIn1=true;

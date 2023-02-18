@@ -28,11 +28,23 @@ public class Main {
 		Cliente c1 = new Cliente ("GinoPippo");
 		Cliente c2 = new Cliente ("Pippo");
 		Cliente c3 = new Cliente ("Franceschina");
-
+		
 		r.prenotaCliente(c1, 300);
 		r.prenotaCliente(c2,  100);
 		r.prenotaCliente(c3, 90);
-//		System.out.println(c1);
+		
+		r.prenotaClientenoPrenotazione(1);
+		r.prenotaClientenoPrenotazione(2);
+		r.prenotaClientenoPrenotazione(6);
+		
+		
+		for (Cliente c: r.getClienti()) {
+			System.out.println(c);
+		}
+		
+		System.out.println(r.getPostiLiberi());
+
+		System.out.println(c1);
 		RistoranteGui rg=new RistoranteGui();
 		RistoranteController rc=new RistoranteController(rg,r);
 		
@@ -41,6 +53,9 @@ public class Main {
 		r.creaDipendente("Agostino");
 		r.creaDipendente("Sabatino");
 		ArrayList<Dipendente> d = r.getDipendenti();
+//		c1.accediPrenotazione(r.getPrenotazioni());
+//		c2.accediPrenotazione(r.getPrenotazioni());
+//		c3.accediPrenotazione(r.getPrenotazioni());
 
 //		System.out.println(r.getPrenotazioni());
 /*

@@ -29,6 +29,7 @@ public class ClienteTest {
 		c3 = new Cliente("C");
 		p = new Primo(10, "Pizza",1);
 		m = new AYCE(30);
+		r.setPostiLiberi(r.NUMERO_POSTI);
 	}
 	
 	
