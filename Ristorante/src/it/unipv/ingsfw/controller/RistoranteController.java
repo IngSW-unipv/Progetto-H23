@@ -1,6 +1,10 @@
 package it.unipv.ingsfw.controller;
 
 import java.awt.event.*;
+import java.util.ArrayList;
+
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import it.unipv.ingsfw.model.menu.ALaCarte;
 import it.unipv.ingsfw.model.menu.AYCE;
@@ -123,7 +127,7 @@ public class RistoranteController {
 							c.setIdentificato(true);
 						}
 					}
-					
+
 					//Cliente c = new Cliente(s);
 					//c.setIdentificato(true);
 					//					for (Cliente c1: r.getClienti()) {
@@ -155,15 +159,15 @@ public class RistoranteController {
 		rg.getSceltaMenuButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-		 
-					r.prenotaClientenoPrenotazione((int)rg.getClienteNoPrenotato().getValue());
-					//r.setPostiLiberi(r.getPostiLiberi()-(int)rg.getClienteNoPrenotato().getValue());
-					System.out.println(r.getPostiLiberi());
-					rg.scegliMenuR();
-					for (Cliente c: r.getClienti()) {
-						System.out.println(c);
-					}
-				
+
+				r.prenotaClientenoPrenotazione((int)rg.getClienteNoPrenotato().getValue());
+				//r.setPostiLiberi(r.getPostiLiberi()-(int)rg.getClienteNoPrenotato().getValue());
+				System.out.println(r.getPostiLiberi());
+				rg.scegliMenuR();
+				for (Cliente c: r.getClienti()) {
+					System.out.println(c);
+				}
+
 
 			}
 		});
@@ -174,6 +178,7 @@ public class RistoranteController {
 				for(Cliente c : r.getClienti()) {
 					if (c.getNome().equals(tmp)) {
 						c.scegliMenu(new AYCE(r.getConto()));
+						rg.inviaOrdineR(r.getArrayNomePiatti(),r.getArrayQuantitaPiatti());
 					}
 				}
 			}
@@ -185,6 +190,24 @@ public class RistoranteController {
 				for(Cliente c : r.getClienti()) {
 					if (c.getNome().equals(tmp)) {
 						c.scegliMenu(new ALaCarte());
+						rg.inviaOrdineR(r.getArrayNomePiatti(),r.getArrayQuantitaPiatti());
+					}
+				}
+			}
+		});
+
+		rg.getPiattiMenu().addListSelectionListener(new ListSelectionListener() {
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+
+				ArrayList<String> nome=r.getArrayNomePiatti();
+				ArrayList<Integer> quant=r.getArrayQuantitaPiatti();
+				
+				for(int i=0;i<nome.size();i++) {
+					if(nome.get(i).equals(rg.getPiattiMenu().getSelectedValue()))
+					{
+						rg.getValueC().setValue(rg.getValueC().getMinimum());
+						rg.getValueC().setMaximum(quant.get(i));
 					}
 				}
 			}

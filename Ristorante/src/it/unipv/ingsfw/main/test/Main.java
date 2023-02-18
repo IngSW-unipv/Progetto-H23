@@ -22,7 +22,6 @@ public class Main {
 		
 		//PiattoDAO p= new PiattoDAO();
 		//p.selectAllAntipasti();
-		
 		Ristorante r = new Ristorante ("NOME", "PASS");
 		
 		Cliente c1 = new Cliente ("GinoPippo");
@@ -32,6 +31,14 @@ public class Main {
 		r.prenotaCliente(c1, 300);
 		r.prenotaCliente(c2,  100);
 		r.prenotaCliente(c3, 90);
+		
+		IPiatto p1=new Antipasto(5.6, "piatto1", 6);
+		IPiatto p2=new Antipasto(5.6, "piatto2", 7);
+		IPiatto p3=new Antipasto(5.6, "piatto3", 8);
+		
+		r.addPiatto(p1);
+		r.addPiatto(p2);
+		r.addPiatto(p3);
 		
 		r.prenotaClientenoPrenotazione(1);
 		r.prenotaClientenoPrenotazione(2);

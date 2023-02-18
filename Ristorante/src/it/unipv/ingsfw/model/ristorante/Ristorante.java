@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import it.unipv.ingsfw.model.alimenti.IPiatto;
 import it.unipv.ingsfw.model.eccezioni.NoPostiException;
 import it.unipv.ingsfw.model.persone.*;
 
@@ -12,6 +13,7 @@ public class Ristorante {
 	private int progressivo;
 	private ArrayList<Cliente> clienti;
 	private ArrayList<Dipendente> dipendenti;
+	private ArrayList<IPiatto> tuttiPiatti;
 	private String nome,password;
 	private Map<String,Integer> prenotazioni;
 	private double conto;
@@ -20,6 +22,7 @@ public class Ristorante {
 		super();
 		this.dipendenti = new ArrayList<>();
 		this.clienti = new ArrayList<>();
+		this.tuttiPiatti = new ArrayList<>();
 		this.nome = nome;
 		this.password = password;
 		prenotazioni=new HashMap<String,Integer>();
@@ -81,6 +84,37 @@ public class Ristorante {
 		catch(NoPostiException e) {
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	public ArrayList<String> getArrayNomePiatti(){
+		ArrayList<String> tmp=new ArrayList();
+		for(IPiatto p: tuttiPiatti)
+		{
+			tmp.add("Nome: "+p.getNome()+"Prezzo: "+p.getPrezzo());
+		}
+		return tmp;
+	}
+	
+	public ArrayList<Integer> getArrayQuantitaPiatti(){
+		ArrayList<Integer> tmp=new ArrayList();
+		for(IPiatto p: tuttiPiatti)
+		{
+			tmp.add(p.getQuantita());
+		}
+		return tmp;
+	}
+	
+	public ArrayList<Double> getArrayPrezzoPiatti(){
+		ArrayList<Double> tmp=new ArrayList();
+		for(IPiatto p: tuttiPiatti)
+		{
+			tmp.add(p.getPrezzo());
+		}
+		return tmp;
+	}
+	
+	public void addPiatto(IPiatto p) {
+		tuttiPiatti.add(p);
 	}
 
 	public ArrayList<Cliente> getClienti () {

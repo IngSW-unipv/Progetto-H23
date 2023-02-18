@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -171,8 +172,8 @@ public class RistoranteGui {
 		aggiungiPannello(dg.operazioniDipendente());
 	}
 	
-	public void inviaOrdineR() {
-		cg.inviaOrdine();
+	public void inviaOrdineR(ArrayList<String> nomi, ArrayList<Integer> quantita) {
+		aggiungiPannello(cg.inviaOrdine(nomi, quantita));
 	}
 	
 //	public void inviaOrdineR() {
@@ -294,6 +295,18 @@ public class RistoranteGui {
 	
 	public JButton getALaCaButton() {
 		return cg.getaLaCarteButton();
+	}
+	
+	public JList getPiattiMenu() {
+		return cg.getPiattiMenu();
+	}
+	
+	public JSpinner getQuantPiattoSpinner() {
+		return cg.getQuantPiattoSpinner();
+	}
+	
+	public SpinnerNumberModel getValueC() {
+		return cg.getValue();
 	}
 }
 
