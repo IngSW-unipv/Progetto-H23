@@ -36,10 +36,9 @@ import it.unipv.ingsfw.view.ourComponents.OurTextField;
 
 public class ClienteGui {
 
-	private JButton noPrenotazioneButton,aLaCarteButton,ayceButton,sceltaMenuButton, addButton;
-
+	private JButton noPrenotazioneButton,aLaCarteButton,ayceButton,sceltaMenuButton, addButton,inviaOrdineButton;
 	private JPanel panel,internalPanel;
-	private JLabel lab;
+	private JLabel lab,totale;
 	private JSpinner clienteNoPrenotato, quantPiattoSpinner;
 	private SpinnerNumberModel value;
 	private JFrame f;
@@ -68,12 +67,14 @@ public class ClienteGui {
 		noPrenotazioneButton= new OurButton("Non sei prenotato?");
 		aLaCarteButton=new OurButton("A La Carte");
 		ayceButton=new OurButton("All you can eat");
+		totale=new OurLabel("Totale: ", SwingConstants.CENTER);
+		inviaOrdineButton=new OurButton("Aggiungi Piatto");
 		
 		sceltaMenuButton = new OurButton("Vai alla scelta del menu");
 		value = new SpinnerNumberModel (1, 1, 1, 1);
 		clienteNoPrenotato = new OurSpinner(value);
 		quantPiattoSpinner = new OurSpinner(value);
-		clienteNoPrenotato.setEditor(new JSpinner.DefaultEditor(clienteNoPrenotato));
+		//clienteNoPrenotato.setEditor(new JSpinner.DefaultEditor(clienteNoPrenotato));
 		listModel = new DefaultListModel();
 		piattiMenu = new JList(listModel);
 	}
@@ -241,6 +242,16 @@ public class ClienteGui {
 		gbc.gridy = 0;
 		gbc.anchor =  GridBagConstraints.LINE_END;
 		panel.add(quantPiattoSpinner,gbc);
+		
+		gbc.gridx = 0;
+		gbc.gridy = 1;
+		gbc.anchor =  GridBagConstraints.CENTER;
+		panel.add(inviaOrdineButton,gbc);
+		
+		gbc.gridx = 0;
+		gbc.gridy = 2;
+		gbc.anchor =  GridBagConstraints.CENTER;
+		panel.add(totale,gbc);
 		return panel;
 	}
 	
@@ -329,5 +340,12 @@ public class ClienteGui {
 	public JScrollPane getScroll() {
 		return scroll;
 	}
-
+	
+	public JLabel getTotale() {
+		return totale;
+	}
+	
+	public JButton getinviaOrdineButton() {
+		return inviaOrdineButton;
+	}
 }

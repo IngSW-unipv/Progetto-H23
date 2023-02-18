@@ -86,11 +86,21 @@ public class Ristorante {
 		}
 	}
 	
+	public ArrayList<String> getArrayNomeePrezzoPiatti(){
+		ArrayList<String> tmp=new ArrayList();
+		for(IPiatto p: tuttiPiatti)
+		{
+			tmp.add("Nome: "+p.getNome()+"                    Prezzo: "+p.getPrezzo());
+		}
+		return tmp;
+	}
+
+	
 	public ArrayList<String> getArrayNomePiatti(){
 		ArrayList<String> tmp=new ArrayList();
 		for(IPiatto p: tuttiPiatti)
 		{
-			tmp.add("Nome: "+p.getNome()+"Prezzo: "+p.getPrezzo());
+			tmp.add("Nome: "+p.getNome());
 		}
 		return tmp;
 	}
@@ -123,6 +133,10 @@ public class Ristorante {
 
 	public ArrayList<Dipendente> getDipendenti() {
 		return dipendenti;
+	}
+	
+	public ArrayList<IPiatto> getPiatti() {
+		return tuttiPiatti;
 	}
 
 	public Map<String, Integer> getPrenotazioni() {

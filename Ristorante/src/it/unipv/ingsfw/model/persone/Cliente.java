@@ -91,6 +91,10 @@ public class Cliente extends Persona{
 		}
 		menu.setConto(menu.getConto()+costoTmp);
 	}
+	
+	public IMenu getMenu() {
+		return menu;
+	}
 
 	@Override
 	public String toString() {

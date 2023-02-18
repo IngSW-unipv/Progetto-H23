@@ -13,6 +13,7 @@ public class OurSpinner extends JSpinner {
 	public OurSpinner(SpinnerNumberModel s) {
 		super(s);
 		setFont(new Font("Roman", Font.ROMAN_BASELINE, 25));
+		setEditor(new JSpinner.DefaultEditor(this));
 	}
 	
 }

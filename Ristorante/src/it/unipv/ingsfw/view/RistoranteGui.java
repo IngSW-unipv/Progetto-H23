@@ -308,6 +308,20 @@ public class RistoranteGui {
 	public SpinnerNumberModel getValueC() {
 		return cg.getValue();
 	}
+	
+	public void azzeraValueC() {
+		this.getValueC().setMinimum(0);
+		this.getValueC().setMaximum(0);
+		this.getValueC().setValue(0);
+	}
+	
+	public JLabel getTotale() {
+		return cg.getTotale();
+	}
+	
+	public JButton getinviaOrdineButton() {
+		return cg.getinviaOrdineButton();
+	}
 }
 
 

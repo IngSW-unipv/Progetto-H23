@@ -1,6 +1,7 @@
 package it.unipv.ingsfw.controller;
 
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.event.ListSelectionEvent;
@@ -110,9 +111,9 @@ public class RistoranteController {
 			public void actionPerformed(ActionEvent e) {
 
 				r.prenotaCliente(new Cliente(rg.getClienteDaPrenotare().getText()), (int)rg.getClienteNoPrenotatoD().getValue());
-				for (Cliente c1: r.getClienti()) {
-					System.out.println(c1); 
-				}
+				//				for (Cliente c1: r.getClienti()) {
+				//					System.out.println(c1); 
+				//				}
 			}
 		});
 
@@ -162,13 +163,12 @@ public class RistoranteController {
 
 				r.prenotaClientenoPrenotazione((int)rg.getClienteNoPrenotato().getValue());
 				//r.setPostiLiberi(r.getPostiLiberi()-(int)rg.getClienteNoPrenotato().getValue());
-				System.out.println(r.getPostiLiberi());
+				//System.out.println(r.getPostiLiberi());
 				rg.scegliMenuR();
-				for (Cliente c: r.getClienti()) {
-					System.out.println(c);
-				}
 
-
+				//				for (Cliente c: r.getClienti()) {
+				//					System.out.println(c);
+				//				}
 			}
 		});
 
@@ -178,7 +178,7 @@ public class RistoranteController {
 				for(Cliente c : r.getClienti()) {
 					if (c.getNome().equals(tmp)) {
 						c.scegliMenu(new AYCE(r.getConto()));
-						rg.inviaOrdineR(r.getArrayNomePiatti(),r.getArrayQuantitaPiatti());
+						rg.inviaOrdineR(r.getArrayNomeePrezzoPiatti(),r.getArrayQuantitaPiatti());
 					}
 				}
 			}
@@ -190,7 +190,7 @@ public class RistoranteController {
 				for(Cliente c : r.getClienti()) {
 					if (c.getNome().equals(tmp)) {
 						c.scegliMenu(new ALaCarte());
-						rg.inviaOrdineR(r.getArrayNomePiatti(),r.getArrayQuantitaPiatti());
+						rg.inviaOrdineR(r.getArrayNomeePrezzoPiatti(),r.getArrayQuantitaPiatti());
 					}
 				}
 			}
@@ -200,9 +200,9 @@ public class RistoranteController {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
 
-				ArrayList<String> nome=r.getArrayNomePiatti();
+				ArrayList<String> nome=r.getArrayNomeePrezzoPiatti();
 				ArrayList<Integer> quant=r.getArrayQuantitaPiatti();
-				
+
 				for(int i=0;i<nome.size();i++) {
 					if(nome.get(i).equals(rg.getPiattiMenu().getSelectedValue()))
 					{
@@ -210,6 +210,41 @@ public class RistoranteController {
 						rg.getValueC().setMaximum(quant.get(i));
 					}
 				}
+			}
+		});
+
+		rg.getinviaOrdineButton().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int i=rg.getPiattiMenu().getSelectedIndex();
+				
+				//aggiungere eccezione
+				if(rg.getPiattiMenu().getSelectedValue()==null)
+				{
+					rg.popUpErrore("Seleziona un piatto!");
+				}
+				
+				//cerco il "cliente di prima dal nome"
+				Cliente daiMenu=null;
+				for(Cliente c : r.getClienti()) {
+					if(tmp.equals(c.getNome()))
+							daiMenu=c;
+				}
+				
+				try {
+					//creo l'ordine per quel cliente
+					daiMenu.creaOrdine(r.getPiatti().get(i), (int)rg.getQuantPiattoSpinner().getValue());
+					
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				
+				rg.getTotale().setText("Totale :"+daiMenu.chiediConto());
+				if(r.getPiatti().get(i).getQuantita()==0)
+				{
+					rg.azzeraValueC();
+				}
+				rg.getValueC().setMaximum(r.getPiatti().get(i).getQuantita());
 			}
 		});
 
