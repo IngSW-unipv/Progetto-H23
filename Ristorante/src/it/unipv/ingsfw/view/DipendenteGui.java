@@ -1,7 +1,7 @@
 package it.unipv.ingsfw.view;
 
 import java.awt.BorderLayout;
-
+import java.awt.Color;
 import java.awt.Dimension;
 
 import java.awt.GridBagConstraints;
@@ -71,91 +71,124 @@ public class DipendenteGui {
 	}
 
 	public JPanel identificaDipendente() {
-		//refreshPanel();
-		//panel.setVisible(false);
-		createPanel("b");
-		//panel.removeAll();
-		panel.setPreferredSize(new Dimension(500, 500));
-		lab=new OurLabel("Inserisci la password del ristorante", SwingConstants.CENTER);
-		lab.setPreferredSize(new Dimension(50,100));
-		passwordRistorante.setPreferredSize(new Dimension(200,50));
-		//panel.setLayout (new BorderLayout());
-		panel.add(passwordRistorante,BorderLayout.CENTER);
-		panel.add(lab, BorderLayout.NORTH);
-		//panel.add(panel2, BorderLayout.CENTER);
-		return panel;
+		createPanel("g");
+
+        lab=new OurLabel("INSERISCI LA PASSWORD DEL RISTORANTE", SwingConstants.CENTER);
+        OurLabel lab2 = new OurLabel("Password:");
+        lab2.setForeground(Color.BLACK);
+
+        passwordRistorante.setPreferredSize(new Dimension(200,50));
+
+        //gbc.gridwidth = GridBagConstraints.REMAINDER;        //senza questo li allinea in riga
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.weightx = 0.1;
+        gbc.weighty = 0.1;
+        gbc.anchor = GridBagConstraints.LINE_END;
+        gbc.insets = new Insets(0, 70, 200, 0);
+        panel.add(lab2, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.insets = new Insets(0, 10, 200, 0);
+        panel.add(passwordRistorante,gbc);
+
+        gbc.insets = new Insets(200, 150, 0, 0);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.gridwidth = 2;
+        gbc.anchor = GridBagConstraints.CENTER;
+        panel.add(lab,gbc);
+
+        return panel;
 	}
 
 	public JPanel operazioniDipendente() {
 		//refreshPanel();
-		createPanel("g");
-		//p.setLayout(new GridBagLayout());
+        createPanel("g");
+        //p.setLayout(new GridBagLayout());
 
-		gbc.gridwidth = GridBagConstraints.REMAINDER;        //senza questo li allinea in riga              
-		gbc.fill = GridBagConstraints.HORIZONTAL; 		//bordi bottoni allineati (prova vertical per capire)
+        gbc.gridwidth = 2;        //senza questo li allinea in riga
+        gbc.fill = GridBagConstraints.HORIZONTAL;         //bordi bottoni allineati (prova vertical per capire)
 
-		lab = new OurLabel("Cosa vuoi fare?", SwingConstants.CENTER);
-		gbc.insets = new Insets(120, 0, 10, 0);
-		panel.add(lab, gbc);
-		gbc.insets = new Insets(30, 0, 10, 0);
-		panel.add(aggiungiQuantitaButton, gbc);
-		gbc.insets = new Insets(0, 0, 10, 0);
+        lab = new OurLabel("COSA VUOI FARE?", SwingConstants.CENTER);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(0, 0, 10, 0);
+        gbc.gridy = 1;
+        panel.add(lab, gbc);
+        gbc.insets = new Insets(20, 0, 10, 0);
+        gbc.gridy = 2;
+        panel.add(aggiungiQuantitaButton, gbc);
+        gbc.gridy = 3;
+        gbc.insets = new Insets(0, 0, 10, 0);
 
-		panel.add(vediOrdiniButton, gbc);
-		gbc.insets = new Insets(0, 0, 10, 0);
+        panel.add(vediOrdiniButton, gbc);
+        gbc.insets = new Insets(0, 0, 10, 0);
 
-		panel.add(aggiungiPrenotazioneButton, gbc);
-		gbc.insets = new Insets(0, 0, 10, 0);
+        gbc.gridy = 4;
+        panel.add(aggiungiPrenotazioneButton, gbc);
+        gbc.insets = new Insets(0, 0, 10, 0);
 
-		//		gbc.fill = GridBagConstraints.LINE_END;
-		//		gbc.gridx = 1;
-		//		gbc.gridy = 4;
-		//		gbc.gridwidth = 1;
-		//		gbc.anchor = GridBagConstraints.LINE_END;
-		//		//panel.add(tornaIndietroButton, gbc);
-		//gbc.weighty = 10;
-		//		f.add(p);
-		//		f.setVisible(true);
-		return panel;
+        //        gbc.fill = GridBagConstraints.LINE_END;
+        //        gbc.gridx = 1;
+        //        gbc.gridy = 4;
+        //        gbc.gridwidth = 1;
+        //        gbc.anchor = GridBagConstraints.LINE_END;
+        //        //panel.add(tornaIndietroButton, gbc);
+        //gbc.weighty = 10;
+        //        f.add(p);
+        //        f.setVisible(true);
+        return panel;
 	}
 
 
 	public JPanel aggiungiPrenotazione(int max) {
-
 		createPanel("g");
+        OurPanel panel3 = new OurPanel();
+        lab=new OurLabel("NUOVA PRENOTAZIONE", SwingConstants.CENTER);
+        OurLabel lab2 = new OurLabel("Nome cliente:     ");
+        OurLabel lab3 = new OurLabel("Posti da riservare:     ");
+        lab2.setForeground(Color.BLACK);
+        lab3.setForeground(Color.BLACK);
+        clienteNoPrenotato.setPreferredSize(new Dimension(60, 40));
+        nomeCliente.setPreferredSize(new Dimension(200,50));
+        value.setMaximum(max);
 
-		lab=new OurLabel("Inserisci nome cliente e posti", SwingConstants.CENTER);
-		clienteNoPrenotato.setPreferredSize(new Dimension(60, 40));
-		nomeCliente.setPreferredSize(new Dimension(200,50));
-		value.setMaximum(max);
-		//panel.setLayout(new GridBagLayout());
+        gbc.gridwidth = GridBagConstraints.REMAINDER;        //senza questo li allinea in riga
+        //gbc.anchor = GridBagConstraints.EAST;
+        gbc.fill = GridBagConstraints.HORIZONTAL;         //bordi bottoni allineati (prova vertical per capire)
 
-		gbc.gridwidth = GridBagConstraints.REMAINDER;        //senza questo li allinea in riga
-		//gbc.anchor = GridBagConstraints.EAST;                
-		gbc.fill = GridBagConstraints.HORIZONTAL; 		//bordi bottoni allineati (prova vertical per capire)
+        //gbc.anchor = GridBagConstraints.WEST;
 
-		//gbc.anchor = GridBagConstraints.WEST;
+        //panel2.add(lab, BorderLayout.WEST);
+        gbc.insets = new Insets(0, 0, 10, 0);
+        panel.add(lab, gbc);
 
-		panel2.add(lab, BorderLayout.WEST);
+        panel2.add(lab2, BorderLayout.CENTER);
+        panel2.add(nomeCliente, BorderLayout.EAST);
+        panel3.add(lab3, BorderLayout.CENTER);
+        panel3.add(clienteNoPrenotato, BorderLayout.EAST);
 
-		panel.add(lab, gbc);
+        gbc.insets = new Insets(0, 0, 10, 0);
+        panel.add(panel2, gbc);
+        gbc.insets = new Insets(0, 0, 10, 0);
+        panel.add(panel3, gbc);
+        gbc.insets = new Insets(0, 0, 10, 0);
+        panel.add(prenota, gbc);
+        gbc.insets = new Insets(0, 0, 10, 0);
 
-		panel2.add(nomeCliente, BorderLayout.CENTER);
-		panel2.add(clienteNoPrenotato, BorderLayout.EAST);
+        panel.add(tornaIndietroButton, gbc);
+        gbc.insets = new Insets(0, 0, 10, 0);
 
-		gbc.insets = new Insets(0, 0, 10, 0);
-		panel.add(panel2, gbc);
-		gbc.insets = new Insets(0, 0, 10, 0);
-		panel.add(prenota, gbc);
-		gbc.insets = new Insets(0, 0, 10, 0);
+        gbc.anchor = GridBagConstraints.PAGE_END;
+        panel.add(tornaIndietroButton, gbc);
 
-		panel.add(tornaIndietroButton, gbc);
-		gbc.insets = new Insets(0, 0, 10, 0);
+        return panel;
 
-		gbc.anchor = GridBagConstraints.PAGE_END;
-		panel.add(tornaIndietroButton, gbc);
-
-		return panel;
 	}
 
 	public JPanel addDish() {

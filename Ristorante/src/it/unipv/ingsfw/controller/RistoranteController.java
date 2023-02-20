@@ -224,30 +224,48 @@ public class RistoranteController {
 				{
 					rg.popUpErrore("Seleziona un piatto!");
 				}
+
+
 				
+
+					if(r.getPiatti().get(i).getQuantita()==0) {
+
+						rg.popUpErrore("Piatto finito!");
+
+					}
+					else if ((int)rg.getValueC().getValue() == 0) {
+						rg.popUpErrore("Seleziona una quantità valida");
+					}
+
+
 				//cerco il "cliente di prima dal nome"
 				Cliente daiMenu=null;
 				for(Cliente c : r.getClienti()) {
 					if(tmp.equals(c.getNome()))
-							daiMenu=c;
+						daiMenu=c;
 				}
-				
+
 				try {
 					//creo l'ordine per quel cliente
 					daiMenu.creaOrdine(r.getPiatti().get(i), (int)rg.getQuantPiattoSpinner().getValue());
-					
+
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
-				
+
 				rg.getTotale().setText("Totale :"+daiMenu.chiediConto());
 				if(r.getPiatti().get(i).getQuantita()==0)
 				{
 					rg.azzeraValueC();
 				}
 				rg.getValueC().setMaximum(r.getPiatti().get(i).getQuantita());
+				rg.getValueC().setValue(0);
+//				Dipendente d1 = new Dipendente ("A");
+//				d1.aggiungiOrdini(r.getClienti());
+//				d1.stampaOrdini();
 			}
 		});
+		
 
 	}
 }

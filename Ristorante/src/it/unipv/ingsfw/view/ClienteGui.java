@@ -71,7 +71,7 @@ public class ClienteGui {
 		inviaOrdineButton=new OurButton("Aggiungi Piatto");
 		
 		sceltaMenuButton = new OurButton("Vai alla scelta del menu");
-		value = new SpinnerNumberModel (1, 1, 1, 1);
+		value = new SpinnerNumberModel (0, 0, 1, 1);
 		clienteNoPrenotato = new OurSpinner(value);
 		quantPiattoSpinner = new OurSpinner(value);
 		//clienteNoPrenotato.setEditor(new JSpinner.DefaultEditor(clienteNoPrenotato));
@@ -109,6 +109,7 @@ public class ClienteGui {
 		
 		createPanel("g");
 		value.setValue(1);
+		value.setMinimum(1);
 		value.setMaximum(max);
 		lab=new OurLabel("TAVOLO SENZA PRENOTAZIONE", SwingConstants.CENTER);
 		//lab.setForeground(Color.RED);
@@ -216,6 +217,8 @@ public class ClienteGui {
 
 	public JPanel inviaOrdine(ArrayList<String> nomi, ArrayList<Integer> quantita) {
 		createPanel("g");
+		value.setValue(0);
+		value.setMinimum(0);
 
 		lab = new OurLabel("Scegli cosa desideri ordinare");
 
@@ -226,7 +229,6 @@ public class ClienteGui {
 //		for(int max:quantita) {
 //			value.setMaximum(max);
 //		}
-		value.setValue(1);
 		piattiMenu.setModel(listModel);
 		piattiMenu.setPreferredSize(new Dimension(400,200));
 		scroll = new JScrollPane(piattiMenu);

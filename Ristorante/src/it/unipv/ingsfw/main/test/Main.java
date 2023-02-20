@@ -56,10 +56,12 @@ public class Main {
 		RistoranteController rc=new RistoranteController(rg,r);
 		
 		
-		r.creaDipendente("Paolo");
-		r.creaDipendente("Agostino");
-		r.creaDipendente("Sabatino");
-		ArrayList<Dipendente> d = r.getDipendenti();
+		Dipendente d1 = r.creaDipendente("Paolo");
+		
+		d1.stampaOrdini();
+		//r.creaDipendente("Agostino");
+		//r.creaDipendente("Sabatino");
+		//ArrayList<Dipendente> d = r.getDipendenti();
 //		c1.accediPrenotazione(r.getPrenotazioni());
 //		c2.accediPrenotazione(r.getPrenotazioni());
 //		c3.accediPrenotazione(r.getPrenotazioni());
