@@ -306,6 +306,7 @@ public class RistoranteGui {
 	}
 	
 	public SpinnerNumberModel getValueC() {
+		cg.getValue().setValue(1);
 		return cg.getValue();
 	}
 	

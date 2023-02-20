@@ -67,14 +67,15 @@ public class Ristorante {
 		}
 	}
 
-	public void prenotaClientenoPrenotazione (int posti) {
+	public Cliente prenotaClientenoPrenotazione (int posti) {
+		Cliente c = null;
 		try {
 			//if(posti<1) 
 			//throw new
 			if(postiLiberi-posti<0) {
 				throw new NoPostiException();
 			}
-			Cliente c = new Cliente("Tavolo " + progressivo);
+			c = new Cliente("Tavolo " + progressivo);
 			progressivo++;
 			c.setIdentificato(true);
 
@@ -84,6 +85,7 @@ public class Ristorante {
 		catch(NoPostiException e) {
 			System.out.println(e.getMessage());
 		}
+		return c;
 	}
 	
 	public ArrayList<String> getArrayNomeePrezzoPiatti(){

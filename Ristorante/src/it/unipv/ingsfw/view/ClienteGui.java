@@ -108,6 +108,7 @@ public class ClienteGui {
 		//refreshPanel();
 		
 		createPanel("g");
+		value.setValue(1);
 		value.setMaximum(max);
 		lab=new OurLabel("TAVOLO SENZA PRENOTAZIONE", SwingConstants.CENTER);
 		//lab.setForeground(Color.RED);
@@ -225,7 +226,7 @@ public class ClienteGui {
 //		for(int max:quantita) {
 //			value.setMaximum(max);
 //		}
-
+		value.setValue(1);
 		piattiMenu.setModel(listModel);
 		piattiMenu.setPreferredSize(new Dimension(400,200));
 		scroll = new JScrollPane(piattiMenu);

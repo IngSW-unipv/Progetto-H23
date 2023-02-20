@@ -161,9 +161,10 @@ public class RistoranteController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				r.prenotaClientenoPrenotazione((int)rg.getClienteNoPrenotato().getValue());
+				Cliente c = r.prenotaClientenoPrenotazione((int)rg.getClienteNoPrenotato().getValue());
 				//r.setPostiLiberi(r.getPostiLiberi()-(int)rg.getClienteNoPrenotato().getValue());
 				//System.out.println(r.getPostiLiberi());
+				tmp = c.getNome();
 				rg.scegliMenuR();
 
 				//				for (Cliente c: r.getClienti()) {
