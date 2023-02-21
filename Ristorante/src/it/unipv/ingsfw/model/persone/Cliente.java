@@ -62,7 +62,13 @@ public class Cliente extends Persona{
 			ordineCorretto=true;
 			return ordineCorretto;
 		}
-		catch(Exception e) {
+		
+		catch(InvalidQuantityException e) {
+			System.out.println(e.getMessage());
+			return ordineCorretto;
+		}
+		
+		catch(PiattoFinitoException e) {
 			System.out.println(e.getMessage());
 			return ordineCorretto;
 		}

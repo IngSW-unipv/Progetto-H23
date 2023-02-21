@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import it.unipv.ingsfw.model.alimenti.IPiatto;
+import it.unipv.ingsfw.model.eccezioni.NameAlreadyExistsException;
 import it.unipv.ingsfw.model.eccezioni.NoPostiException;
 import it.unipv.ingsfw.model.persone.*;
 
@@ -55,6 +56,10 @@ public class Ristorante {
 			if(postiLiberi-posti<0) {
 				throw new NoPostiException();
 			}
+			if(prenotazioni.containsKey(c.getNome())) {
+				throw new NameAlreadyExistsException();
+			}
+			
 			prenotazioni.put(c.getNome(), posti);
 
 			postiLiberi=postiLiberi-posti;
@@ -62,6 +67,11 @@ public class Ristorante {
 			return true;
 		}
 		catch(NoPostiException e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+		
+		catch(NameAlreadyExistsException e) {
 			System.out.println(e.getMessage());
 			return false;
 		}
@@ -87,7 +97,7 @@ public class Ristorante {
 		}
 		return c;
 	}
-	
+
 	public ArrayList<String> getArrayNomeePrezzoPiatti(){
 		ArrayList<String> tmp=new ArrayList();
 		for(IPiatto p: tuttiPiatti)
@@ -97,7 +107,7 @@ public class Ristorante {
 		return tmp;
 	}
 
-	
+
 	public ArrayList<String> getArrayNomePiatti(){
 		ArrayList<String> tmp=new ArrayList();
 		for(IPiatto p: tuttiPiatti)
@@ -106,7 +116,7 @@ public class Ristorante {
 		}
 		return tmp;
 	}
-	
+
 	public ArrayList<Integer> getArrayQuantitaPiatti(){
 		ArrayList<Integer> tmp=new ArrayList();
 		for(IPiatto p: tuttiPiatti)
@@ -115,7 +125,7 @@ public class Ristorante {
 		}
 		return tmp;
 	}
-	
+
 	public ArrayList<Double> getArrayPrezzoPiatti(){
 		ArrayList<Double> tmp=new ArrayList();
 		for(IPiatto p: tuttiPiatti)
@@ -124,7 +134,23 @@ public class Ristorante {
 		}
 		return tmp;
 	}
+
+	public void stampaPrenotazioni() {
+
+		//System.out.println(prenotazioni.keySet());
+		for (Map.Entry <String,Integer> entry : prenotazioni.entrySet()) {
+			  String key = entry.getKey();
+			  int value = entry.getValue();
+			  System.out.println(key+" "+value);
+			}
+	}
 	
+	public void stampaPiatti() {
+		for(IPiatto p:tuttiPiatti) {
+			System.out.println(p.getNome()+" "+p.getPrezzo()+" "+p.getQuantita());
+		}
+	}
+
 	public void addPiatto(IPiatto p) {
 		tuttiPiatti.add(p);
 	}
@@ -136,7 +162,7 @@ public class Ristorante {
 	public ArrayList<Dipendente> getDipendenti() {
 		return dipendenti;
 	}
-	
+
 	public ArrayList<IPiatto> getPiatti() {
 		return tuttiPiatti;
 	}

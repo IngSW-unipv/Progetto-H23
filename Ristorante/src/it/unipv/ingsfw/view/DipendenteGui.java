@@ -68,6 +68,9 @@ public class DipendenteGui {
 		ordini.setEditable(false);
 		scroll = new JScrollPane(ordini);
 		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		aggiungi = new OurButton("Aggiorna quantit‡");
+		nomePiattoField = new OurTextField();
+		quantitySpinner = new OurSpinner(value);
 	}
 
 	public JPanel identificaDipendente() {
@@ -194,16 +197,16 @@ public class DipendenteGui {
 	public JPanel addDish() {
 
 		createPanel("g");
+		//massimo impostato a 999
+		value.setMaximum(999);
+		value.setMinimum(1);
 		panel.setPreferredSize(new Dimension(500, 300));
 		lab = new OurLabel("Aggiungi un piatto", Color.RED);
 		OurLabel lab1 = new OurLabel("Nome piatto: ", Color.BLACK);
 		OurLabel lab3 = new OurLabel("Quantit√†: ", Color.BLACK);
-		quantitySpinner = new OurSpinner();
 		quantitySpinner.setPreferredSize(new Dimension(60, 30));
-		nomePiattoField = new OurTextField();
 		nomePiattoField.setPreferredSize(new Dimension(200, 40));
-		aggiungi = new OurButton("Aggiungi");
-		aggiungi.setPreferredSize(new Dimension(200, 50));
+		aggiungi.setPreferredSize(new Dimension(300, 50));
 
 		gbc.insets = new Insets(20, 0, 0, 0);
 		gbc.gridx = 0;
@@ -267,6 +270,8 @@ public class DipendenteGui {
 
 		lab=new OurLabel("Ordini in arrivo", SwingConstants.CENTER, Color.RED);
 		preparaTutto = new OurButton ("Prepara tutti gli ordini");
+		
+		//ordini.setText();
 
 		//p.setLayout(new BorderLayout());
 		//panel2.setLayout(new BorderLayout());
@@ -391,7 +396,4 @@ public class DipendenteGui {
 	public Border getBordo() {
 		return bordo;
 	}
-
-
-
 }

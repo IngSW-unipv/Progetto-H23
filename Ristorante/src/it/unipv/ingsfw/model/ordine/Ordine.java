@@ -9,7 +9,7 @@ public class Ordine implements IOrdine{
 	private long tempo;
 	private ArrayList<IPiatto> piattiOrdinati;
 	private boolean stato;
-	
+
 	public Ordine() {
 		super();
 		this.tempo = 0;
@@ -18,7 +18,7 @@ public class Ordine implements IOrdine{
 	} 
 	@Override
 	public void addPiatto(IPiatto p, int quantita) {
-		
+
 		for(int i=0;i<quantita;i++) {
 			piattiOrdinati.add(p);
 		}
@@ -48,21 +48,12 @@ public class Ordine implements IOrdine{
 		this.piattiOrdinati = piattiOrdinati;
 	}
 	@Override
+
 	public void stampaPiattiOrdinati() {
 		for (IPiatto p: piattiOrdinati) {
 			System.out.println("Nome: "+ p.getNome());
-			System.out.println("Prezzo: " + p.getPrezzo());
-			System.out.println("Quantita: " + p.getQuantita());
-		
+			//System.out.println("Prezzo: " + p.getPrezzo());
+			//System.out.println("Quantita: " + p.getQuantita());
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

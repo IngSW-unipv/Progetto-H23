@@ -20,7 +20,7 @@ public class RistoranteGui {
 	protected JLabel background, lab;
 	protected JButton start;
 	protected JButton clienteButton,dipendenteButton,indietro;
-	protected JTextField nomeCliente;
+	//protected JTextField nomeCliente;
 	protected Border bordo;
 	protected int height, width;
 	private ClienteGui cg;
@@ -226,9 +226,9 @@ public class RistoranteGui {
 		return dipendenteButton;
 	}
 
-	public JTextField getNomeCliente() {
-		return nomeCliente;
-	}
+//	public JTextField getNomeCliente() {
+//		return nomeCliente;
+//	}
 
 	public Border getBordo() {
 		return bordo;
@@ -317,12 +317,32 @@ public class RistoranteGui {
 		this.getValueC().setValue(0);
 	}
 	
+	public SpinnerNumberModel getValueD() {
+		return dg.getValue();
+	}
+	
 	public JLabel getTotale() {
 		return cg.getTotale();
 	}
 	
 	public JButton getinviaOrdineButton() {
 		return cg.getinviaOrdineButton();
+	}
+	//bottone aggiungi nella pagina per aggiornare le quantità
+	public JButton getAggiungi() {
+		return dg.getAggiungi();
+	}
+	
+	public JTextField getNomePiattoField() {
+		return dg.getNomePiattoField();
+	}
+	
+	public JSpinner getQuantitySpinner() {
+		return dg.getQuantitySpinner();
+	}
+	//textarea dove il dipendente vede gli ordini
+	public JTextArea getOrdini() {
+		return dg.getOrdini();
 	}
 }
 

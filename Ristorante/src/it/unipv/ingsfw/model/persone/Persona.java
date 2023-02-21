@@ -53,6 +53,13 @@ public abstract class Persona implements IPersona{
 			}
 		});
 	}
+	
+	public void getAndPrintOrdini() {
+		for (IOrdine o: this.ordini) {
+			o.stampaPiattiOrdinati();
+		}
+		//return void;
+	}
 	public void controllaPrenotazione() {
 		try {
 			if(identificato == false) {
