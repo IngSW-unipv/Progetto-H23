@@ -67,7 +67,7 @@ public class ClienteGui {
 		noPrenotazioneButton= new OurButton("Non sei prenotato?");
 		aLaCarteButton=new OurButton("A La Carte");
 		ayceButton=new OurButton("All you can eat");
-		totale=new OurLabel("Totale: ", SwingConstants.CENTER);
+		totale=new OurLabel("Totale: ", SwingConstants.CENTER, Color.RED);
 		inviaOrdineButton=new OurButton("Aggiungi Piatto");
 		
 		sceltaMenuButton = new OurButton("Vai alla scelta del menu");
@@ -82,7 +82,7 @@ public class ClienteGui {
 	public JPanel identificaCliente() {
 
 		createPanel("b");
-		lab=new OurLabel("Inserisci il nome della prenotazione", SwingConstants.CENTER);
+		lab=new OurLabel("Inserisci il nome della prenotazione", SwingConstants.CENTER, Color.RED);
 		lab.setPreferredSize(new Dimension(50,100));
 		nomeClienteField.setFont(new Font("Italic", Font.ITALIC, 20));
 		nomeClienteField.setPreferredSize(new Dimension(200,50));
@@ -102,17 +102,13 @@ public class ClienteGui {
 
 	}
 
-	
-
 	public JPanel clienteNoPrenotato(int max) {
-		//refreshPanel();
 		
 		createPanel("g");
 		value.setValue(1);
 		value.setMinimum(1);
 		value.setMaximum(max);
-		lab=new OurLabel("TAVOLO SENZA PRENOTAZIONE", SwingConstants.CENTER);
-		//lab.setForeground(Color.RED);
+		lab=new OurLabel("TAVOLO SENZA PRENOTAZIONE", SwingConstants.CENTER, Color.RED);
 		OurLabel lab2 = new OurLabel("Inserisci numero posti:");
 		lab2.setForeground(Color.BLACK);
 		
@@ -147,8 +143,7 @@ public class ClienteGui {
 		gbc.weighty = 0.0;
 
 		panel.add(lab,gbc);
-		//f.add(p2);
-		//f.setVisible(true);
+
 		return panel;
 	}
 
@@ -156,7 +151,7 @@ public class ClienteGui {
 		createPanel("b");
 		internalPanel = new OurPanel();
 //		panel.setLayout(new BorderLayout());
-		lab=new OurLabel("Scegli tipo di menu", SwingConstants.CENTER);
+		lab=new OurLabel("Scegli tipo di menu", SwingConstants.CENTER, Color.RED);
 		lab.setPreferredSize(new Dimension(50,100));
 		aLaCarteButton.setPreferredSize(new Dimension(250,400/6));
 		ayceButton.setPreferredSize(new Dimension(250,400/6));
@@ -220,15 +215,12 @@ public class ClienteGui {
 		value.setValue(0);
 		value.setMinimum(0);
 
-		lab = new OurLabel("Scegli cosa desideri ordinare");
+		lab = new OurLabel("Scegli cosa desideri ordinare", Color.RED);
 
 		for(String p: nomi) {
 			listModel.addElement(p);
 		}
 		
-//		for(int max:quantita) {
-//			value.setMaximum(max);
-//		}
 		piattiMenu.setModel(listModel);
 		piattiMenu.setPreferredSize(new Dimension(400,200));
 		scroll = new JScrollPane(piattiMenu);

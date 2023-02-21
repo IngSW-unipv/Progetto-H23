@@ -73,9 +73,9 @@ public class DipendenteGui {
 	public JPanel identificaDipendente() {
 		createPanel("g");
 
-        lab=new OurLabel("INSERISCI LA PASSWORD DEL RISTORANTE", SwingConstants.CENTER);
-        OurLabel lab2 = new OurLabel("Password:");
-        lab2.setForeground(Color.BLACK);
+        lab=new OurLabel("INSERISCI LA PASSWORD DEL RISTORANTE", SwingConstants.CENTER, Color.RED);
+        OurLabel lab2 = new OurLabel("Password:", Color.BLACK);
+        //lab2.setForeground(Color.BLACK);
 
         passwordRistorante.setPreferredSize(new Dimension(200,50));
 
@@ -114,7 +114,7 @@ public class DipendenteGui {
         gbc.gridwidth = 2;        //senza questo li allinea in riga
         gbc.fill = GridBagConstraints.HORIZONTAL;         //bordi bottoni allineati (prova vertical per capire)
 
-        lab = new OurLabel("COSA VUOI FARE?", SwingConstants.CENTER);
+        lab = new OurLabel("COSA VUOI FARE?", SwingConstants.CENTER, Color.RED);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.insets = new Insets(0, 0, 10, 0);
@@ -149,11 +149,11 @@ public class DipendenteGui {
 	public JPanel aggiungiPrenotazione(int max) {
 		createPanel("g");
         OurPanel panel3 = new OurPanel();
-        lab=new OurLabel("NUOVA PRENOTAZIONE", SwingConstants.CENTER);
-        OurLabel lab2 = new OurLabel("Nome cliente:     ");
-        OurLabel lab3 = new OurLabel("Posti da riservare:     ");
-        lab2.setForeground(Color.BLACK);
-        lab3.setForeground(Color.BLACK);
+        lab=new OurLabel("NUOVA PRENOTAZIONE", SwingConstants.CENTER, Color.RED);
+        OurLabel lab2 = new OurLabel("Nome cliente:     ", Color.BLACK);
+        OurLabel lab3 = new OurLabel("Posti da riservare:     ", Color.BLACK);
+        //lab2.setForeground(Color.BLACK);
+        //lab3.setForeground(Color.BLACK);
         clienteNoPrenotato.setPreferredSize(new Dimension(60, 40));
         nomeCliente.setPreferredSize(new Dimension(200,50));
         value.setMaximum(max);
@@ -195,9 +195,9 @@ public class DipendenteGui {
 
 		createPanel("g");
 		panel.setPreferredSize(new Dimension(500, 300));
-		lab = new OurLabel("Aggiungi un piatto");
-		OurLabel lab1 = new OurLabel("Nome piatto: ");
-		OurLabel lab3 = new OurLabel("Quantità: ");
+		lab = new OurLabel("Aggiungi un piatto", Color.RED);
+		OurLabel lab1 = new OurLabel("Nome piatto: ", Color.BLACK);
+		OurLabel lab3 = new OurLabel("Quantità: ", Color.BLACK);
 		quantitySpinner = new OurSpinner();
 		quantitySpinner.setPreferredSize(new Dimension(60, 30));
 		nomePiattoField = new OurTextField();
@@ -265,7 +265,7 @@ public class DipendenteGui {
 	public JPanel vediOrdini() {
 		createPanel("g");
 
-		lab=new OurLabel("Ordini in arrivo", SwingConstants.CENTER);
+		lab=new OurLabel("Ordini in arrivo", SwingConstants.CENTER, Color.RED);
 		preparaTutto = new OurButton ("Prepara tutti gli ordini");
 
 		//p.setLayout(new BorderLayout());

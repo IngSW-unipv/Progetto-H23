@@ -92,7 +92,7 @@ public class Ristorante {
 		ArrayList<String> tmp=new ArrayList();
 		for(IPiatto p: tuttiPiatti)
 		{
-			tmp.add("Nome: "+p.getNome()+"                    Prezzo: "+p.getPrezzo());
+			tmp.add("Nome: "+p.getNome()+"                    Prezzo: "+p.getPrezzo()+"€");
 		}
 		return tmp;
 	}

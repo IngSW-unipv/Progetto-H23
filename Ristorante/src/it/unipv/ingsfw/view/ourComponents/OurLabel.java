@@ -19,11 +19,10 @@ public class OurLabel extends JLabel {
 					GraphicsEnvironment.getLocalGraphicsEnvironment();
 			ge.registerFont(customFont);
 		} catch (IOException|FontFormatException e) {
-			//Handle exception
+			e.printStackTrace();
 		}
 		setFont(customFont);
-//		setFont(new Font("Roman", Font.ROMAN_BASELINE, 25));
-		setForeground(Color.RED);
+		//setForeground(Color.RED);
 	}
 
 		public OurLabel(String nome, int i) {
@@ -34,10 +33,39 @@ public class OurLabel extends JLabel {
 						GraphicsEnvironment.getLocalGraphicsEnvironment();
 				ge.registerFont(customFont);
 			} catch (IOException|FontFormatException e) {
-				//Handle exception
+				e.printStackTrace();
 			}
 			setFont(customFont);
-//			setFont(new Font("Roman", Font.ROMAN_BASELINE, 25));
-			setForeground(Color.RED);
+			//setForeground(Color.RED);
+		}
+		
+		//costruttore in cui passi un colore, aggiunto printStackTrace nel catch dell'exception
+		
+		public OurLabel(String nome, Color colore) {
+			super(nome);
+			try {
+				customFont = Font.createFont(Font.TRUETYPE_FONT, new File("images/art-nuvo.ttf")).deriveFont(30f);
+				GraphicsEnvironment ge = 
+						GraphicsEnvironment.getLocalGraphicsEnvironment();
+				ge.registerFont(customFont);
+			} catch (IOException|FontFormatException e) {
+				e.printStackTrace();
+			}
+			setFont(customFont);
+			setForeground(colore);
+		}
+		
+		public OurLabel(String nome, int i, Color colore) {
+			super(nome, i);
+			try {
+				customFont = Font.createFont(Font.TRUETYPE_FONT, new File("images/art-nuvo.ttf")).deriveFont(30f);
+				GraphicsEnvironment ge = 
+						GraphicsEnvironment.getLocalGraphicsEnvironment();
+				ge.registerFont(customFont);
+			} catch (IOException|FontFormatException e) {
+				e.printStackTrace();
+			}
+			setFont(customFont);
+			setForeground(colore);
 		}
 }

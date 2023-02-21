@@ -115,7 +115,7 @@ public class RistoranteGui {
 
 		p.setLayout(new BorderLayout());
 
-		lab=new OurLabel("Sei un cliente o un dipendente?", SwingConstants.CENTER);
+		lab=new OurLabel("Sei un cliente o un dipendente?", SwingConstants.CENTER, Color.RED);
 		lab.setPreferredSize(new Dimension(50,100));
 		clienteButton.setPreferredSize(new Dimension(250,50));
 		dipendenteButton.setPreferredSize(new Dimension(250,50));
@@ -241,10 +241,11 @@ public class RistoranteGui {
 	public int getWidth() {
 		return width;
 	}
+	
 	public JPasswordField getPasswordRistorante() {
 		return dg.getPasswordRistorante();
 	}
-
+	
 	public JButton getAggiungiPrenotazioneButton() {
 		return dg.getAggiungiPrenotazioneButton();
 	}
@@ -260,11 +261,11 @@ public class RistoranteGui {
 	public JButton aggiungiPrenotazioneButton() {
 		return dg.getAggiungiPrenotazioneButton();
 	}
-	
+	//text field per inserire nome cliente
 	public JTextField getClienteDaPrenotare() {
 		return dg.getNomeCliente();
 	}
-	
+	//spinner per inserire il numero di persone nella prenotazione
 	public JSpinner getClienteNoPrenotatoD() {
 		return dg.getClienteNoPrenotato();
 	}
@@ -272,7 +273,7 @@ public class RistoranteGui {
 	public JButton getPrenotaClienteButton() {
 		return dg.getPrenota();
 	}
-	
+	//textField dove il cliente inserisce il nome col quale ha prenotato
 	public JTextField getNomeClienteField() {
 		return cg.getNomeClienteField();
 	}
@@ -280,11 +281,11 @@ public class RistoranteGui {
 	public JButton getNoPrenotazioneButton() {
 		return cg.getNoPrenotazioneButton();
 	}
-	
+	//bottone "vai a scelta menù" nella gui del cliente senza prenotazione
 	public JButton getSceltaMenuButton() {
 		return cg.getSceltaMenuButton();
 	}
-	
+	//spinner per inserire il numero di persone nella sezione cliente senza prenotazione 
 	public JSpinner getClienteNoPrenotato() {
 		return cg.getClienteNoPrenotato();
 	}
@@ -296,11 +297,11 @@ public class RistoranteGui {
 	public JButton getALaCaButton() {
 		return cg.getaLaCarteButton();
 	}
-	
+	//lista dove il cliente vede i piatti che può ordinare
 	public JList getPiattiMenu() {
 		return cg.getPiattiMenu();
 	}
-	
+	//spinner per inserire la quantità del piatto
 	public JSpinner getQuantPiattoSpinner() {
 		return cg.getQuantPiattoSpinner();
 	}
