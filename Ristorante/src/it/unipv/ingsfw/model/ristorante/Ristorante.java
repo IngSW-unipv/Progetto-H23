@@ -182,5 +182,15 @@ public class Ristorante {
 	public String getNome() {
 		return nome;
 	}
+	
+	public Dipendente getDipendenteByNome(String s) {
+		for(Dipendente d:dipendenti)
+		{
+			if(d.getNome().equals(s)) {
+				return d;
+			}
+		}
+		return null;
+	}
 
 }

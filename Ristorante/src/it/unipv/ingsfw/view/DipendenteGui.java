@@ -264,14 +264,15 @@ public class DipendenteGui {
 
 		return panel;
 	}
-
-	public JPanel vediOrdini() {
+	
+	//sistemare il fatto che questo metodo, se riaperto duplica il testo
+	
+	public JPanel vediOrdini(String testoOrdini) {
 		createPanel("g");
 
 		lab=new OurLabel("Ordini in arrivo", SwingConstants.CENTER, Color.RED);
 		preparaTutto = new OurButton ("Prepara tutti gli ordini");
-		
-		//ordini.setText();
+		ordini.setText(testoOrdini);
 
 		//p.setLayout(new BorderLayout());
 		//panel2.setLayout(new BorderLayout());

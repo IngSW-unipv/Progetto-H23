@@ -34,7 +34,8 @@ public class DipendenteController {
 				String s=new String(c);
 
 				if(s.equals(r.getPassword())) {
-					d = r.creaDipendente("Dipendente");
+					//d = r.creaDipendente("Dipendente");
+					d=r.getDipendenteByNome("Paolo");
 					d.setIdentificato(true);
 					rg.operazioniDipendenteR();
 				}
@@ -64,7 +65,7 @@ public class DipendenteController {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				rg.vediOrdiniR();
+				rg.vediOrdiniR(d.getStringOrdini());
 			}
 		});
 

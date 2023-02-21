@@ -154,8 +154,8 @@ public class RistoranteGui {
 		return f;
 	}
 
-	public void vediOrdiniR() {
-		aggiungiPannello(dg.vediOrdini());
+	public void vediOrdiniR(String ordiniText) {
+		aggiungiPannello(dg.vediOrdini(ordiniText));
 	}
 
 	public void addDishR() {

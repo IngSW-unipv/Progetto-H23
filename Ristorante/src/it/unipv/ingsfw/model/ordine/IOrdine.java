@@ -13,5 +13,5 @@ public interface IOrdine {
 	public void setStato(boolean stato);
 	public ArrayList<IPiatto> getPiattiOrdinati();
 	public void setPiattiOrdinati(ArrayList<IPiatto> piattiOrdinati);
-	public void stampaPiattiOrdinati();
+	public String stampaPiattiOrdinati();
 }

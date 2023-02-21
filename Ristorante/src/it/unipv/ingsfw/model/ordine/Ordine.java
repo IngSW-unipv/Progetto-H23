@@ -49,11 +49,14 @@ public class Ordine implements IOrdine{
 	}
 	@Override
 
-	public void stampaPiattiOrdinati() {
+	public String stampaPiattiOrdinati() {
+		String s="";
 		for (IPiatto p: piattiOrdinati) {
 			System.out.println("Nome: "+ p.getNome());
 			//System.out.println("Prezzo: " + p.getPrezzo());
 			//System.out.println("Quantita: " + p.getQuantita());
+			s=s+p.getNome()+" ";
 		}
+		return s;
 	}
 }

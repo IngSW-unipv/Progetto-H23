@@ -13,12 +13,16 @@ public abstract class Persona implements IPersona{
 	private String nome;
 	protected ArrayList<IOrdine> ordini;
 	protected boolean identificato;
+	
+	//stringa ausiliaria
+	private String ordiniString;
 
 	public Persona(String nome) {
 		super();
 		this.nome = nome;
 		this.ordini=new ArrayList<IOrdine>();
 		this.identificato = false;
+		this.ordiniString="";
 	}
 	@Override
 	public String getNome() {
@@ -54,12 +58,19 @@ public abstract class Persona implements IPersona{
 		});
 	}
 	
-	public void getAndPrintOrdini() {
+	public String getStringOrdini() {
 		for (IOrdine o: this.ordini) {
-			o.stampaPiattiOrdinati();
+			ordiniString=ordiniString+o.stampaPiattiOrdinati()+"\n";
 		}
-		//return void;
+		return ordiniString;
 	}
+	
+//	public void getAndPrintOrdini() {
+//		for (IOrdine o: this.ordini) {
+//			o.stampaPiattiOrdinati();
+//		}
+//		//return void;
+//	}
 	public void controllaPrenotazione() {
 		try {
 			if(identificato == false) {

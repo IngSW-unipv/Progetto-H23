@@ -36,8 +36,9 @@ public class Main {
 		r.prenotaCliente(c3, 81);
 
 		//r.stampaPrenotazioni();
-
-		IPiatto p1=new Antipasto(4, "p1", 6);
+		
+		//se nomi diversi prezzi non allineati
+		IPiatto p1=new Antipasto(4, "pgggggggggggg1", 6);
 		IPiatto p2=new Antipasto(3, "p2", 7);
 		IPiatto p3=new Antipasto(5, "p3", 8);
 
@@ -49,34 +50,26 @@ public class Main {
 		r.prenotaClientenoPrenotazione(2);
 		r.prenotaClientenoPrenotazione(6);
 
-
-		//		for (Cliente c: r.getClienti()) {
-		//			System.out.println(c);
-		//		}
-
-		//System.out.println(r.getPostiLiberi());
-
-		//System.out.println(c1);
-
-		Dipendente d1 = r.creaDipendente("Paolo");
-		d1.identificati("PASS");
+		//scommentare qua sotto per provare vediOrdini(se c'è devi identificarti prima di fare apparire la gui)
 		
-		c1.scegliMenu(new ALaCarte());
+//		Dipendente d1 = r.creaDipendente("Paolo");
+//		d1.identificati(r.getPassword());
+//		
+//		c1.scegliMenu(new ALaCarte());
+//		
+//		c1.creaOrdine(p1, 4);
+//		c1.creaOrdine(p2, 1);
+//		c1.creaOrdine(p3, 2);
+//		
+//		d1.aggiungiOrdini(r.getClienti());
+		//d1.stampaOrdini();
+		//System.out.println(d1.getStringOrdini());
 		
-		c1.creaOrdine(p1, 3);
-		//c1.creaOrdine(p2, 2);
-		c1.creaOrdine(p3, 2);
-		
-		d1.aggiungiOrdini(r.getClienti());
-		d1.stampaOrdini();
-		
-		System.out.println("\n\n\n\n\n\n");
+		//System.out.println("\n\n\n\n\n\n");
 		//System.out.println(s);
 		
 		RistoranteGui rg=new RistoranteGui();
 		RistoranteController rc=new RistoranteController(rg,r);
-
-
 
 		//r.creaDipendente("Agostino");
 		//r.creaDipendente("Sabatino");
