@@ -52,16 +52,16 @@ public class Main {
 
 		//scommentare qua sotto per provare vediOrdini(se c'è devi identificarti prima di fare apparire la gui)
 		
-//		Dipendente d1 = r.creaDipendente("Paolo");
+		Dipendente d1 = r.creaDipendente("Paolo");
 //		d1.identificati(r.getPassword());
-//		
-//		c1.scegliMenu(new ALaCarte());
-//		
-//		c1.creaOrdine(p1, 4);
-//		c1.creaOrdine(p2, 1);
-//		c1.creaOrdine(p3, 2);
-//		
-//		d1.aggiungiOrdini(r.getClienti());
+	d1.setIdentificato(true);
+		c1.scegliMenu(new ALaCarte());
+		
+		c1.creaOrdine(p1, 4);
+		c1.creaOrdine(p2, 1);
+		c1.creaOrdine(p3, 2);
+		
+	d1.aggiungiOrdini(r.getClienti());
 		//d1.stampaOrdini();
 		//System.out.println(d1.getStringOrdini());
 		

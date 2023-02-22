@@ -270,37 +270,42 @@ public class DipendenteGui {
 	public JPanel vediOrdini(String testoOrdini) {
 		createPanel("g");
 
-		lab=new OurLabel("Ordini in arrivo", SwingConstants.CENTER, Color.RED);
-		preparaTutto = new OurButton ("Prepara tutti gli ordini");
-		ordini.setText(testoOrdini);
+        lab=new OurLabel("ORDINI IN ARRIVO", SwingConstants.CENTER, Color.RED);
+        preparaTutto = new OurButton ("Prepara tutti gli ordini");
+        ordini.setText(testoOrdini);
 
-		//p.setLayout(new BorderLayout());
-		//panel2.setLayout(new BorderLayout());
-		panel2.add(preparaTutto, BorderLayout.NORTH);
-		panel2.add(tornaIndietroButton, BorderLayout.LINE_END);
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        //p.setLayout(new BorderLayout());
+        //panel2.setLayout(new BorderLayout());
+        panel2.add(preparaTutto, BorderLayout.NORTH);
+        panel2.add(tornaIndietroButton, BorderLayout.LINE_END);
 
-		gbc.gridx = 0;
-		gbc.gridy = 1;
-		gbc.weightx = 0.1;
-		gbc.weighty = 0.1;
-		gbc.anchor = GridBagConstraints.LINE_START;
-		gbc.insets = new Insets(0, 20, 0, 0);
-		//p.add(lab, gbc);
-		panel.add(scroll, gbc);
-		gbc.anchor = GridBagConstraints.CENTER;
-		gbc.gridx = 1;
-		gbc.gridy = 1;
-		panel.add(panel2,gbc);
 
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		gbc.weightx = 0.0;
-		gbc.weighty = 0.0;
-		gbc.gridwidth= 2;
-		gbc.anchor = GridBagConstraints.PAGE_START;
-		panel.add(lab, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.gridwidth= 3;
+        gbc.anchor = GridBagConstraints.PAGE_START;
+        gbc.insets = new Insets(20, 40, 10, 0);
+        panel.add(lab, gbc);
 
-		return panel;	
+        gbc.gridwidth= 1;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.weightx = 0.1;
+        gbc.weighty = 0.1;
+//        gbc.anchor = GridBagConstraints.LINE_END;
+
+        //p.add(lab, gbc);
+        panel.add(scroll, gbc);
+//        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        panel.add(panel2,gbc);
+
+
+        return panel;
 	}
 
 	public void createPanel (String p1) {

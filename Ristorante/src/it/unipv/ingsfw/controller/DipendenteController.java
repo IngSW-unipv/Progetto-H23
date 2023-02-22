@@ -35,7 +35,7 @@ public class DipendenteController {
 
 				if(s.equals(r.getPassword())) {
 					//d = r.creaDipendente("Dipendente");
-					d=r.getDipendenteByNome("Paolo");
+				d=r.getDipendenteByNome("Paolo");
 					d.setIdentificato(true);
 					rg.operazioniDipendenteR();
 				}
@@ -112,7 +112,7 @@ public class DipendenteController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				triggered=true;
-				//r.stampaPiatti();
+				r.stampaPiatti();
 				for(IPiatto p:r.getPiatti()) {
 					if(p.getNome().equals(rg.getNomePiattoField().getText())) {
 						p.setQuantita(p.getQuantita()+(int)rg.getQuantitySpinner().getValue());
@@ -127,7 +127,7 @@ public class DipendenteController {
 				}
 				triggered=true;
 				//if(p.getNome().equals(rg.getNomePiattoField().getText()))
-				//r.stampaPiatti();
+				r.stampaPiatti();
 				rg.getValueD().setValue(1);
 			}
 		});
