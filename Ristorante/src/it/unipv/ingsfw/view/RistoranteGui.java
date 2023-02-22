@@ -344,6 +344,14 @@ public class RistoranteGui {
 	public JTextArea getOrdini() {
 		return dg.getOrdini();
 	}
+	// Jbutton che usa il dipendente per preparare tutti gli ordini
+	public JButton getPreparaTuttoButton() {
+		return dg.getPreparaTutto();
+	}
+	// Jbutton che fa chiedere il conto al cliente
+	public JButton getChiediContoButton() {
+		return cg.getChiediContoButton();
+	}
 }
 
 

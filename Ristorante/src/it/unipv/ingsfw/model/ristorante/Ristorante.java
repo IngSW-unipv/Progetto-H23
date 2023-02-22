@@ -88,8 +88,8 @@ public class Ristorante {
 			c = new Cliente("Tavolo " + progressivo);
 			progressivo++;
 			c.setIdentificato(true);
-
 			postiLiberi=postiLiberi-posti;
+			prenotazioni.put(c.getNome(), posti);
 			clienti.add(c);
 		}
 		catch(NoPostiException e) {
@@ -150,6 +150,13 @@ public class Ristorante {
 			System.out.println(p.getNome()+" "+p.getPrezzo()+" "+p.getQuantita());
 		}
 	}
+	
+	public void rimuoviCliente(Cliente c) {
+		setPostiLiberi(prenotazioni.get(c.getNome()) + postiLiberi);
+		prenotazioni.remove(c.getNome());
+		clienti.remove(c);
+		c.setIdentificato(false);
+	}
 
 	public void addPiatto(IPiatto p) {
 		tuttiPiatti.add(p);
@@ -157,6 +164,12 @@ public class Ristorante {
 
 	public ArrayList<Cliente> getClienti () {
 		return clienti;
+	}
+	
+	public void stampaClienti () {
+		for (Cliente c: clienti) {
+			System.out.println(c.getNome());
+		}
 	}
 
 	public ArrayList<Dipendente> getDipendenti() {

@@ -16,23 +16,20 @@ import it.unipv.ingsfw.model.ordine.Ordine;
 import it.unipv.ingsfw.model.ristorante.Ristorante;
 
 public class Dipendente extends Persona{
-	//private Ristorante r;
 	boolean logIn1;
 	
-	private int contPiatti;
 	private ArrayList<IOrdine> ordiniAusiliario;
 
-	public Dipendente(String nome /*Ristorante r */) {
+	public Dipendente(String nome) {
 		super(nome);
 		//this.r = r;
 		logIn1=true;
 		
-		contPiatti = 0;
 		identificato = false;
 		ordiniAusiliario = new ArrayList<>();
 	}
 
-	public boolean identificati(String s/*Ristorante r*/) throws IOException {
+	public boolean identificati(String s) throws IOException {
 		InputStreamReader input=new InputStreamReader(System.in);
 		BufferedReader t=new BufferedReader(input);
 		System.out.print("Inserisci password ristorante: ");
@@ -84,21 +81,7 @@ public class Dipendente extends Persona{
 				ordini.add(o);
 
 		}
-		/*
-		System.out.println("Array ausiliario:");
-		for (Ordine o : ordiniAusiliario) {
-			System.out.println(o.getTempo() );
-			o.stampaPiattiOrdinati();
-		}
-		System.out.println("Finito");
-
-		System.out.println("Ordini aggiunti:");
-		for (Ordine o : ordini) {
-			System.out.println(o.getTempo() );
-			o.stampaPiattiOrdinati();
-		}
-		System.out.println("Finito");
-		 */
+	
 		ordiniAusiliario.clear();
 
 
@@ -112,16 +95,12 @@ public class Dipendente extends Persona{
 
 	public void preparaOrdine() {
 		this.controllaPrenotazione();
-		for (int i = contPiatti; i<ordini.size(); i++) {
+		for (int i = 0; i<ordini.size(); i++) {
 
 			aggiornaStatoPiatto(ordini.get(i));
+			
 		}
-		contPiatti = ordini.size();
+		ordini.clear();
 	}
 	
-	//da chiedere se corretto
-	//da finire
-	public void aggiungiCliente(Cliente c, int posti) {
-		
-	}
 }

@@ -271,7 +271,7 @@ public class DipendenteGui {
 		createPanel("g");
 
         lab=new OurLabel("ORDINI IN ARRIVO", SwingConstants.CENTER, Color.RED);
-        preparaTutto = new OurButton ("Prepara tutti gli ordini");
+        //preparaTutto = new OurButton ("Prepara tutti gli ordini");
         ordini.setText(testoOrdini);
 
         gbc.gridwidth = GridBagConstraints.REMAINDER;

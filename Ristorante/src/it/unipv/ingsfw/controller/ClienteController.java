@@ -126,7 +126,7 @@ public class ClienteController {
 					rg.popUpErrore("Seleziona un piatto!");
 				}
 
-				if(r.getPiatti().get(i).getQuantita()==0) {
+				else if(r.getPiatti().get(i).getQuantita()==0) {
 
 					rg.popUpErrore("Piatto finito!");
 
@@ -134,28 +134,47 @@ public class ClienteController {
 				else if ((int)rg.getValueC().getValue() == 0) {
 					rg.popUpErrore("Seleziona una quantità valida");
 				}
+				else {
+					for(Cliente c : r.getClienti()) {
+						if(tmp.equals(c.getNome()))
+							daiMenu=c;
+					}
 
-				for(Cliente c : r.getClienti()) {
-					if(tmp.equals(c.getNome()))
-						daiMenu=c;
+					try {
+						//creo l'ordine per quel cliente
+						daiMenu.creaOrdine(r.getPiatti().get(i), (int)rg.getQuantPiattoSpinner().getValue());
+
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+
+					rg.getTotale().setText("Totale :"+daiMenu.chiediConto());
+					if(r.getPiatti().get(i).getQuantita()==0)
+					{
+						rg.azzeraValueC();
+					}
+					rg.getValueC().setMaximum(r.getPiatti().get(i).getQuantita());
+					rg.getValueC().setValue(0);
+				}
+			}
+
+
+		});
+		rg.getChiediContoButton().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (daiMenu == null) {
+					rg.popUpErrore("Prima devi ordinare");
+				}
+				else {
+					r.rimuoviCliente(daiMenu);
+					System.out.println(r.getPostiLiberi());
+					// aggiungere pagina di fine
 				}
 
-				try {
-					//creo l'ordine per quel cliente
-					daiMenu.creaOrdine(r.getPiatti().get(i), (int)rg.getQuantPiattoSpinner().getValue());
 
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-
-				rg.getTotale().setText("Totale :"+daiMenu.chiediConto());
-				if(r.getPiatti().get(i).getQuantita()==0)
-				{
-					rg.azzeraValueC();
-				}
-				rg.getValueC().setMaximum(r.getPiatti().get(i).getQuantita());
-				rg.getValueC().setValue(0);
 			}
 		});
+		
 	}
 }

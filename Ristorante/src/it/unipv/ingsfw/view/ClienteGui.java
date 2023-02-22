@@ -36,7 +36,7 @@ import it.unipv.ingsfw.view.ourComponents.OurTextField;
 
 public class ClienteGui {
 
-	private JButton noPrenotazioneButton,aLaCarteButton,ayceButton,sceltaMenuButton, addButton,inviaOrdineButton;
+	private JButton noPrenotazioneButton,aLaCarteButton,ayceButton,sceltaMenuButton, addButton,inviaOrdineButton, chiediContoButton;
 	private JPanel panel,internalPanel;
 	private JLabel lab,totale;
 	private JSpinner clienteNoPrenotato, quantPiattoSpinner;
@@ -69,6 +69,8 @@ public class ClienteGui {
 		ayceButton=new OurButton("All you can eat");
 		totale=new OurLabel("Totale: ", SwingConstants.CENTER, Color.RED);
 		inviaOrdineButton=new OurButton("Aggiungi Piatto");
+		
+		chiediContoButton  = new OurButton ("Chiedi il conto");
 		
 		sceltaMenuButton = new OurButton("Vai alla scelta del menu");
 		value = new SpinnerNumberModel (0, 0, 1, 1);
@@ -247,9 +249,32 @@ public class ClienteGui {
 		gbc.gridy = 2;
 		gbc.anchor =  GridBagConstraints.CENTER;
 		panel.add(totale,gbc);
+		
+		gbc.gridx = 0;
+		gbc.gridy = 3;
+		gbc.anchor =  GridBagConstraints.CENTER;
+		panel.add(chiediContoButton,gbc);
+		
+		
 		return panel;
 	}
 	
+	public JButton getInviaOrdineButton() {
+		return inviaOrdineButton;
+	}
+
+	public JButton getChiediContoButton() {
+		return chiediContoButton;
+	}
+
+	public JPanel getPanel() {
+		return panel;
+	}
+
+	public JPanel getInternalPanel() {
+		return internalPanel;
+	}
+
 	public void createPanel (String p1) {
 
 		if (p1.equals("g")) {

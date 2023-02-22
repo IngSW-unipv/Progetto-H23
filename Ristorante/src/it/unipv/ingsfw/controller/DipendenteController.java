@@ -68,6 +68,19 @@ public class DipendenteController {
 				rg.vediOrdiniR(d.getStringOrdini());
 			}
 		});
+		
+		rg.getPreparaTuttoButton().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				d.getStringOrdini();
+				d.preparaOrdine();
+				rg.getOrdini().setText(d.getStringOrdini());
+			}
+		});
+		
+		
+		
 
 		rg.getTornaIndietroButton().addActionListener(new ActionListener() {
 

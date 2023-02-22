@@ -59,7 +59,7 @@ public abstract class Persona implements IPersona{
 	}
 	
 	public String getStringOrdini() {
-		String ordiniString = "";
+		ordiniString = "";
 		for (IOrdine o: this.ordini) {
 			ordiniString=ordiniString+o.getNomiPiattiOrdinati()+"\n";
 		}
