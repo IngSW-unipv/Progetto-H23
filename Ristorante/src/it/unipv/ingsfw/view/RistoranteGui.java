@@ -172,6 +172,21 @@ public class RistoranteGui {
 		aggiungiPannello(dg.operazioniDipendente());
 	}
 	
+/*	public void operazioniDipendenteR() {
+		aggiungiPannello(dg.operazioniDipendente());
+		p2= new OurPanel((new GridBagLayout()));
+		GridBagConstraints gbc = new GridBagConstraints();
+		OurLabel posti = new OurLabel("Posti liberi: ");
+//		posti.setPreferredSize(new Dimension(200, 30));
+		p2.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		gbc.insets = new Insets(0, 0, 400, 30);
+		p2.add(posti, gbc);
+		background.add(p2, BorderLayout.LINE_END);
+		f.setVisible(true);
+		
+	}
+	*/
+	
 	public void inviaOrdineR(ArrayList<String> nomi, ArrayList<Integer> quantita) {
 		aggiungiPannello(cg.inviaOrdine(nomi, quantita));
 	}

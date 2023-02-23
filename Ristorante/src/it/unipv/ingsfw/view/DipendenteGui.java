@@ -122,7 +122,7 @@ public class DipendenteGui {
 
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.insets = new Insets(0, 0, 10, 0);
+        gbc.insets = new Insets(0, 200, 10, 0);
         gbc.gridy = 1;
         panel.add(lab, gbc);
 
