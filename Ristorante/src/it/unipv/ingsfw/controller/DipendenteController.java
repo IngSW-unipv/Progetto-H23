@@ -73,6 +73,7 @@ public class DipendenteController {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				//d.aggiungiOrdini(r.getClienti());
 				rg.vediOrdiniR(d.getStringOrdini());
 			}
 		});

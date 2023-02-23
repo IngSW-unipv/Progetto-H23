@@ -18,7 +18,7 @@ public class ClienteController {
 
 	private RistoranteGui rg;
 	private Ristorante r;
-//ciao
+
 	//attributi temporanei per aiutarci nella risoluzione di listeners
 	String s,tmp;
 	int i;

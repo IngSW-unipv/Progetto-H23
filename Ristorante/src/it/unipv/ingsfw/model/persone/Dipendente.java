@@ -17,14 +17,15 @@ import it.unipv.ingsfw.model.ristorante.Ristorante;
 
 public class Dipendente extends Persona{
 	boolean logIn1;
-	
+	private long ultimaAggiunta;
+
 	private ArrayList<IOrdine> ordiniAusiliario;
 
 	public Dipendente(String nome) {
 		super(nome);
 		//this.r = r;
 		logIn1=true;
-		
+		ultimaAggiunta=0;
 		identificato = false;
 		ordiniAusiliario = new ArrayList<>();
 	}
@@ -62,45 +63,80 @@ public class Dipendente extends Persona{
 			}	
 		}
 
-		Collections.sort(ordiniAusiliario, new Comparator<IOrdine>() {
-			@Override
-			public int compare(IOrdine o1, IOrdine o2) {
-				return (int) (o1.getTempo() - o2.getTempo());
-			}
-		});
+//		public void aggiungiOrdini(ArrayList<Cliente> clienti) {
+//			this.controllaPrenotazione();
+//			for (Cliente c: clienti) {
+//				for (IOrdine o: c.getOrdini()) {
+//					if(o.getTempo()>ultimaAggiunta) {
+//						ordiniAusiliario.add(o);
+//					}
+//				}	
+//			}
 
-		for (IOrdine o: ordiniAusiliario) {
-			if (ordini.size() == 0) {
-				for(IOrdine oa : ordiniAusiliario) {
-					ordini.add(oa);
+			Collections.sort(ordiniAusiliario, new Comparator<IOrdine>() {
+				@Override
+				public int compare(IOrdine o1, IOrdine o2) {
+					return (int) (o1.getTempo() - o2.getTempo());
 				}
+			});
 
+			for (IOrdine o: ordiniAusiliario) {
+				if (ordini.size() == 0) {
+					for(IOrdine oa : ordiniAusiliario) {
+						ordini.add(oa);
+					}
+
+
+				}
+				else if (o.getTempo() > ordini.get(ordini.size() -1).getTempo())
+					ordini.add(o);
 
 			}
-			else if (o.getTempo() > ordini.get(ordini.size() -1).getTempo())
-				ordini.add(o);
+
+			ordiniAusiliario.clear();
+
 
 		}
-	
-		ordiniAusiliario.clear();
 
-
-	}
-
-	public void aggiornaStatoPiatto(IOrdine o) {
-		this.controllaPrenotazione();
-		o.setStato(true);
-		System.out.println("ordine in arrivo!");
-	}
-
-	public void preparaOrdine() {
-		this.controllaPrenotazione();
-		for (int i = 0; i<ordini.size(); i++) {
-
-			aggiornaStatoPiatto(ordini.get(i));
-			
+		public void aggiornaStatoPiatto(IOrdine o) {
+			this.controllaPrenotazione();
+			o.setStato(true);
+			System.out.println("ordine in arrivo!");
 		}
-		ordini.clear();
+
+			public void preparaOrdine() {
+				this.controllaPrenotazione();
+				for (int i = 0; i<ordini.size(); i++) {
+		
+					aggiornaStatoPiatto(ordini.get(i));
+					
+				}
+				ordini.clear();
+			}
+
+//		public void preparaOrdine() {
+//			this.controllaPrenotazione();
+//			for (int i = 0; i<ordini.size(); i++) {
+//
+//				aggiornaStatoPiatto(ordini.get(i));
+//
+//			}
+////			for(IOrdine o:ordini) {
+////				if(o.getTempo()<System.currentTimeMillis())
+////				{
+////					ordini.remove(o);
+////				}
+////			}
+//			
+//			for(int i=0;i<ordini.size();i++) {
+//				IOrdine o=new Ordine();
+//				if(o.getTempo()<System.currentTimeMillis())
+//					{
+//						ordini.remove(o);
+//					}
+//			}
+//			//ordini.clear();
+//			ultimaAggiunta=System.currentTimeMillis();
+//		}
+
 	}
-	
-}

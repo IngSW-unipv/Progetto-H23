@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 
 import it.unipv.ingsfw.controller.RistoranteController;
 import it.unipv.ingsfw.jdbc.bean.PiattoDAO;
+import it.unipv.ingsfw.model.RistoranteSingleton;
 import it.unipv.ingsfw.model.alimenti.*;
 import it.unipv.ingsfw.model.menu.ALaCarte;
 import it.unipv.ingsfw.model.menu.AYCE;
@@ -19,40 +20,41 @@ import it.unipv.ingsfw.view.RistoranteGui;
 
 public class Main {
 	public static void main(String[] args) throws InterruptedException, IOException {
-
-		//PiattoDAO p= new PiattoDAO();
-		//p.selectAllAntipasti();
-		Ristorante r = new Ristorante ("NOME", "PASS");
+		
+		//Ristorante r = new Ristorante ("NOME", "PASS");
+		RistoranteSingleton rs= RistoranteSingleton.getSingleton();
+		rs.getRistorante().stampaPiatti();
+		rs.getRistorante().stampaPrenotazioni();
 
 		Cliente c1 = new Cliente ("GinoPippo");
 		Cliente c2 = new Cliente ("Pippo");
 		Cliente c3 = new Cliente ("Franceschina");
 
-		r.prenotaCliente(c1, 300);
-		r.prenotaCliente(c2,  101);
+		rs.getRistorante().prenotaCliente(c1, 300);
+		rs.getRistorante().prenotaCliente(c2,  101);
 
-		//r.stampaPrenotazioni();
+		rs.getRistorante().stampaPrenotazioni();
 
-		r.prenotaCliente(c3, 81);
+		rs.getRistorante().prenotaCliente(c3, 81);
 
-		//r.stampaPrenotazioni();
+		rs.getRistorante().stampaPrenotazioni();
 
 		//se nomi diversi prezzi non allineati
 		IPiatto p1=new Antipasto(4, "pgggggggggggg1", 6);
 		IPiatto p2=new Antipasto(3, "p2", 7);
 		IPiatto p3=new Antipasto(5, "p3", 8);
 
-		r.addPiatto(p1);
-		r.addPiatto(p2);
-		r.addPiatto(p3);
+		rs.getRistorante().addPiatto(p1);
+		rs.getRistorante().addPiatto(p2);
+		rs.getRistorante().addPiatto(p3);
 
-		r.prenotaClientenoPrenotazione(1);
-		r.prenotaClientenoPrenotazione(2);
-		r.prenotaClientenoPrenotazione(6);
+		rs.getRistorante().prenotaClientenoPrenotazione(1);
+		rs.getRistorante().prenotaClientenoPrenotazione(2);
+		rs.getRistorante().prenotaClientenoPrenotazione(6);
 
 		//scommentare qua sotto per provare vediOrdini(se c'è devi identificarti prima di fare apparire la gui)
 
-		Dipendente d1 = r.creaDipendente("Paolo");
+		Dipendente d1 = rs.getRistorante().creaDipendente("Paolo");
 		//		d1.identificati(r.getPassword());
 		d1.setIdentificato(true);
 		c1.scegliMenu(new ALaCarte());
@@ -61,7 +63,7 @@ public class Main {
 		c1.creaOrdine(p2, 1);
 		c1.creaOrdine(p3, 2);
 
-		d1.aggiungiOrdini(r.getClienti());
+		d1.aggiungiOrdini(rs.getRistorante().getClienti());
 		//d1.stampaOrdini();
 		//System.out.println(d1.getStringOrdini());
 
@@ -69,7 +71,7 @@ public class Main {
 		//System.out.println(s);
 
 		RistoranteGui rg=new RistoranteGui();
-		RistoranteController rc=new RistoranteController(rg,r);
+		RistoranteController rc=new RistoranteController(rg,rs.getRistorante());
 
 		//r.creaDipendente("Agostino");
 		//r.creaDipendente("Sabatino");

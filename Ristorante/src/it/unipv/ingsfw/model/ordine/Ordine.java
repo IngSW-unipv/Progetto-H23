@@ -12,7 +12,8 @@ public class Ordine implements IOrdine{
 
 	public Ordine() {
 		super();
-		this.tempo = 0;
+		//this.tempo = System.currentTimeMillis();
+		this.tempo=0;
 		this.piattiOrdinati = new ArrayList<>();
 		this.stato = false;
 	} 
