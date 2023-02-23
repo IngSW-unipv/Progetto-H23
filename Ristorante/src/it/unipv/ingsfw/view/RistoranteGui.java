@@ -172,29 +172,10 @@ public class RistoranteGui {
 		aggiungiPannello(dg.operazioniDipendente());
 	}
 	
-/*	public void operazioniDipendenteR() {
-		aggiungiPannello(dg.operazioniDipendente());
-		p2= new OurPanel((new GridBagLayout()));
-		GridBagConstraints gbc = new GridBagConstraints();
-		OurLabel posti = new OurLabel("Posti liberi: ");
-//		posti.setPreferredSize(new Dimension(200, 30));
-		p2.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		gbc.insets = new Insets(0, 0, 400, 30);
-		p2.add(posti, gbc);
-		background.add(p2, BorderLayout.LINE_END);
-		f.setVisible(true);
-		
-	}
-	*/
-	
 	public void inviaOrdineR(ArrayList<String> nomi, ArrayList<Integer> quantita) {
 		aggiungiPannello(cg.inviaOrdine(nomi, quantita));
 	}
-	
-//	public void inviaOrdineR() {
-//		aggiungiPannello(cg.inviaOrdine());
-//	}
-//	
+
 	private void aggiungiPannello(JPanel panel) {
 		anotherRefreshPanel();
 		background.add(panel);
@@ -241,10 +222,6 @@ public class RistoranteGui {
 		return dipendenteButton;
 	}
 
-//	public JTextField getNomeCliente() {
-//		return nomeCliente;
-//	}
-
 	public Border getBordo() {
 		return bordo;
 	}
@@ -259,6 +236,10 @@ public class RistoranteGui {
 	
 	public JPasswordField getPasswordRistorante() {
 		return dg.getPasswordRistorante();
+	}
+	
+	public char[] getPasswordOfPasswordRistorante() {
+		return this.getPasswordRistorante().getPassword();
 	}
 	
 	public JButton getAggiungiPrenotazioneButton() {
@@ -276,13 +257,23 @@ public class RistoranteGui {
 	public JButton aggiungiPrenotazioneButton() {
 		return dg.getAggiungiPrenotazioneButton();
 	}
+	
 	//text field per inserire nome cliente
 	public JTextField getClienteDaPrenotare() {
 		return dg.getNomeCliente();
 	}
+	
+	public String getTextOfClienteDaPrenotare() {
+		return this.getClienteDaPrenotare().getText();
+	}
+	
 	//spinner per inserire il numero di persone nella prenotazione
 	public JSpinner getClienteNoPrenotatoD() {
 		return dg.getClienteNoPrenotato();
+	}
+	
+	public int getValueOfClienteNoPrenotatoD() {
+		return (int)this.getClienteNoPrenotatoD().getValue();
 	}
 	
 	public JButton getPrenotaClienteButton() {
@@ -293,16 +284,24 @@ public class RistoranteGui {
 		return cg.getNomeClienteField();
 	}
 	
+	public String getTextNomeClienteField() {
+		return this.getNomeClienteField().getText();
+	}
+	
 	public JButton getNoPrenotazioneButton() {
 		return cg.getNoPrenotazioneButton();
 	}
-	//bottone "vai a scelta menï¿½" nella gui del cliente senza prenotazione
+	//bottone "vai a scelta menù" nella gui del cliente senza prenotazione
 	public JButton getSceltaMenuButton() {
 		return cg.getSceltaMenuButton();
 	}
 	//spinner per inserire il numero di persone nella sezione cliente senza prenotazione 
 	public JSpinner getClienteNoPrenotato() {
 		return cg.getClienteNoPrenotato();
+	}
+	
+	public int getValueClienteNoPrenotato() {
+		return (int)this.getClienteNoPrenotato().getValue();
 	}
 	
 	public JButton getAyceButton() {
@@ -312,18 +311,48 @@ public class RistoranteGui {
 	public JButton getALaCaButton() {
 		return cg.getaLaCarteButton();
 	}
-	//lista dove il cliente vede i piatti che puï¿½ ordinare
+	
+	//lista dove il cliente vede i piatti che può ordinare
 	public JList getPiattiMenu() {
 		return cg.getPiattiMenu();
 	}
-	//spinner per inserire la quantitï¿½ del piatto
+	
+	public int getSelectedIndexOfPiattiMenu() {
+		return this.getPiattiMenu().getSelectedIndex();
+	}
+	
+	public Object getSelectedValueOfPiattiMenu() {
+		return this.getPiattiMenu().getSelectedValue();
+	}
+	
+	//spinner per inserire la quantità del piatto
 	public JSpinner getQuantPiattoSpinner() {
 		return cg.getQuantPiattoSpinner();
+	}
+	
+	public int getValueOfQuantPiattoSpinner() {
+		return (int)this.getQuantPiattoSpinner().getValue();
 	}
 	
 	public SpinnerNumberModel getValueC() {
 		//cg.getValue().setValue(0);
 		return cg.getValue();
+	}
+	
+	public int getMinimumOfValueC() {
+		return (int)this.getValueC().getMinimum();
+	}
+	
+	public int getValueOfValueC() {
+		return (int)this.getValueC().getValue();
+	}
+	
+	public void setValueOfValueC(int i) {
+		this.getValueC().setValue(i);
+	}
+	
+	public void setMaxOfValueC(int i) {
+		this.getValueC().setMaximum(i);
 	}
 	
 	public void azzeraValueC() {
@@ -336,14 +365,30 @@ public class RistoranteGui {
 		return dg.getValue();
 	}
 	
+	public void setMaxOfValueD(int i) {
+		this.getValueD().setMaximum(i);
+	}
+	
+	public void setValueOfValueD(int i) {
+		this.getValueD().setValue(i);
+	}
+	
+	public int getValueOfValueD() {
+		return (int)this.getValueD().getValue();
+	}
+	
 	public JLabel getTotale() {
 		return cg.getTotale();
+	}
+	
+	public void setTextOfTotale(String s) {
+		this.getTotale().setText(s);
 	}
 	
 	public JButton getinviaOrdineButton() {
 		return cg.getinviaOrdineButton();
 	}
-	//bottone aggiungi nella pagina per aggiornare le quantitï¿½
+	//bottone aggiungi nella pagina per aggiornare le quantità
 	public JButton getAggiungi() {
 		return dg.getAggiungi();
 	}
@@ -352,12 +397,25 @@ public class RistoranteGui {
 		return dg.getNomePiattoField();
 	}
 	
+	public String getTextOfNomePiattoField() {
+		return this.getNomePiattoField().getText();
+	}
+	
 	public JSpinner getQuantitySpinner() {
 		return dg.getQuantitySpinner();
 	}
+	
+	public int getValueOfQuantitySpinner() {
+		return (int)this.getQuantitySpinner().getValue();
+	}
+	
 	//textarea dove il dipendente vede gli ordini
 	public JTextArea getOrdini() {
 		return dg.getOrdini();
+	}
+	
+	public void setTextOfOrdini(String s) {
+		this.getOrdini().setText(s);
 	}
 	// Jbutton che usa il dipendente per preparare tutti gli ordini
 	public JButton getPreparaTuttoButton() {

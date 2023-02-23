@@ -179,6 +179,10 @@ public class Ristorante {
 	public ArrayList<IPiatto> getPiatti() {
 		return tuttiPiatti;
 	}
+	
+	public IPiatto getElementOfPiatti(int i) {
+		return tuttiPiatti.get(i);
+	}
 
 	public Map<String, Integer> getPrenotazioni() {
 		return prenotazioni;

@@ -35,7 +35,8 @@ public class ClienteController {
 		rg.getNomeClienteField().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				s = rg.getNomeClienteField().getText();
+				//s = rg.getNomeClienteField().getText();
+				s=rg.getTextNomeClienteField();
 				if (r.getPrenotazioni().containsKey(s)) {
 					tmp = s;
 					for(Cliente c : r.getClienti()) {
@@ -66,7 +67,8 @@ public class ClienteController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				/*Cliente*/ c = r.prenotaClientenoPrenotazione((int)rg.getClienteNoPrenotato().getValue());
+				///*Cliente*/ c = r.prenotaClientenoPrenotazione((int)rg.getClienteNoPrenotato().getValue());
+				c=r.prenotaClientenoPrenotazione(rg.getValueClienteNoPrenotato());
 				tmp = c.getNome();
 				rg.scegliMenuR();
 
@@ -108,8 +110,10 @@ public class ClienteController {
 				for(int i=0;i<nome.size();i++) {
 					if(nome.get(i).equals(rg.getPiattiMenu().getSelectedValue()))
 					{
-						rg.getValueC().setValue(rg.getValueC().getMinimum());
-						rg.getValueC().setMaximum(quant.get(i));
+						//rg.getValueC().setValue(rg.getValueC().getMinimum());
+						rg.setValueOfValueC(rg.getMinimumOfValueC());
+						//rg.getValueC().setMaximum(quant.get(i));
+						rg.setMaxOfValueC(quant.get(i));
 					}
 				}
 			}
@@ -118,20 +122,24 @@ public class ClienteController {
 		rg.getinviaOrdineButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				/*int*/ i=rg.getPiattiMenu().getSelectedIndex();
+				///*int*/ i=rg.getPiattiMenu().getSelectedIndex();
+				i=rg.getSelectedIndexOfPiattiMenu();
 
 				//aggiungere eccezione
-				if(rg.getPiattiMenu().getSelectedValue()==null)
+				//if(rg.getPiattiMenu().getSelectedValue()==null)
+				if(rg.getSelectedValueOfPiattiMenu()==null)
 				{
 					rg.popUpErrore("Seleziona un piatto!");
 				}
 
-				else if(r.getPiatti().get(i).getQuantita()==0) {
+				//else if(r.getPiatti().get(i).getQuantita()==0) {
+				else if(r.getElementOfPiatti(i).getQuantita()==0) {
 
 					rg.popUpErrore("Piatto finito!");
 
 				}
-				else if ((int)rg.getValueC().getValue() == 0) {
+				//else if ((int)rg.getValueC().getValue() == 0) {
+				else if (rg.getValueOfValueC()==0) {
 					rg.popUpErrore("Seleziona una quantità valida");
 				}
 				else {
@@ -142,19 +150,24 @@ public class ClienteController {
 
 					try {
 						//creo l'ordine per quel cliente
-						daiMenu.creaOrdine(r.getPiatti().get(i), (int)rg.getQuantPiattoSpinner().getValue());
+						//daiMenu.creaOrdine(r.getPiatti().get(i), (int)rg.getQuantPiattoSpinner().getValue());
+						daiMenu.creaOrdine(r.getElementOfPiatti(i), rg.getValueOfQuantPiattoSpinner());
 
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
 
-					rg.getTotale().setText("Totale :"+daiMenu.chiediConto());
-					if(r.getPiatti().get(i).getQuantita()==0)
+					//rg.getTotale().setText("Totale :"+daiMenu.chiediConto());
+					rg.setTextOfTotale("Totale :"+daiMenu.chiediConto());
+					//if(r.getPiatti().get(i).getQuantita()==0)
+					if(r.getElementOfPiatti(i).getQuantita()==0)
 					{
 						rg.azzeraValueC();
 					}
-					rg.getValueC().setMaximum(r.getPiatti().get(i).getQuantita());
-					rg.getValueC().setValue(0);
+					//rg.getValueC().setMaximum(r.getPiatti().get(i).getQuantita());
+					rg.setMaxOfValueC(r.getElementOfPiatti(i).getQuantita());
+					//rg.getValueC().setValue(0);
+					rg.setValueOfValueC(0);
 				}
 			}
 
@@ -171,10 +184,7 @@ public class ClienteController {
 					System.out.println(r.getPostiLiberi());
 					// aggiungere pagina di fine
 				}
-
-
 			}
-		});
-		
+		});	
 	}
 }

@@ -13,7 +13,7 @@ import java.awt.Insets;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
@@ -38,10 +38,10 @@ public class DipendenteGui {
 	private JButton prenota,preparaTutto, tornaIndietroButton, aggiungi, vediOrdiniButton, aggiungiQuantitaButton, aggiungiPrenotazioneButton;
 	private JTextArea ordini;
 	private JScrollPane scroll;
-	private OurLabel lab;
+	private JLabel lab,labPosti;
 	protected GridBagConstraints  gbc;
 	private JSpinner clienteNoPrenotato;
-	private OurSpinner quantitySpinner;
+	private JSpinner quantitySpinner;
 	private SpinnerNumberModel value;
 	private JTextField nomeCliente, nomePiattoField;
 	private Border bordo;
@@ -71,6 +71,7 @@ public class DipendenteGui {
 		aggiungi = new OurButton("Aggiorna quantita`");
 		nomePiattoField = new OurTextField();
 		quantitySpinner = new OurSpinner(value);
+		labPosti=new OurLabel("Posti liberi: ");
 	}
 
 	public JPanel identificaDipendente() {
@@ -117,12 +118,19 @@ public class DipendenteGui {
         //p.setLayout(new GridBagLayout());
         lab = new OurLabel("COSA VUOI FARE?", SwingConstants.CENTER, Color.RED);
 
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(0, 0, 0, 0);
+        //da sistemare e mettere listener
+        gbc.anchor=GridBagConstraints.PAGE_END;
+        panel.add(labPosti, gbc);
+        
         gbc.gridwidth = 2;        //senza questo li allinea in riga
         gbc.fill = GridBagConstraints.HORIZONTAL;         //bordi bottoni allineati (prova vertical per capire)
 
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.insets = new Insets(0, 200, 10, 0);
+        gbc.insets = new Insets(0, 0, 10, 0);
         gbc.gridy = 1;
         panel.add(lab, gbc);
 
@@ -132,7 +140,7 @@ public class DipendenteGui {
         panel.add(vediOrdiniButton, gbc);
 
         gbc.gridy = 4;
-        panel.add(aggiungiPrenotazioneButton, gbc);        
+        panel.add(aggiungiPrenotazioneButton, gbc);   
         
         return panel;
 	}
@@ -360,7 +368,7 @@ public class DipendenteGui {
 		return scroll;
 	}
 
-	public OurLabel getLab() {
+	public JLabel getLab() {
 		return lab;
 	}
 
@@ -372,7 +380,7 @@ public class DipendenteGui {
 		return clienteNoPrenotato;
 	}
 
-	public OurSpinner getQuantitySpinner() {
+	public JSpinner getQuantitySpinner() {
 		return quantitySpinner;
 	}
 
