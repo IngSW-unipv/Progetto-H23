@@ -68,7 +68,7 @@ public class DipendenteGui {
 		ordini.setEditable(false);
 		scroll = new JScrollPane(ordini);
 		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		aggiungi = new OurButton("Aggiorna quantit‡");
+		aggiungi = new OurButton("Aggiorna quantita`");
 		nomePiattoField = new OurTextField();
 		quantitySpinner = new OurSpinner(value);
 	}
@@ -78,6 +78,7 @@ public class DipendenteGui {
 
         lab=new OurLabel("INSERISCI LA PASSWORD DEL RISTORANTE", SwingConstants.CENTER, Color.RED);
         OurLabel lab2 = new OurLabel("Password:", Color.BLACK);
+        
         //lab2.setForeground(Color.BLACK);
 
         passwordRistorante.setPreferredSize(new Dimension(200,50));
@@ -106,6 +107,7 @@ public class DipendenteGui {
         gbc.anchor = GridBagConstraints.CENTER;
         panel.add(lab,gbc);
 
+      
         return panel;
 	}
 
@@ -113,38 +115,25 @@ public class DipendenteGui {
 		//refreshPanel();
         createPanel("g");
         //p.setLayout(new GridBagLayout());
+        lab = new OurLabel("COSA VUOI FARE?", SwingConstants.CENTER, Color.RED);
 
         gbc.gridwidth = 2;        //senza questo li allinea in riga
         gbc.fill = GridBagConstraints.HORIZONTAL;         //bordi bottoni allineati (prova vertical per capire)
 
-        lab = new OurLabel("COSA VUOI FARE?", SwingConstants.CENTER, Color.RED);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.insets = new Insets(0, 0, 10, 0);
         gbc.gridy = 1;
         panel.add(lab, gbc);
-        gbc.insets = new Insets(20, 0, 10, 0);
+
         gbc.gridy = 2;
         panel.add(aggiungiQuantitaButton, gbc);
         gbc.gridy = 3;
-        gbc.insets = new Insets(0, 0, 10, 0);
-
         panel.add(vediOrdiniButton, gbc);
-        gbc.insets = new Insets(0, 0, 10, 0);
 
         gbc.gridy = 4;
-        panel.add(aggiungiPrenotazioneButton, gbc);
-        gbc.insets = new Insets(0, 0, 10, 0);
-
-        //        gbc.fill = GridBagConstraints.LINE_END;
-        //        gbc.gridx = 1;
-        //        gbc.gridy = 4;
-        //        gbc.gridwidth = 1;
-        //        gbc.anchor = GridBagConstraints.LINE_END;
-        //        //panel.add(tornaIndietroButton, gbc);
-        //gbc.weighty = 10;
-        //        f.add(p);
-        //        f.setVisible(true);
+        panel.add(aggiungiPrenotazioneButton, gbc);        
+        
         return panel;
 	}
 
@@ -203,7 +192,7 @@ public class DipendenteGui {
 		panel.setPreferredSize(new Dimension(500, 300));
 		lab = new OurLabel("Aggiungi un piatto", Color.RED);
 		OurLabel lab1 = new OurLabel("Nome piatto: ", Color.BLACK);
-		OurLabel lab3 = new OurLabel("Quantit√†: ", Color.BLACK);
+		OurLabel lab3 = new OurLabel("Quantita`: ", Color.BLACK);
 		quantitySpinner.setPreferredSize(new Dimension(60, 30));
 		nomePiattoField.setPreferredSize(new Dimension(200, 40));
 		aggiungi.setPreferredSize(new Dimension(300, 50));

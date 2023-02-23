@@ -281,7 +281,7 @@ public class RistoranteGui {
 	public JButton getNoPrenotazioneButton() {
 		return cg.getNoPrenotazioneButton();
 	}
-	//bottone "vai a scelta menù" nella gui del cliente senza prenotazione
+	//bottone "vai a scelta menï¿½" nella gui del cliente senza prenotazione
 	public JButton getSceltaMenuButton() {
 		return cg.getSceltaMenuButton();
 	}
@@ -297,11 +297,11 @@ public class RistoranteGui {
 	public JButton getALaCaButton() {
 		return cg.getaLaCarteButton();
 	}
-	//lista dove il cliente vede i piatti che può ordinare
+	//lista dove il cliente vede i piatti che puï¿½ ordinare
 	public JList getPiattiMenu() {
 		return cg.getPiattiMenu();
 	}
-	//spinner per inserire la quantità del piatto
+	//spinner per inserire la quantitï¿½ del piatto
 	public JSpinner getQuantPiattoSpinner() {
 		return cg.getQuantPiattoSpinner();
 	}
@@ -328,7 +328,7 @@ public class RistoranteGui {
 	public JButton getinviaOrdineButton() {
 		return cg.getinviaOrdineButton();
 	}
-	//bottone aggiungi nella pagina per aggiornare le quantità
+	//bottone aggiungi nella pagina per aggiornare le quantitï¿½
 	public JButton getAggiungi() {
 		return dg.getAggiungi();
 	}

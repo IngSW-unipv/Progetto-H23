@@ -57,21 +57,21 @@ public class ClienteGui {
 		panel=new OurPanel();
 		internalPanel= new OurPanel();
 		internalPanel = new OurPanel(new BorderLayout());
-		
+
 		bordo=BorderFactory.createEmptyBorder(0,10,10,10);
 
 		panel.setBorder(bordo);
 		//f.add(p);
-		
+
 		nomeClienteField=new OurTextField();
-		noPrenotazioneButton= new OurButton("Non sei prenotato?");
+		noPrenotazioneButton= new OurButton("Non hai prenotato?");
 		aLaCarteButton=new OurButton("A La Carte");
 		ayceButton=new OurButton("All you can eat");
 		totale=new OurLabel("Totale: ", SwingConstants.CENTER, Color.RED);
 		inviaOrdineButton=new OurButton("Aggiungi Piatto");
-		
+
 		chiediContoButton  = new OurButton ("Chiedi il conto");
-		
+
 		sceltaMenuButton = new OurButton("Vai alla scelta del menu");
 		value = new SpinnerNumberModel (0, 0, 1, 1);
 		clienteNoPrenotato = new OurSpinner(value);
@@ -83,39 +83,58 @@ public class ClienteGui {
 
 	public JPanel identificaCliente() {
 
-		createPanel("b");
-		lab=new OurLabel("Inserisci il nome della prenotazione", SwingConstants.CENTER, Color.RED);
-		lab.setPreferredSize(new Dimension(50,100));
+		createPanel("g");
+		lab=new OurLabel("TAVOLO CON PRENOTAZIONE", SwingConstants.CENTER, Color.RED);
+		OurLabel lab2 = new OurLabel("Nome della prenotazione: ", Color.BLACK);
+//		lab.setPreferredSize(new Dimension(50,100));
 		nomeClienteField.setFont(new Font("Italic", Font.ITALIC, 20));
 		nomeClienteField.setPreferredSize(new Dimension(200,50));
 
-		//noPrenotazioneButton= new OurButton("Non sei prenotato?");
-		noPrenotazioneButton.setPreferredSize(new Dimension(200,50));
+		gbc.gridx = 0;
+		gbc.gridy = 1;
+		gbc.weightx = 0.1;
+		gbc.weighty = 0.1;
+		gbc.anchor = GridBagConstraints.LINE_END;
+		gbc.insets = new Insets(30, 80, 0, 0);
+		panel.add(lab2, gbc);
 
-		//panel.setLayout (new BorderLayout());
-		//panel = new OurPanel(new BorderLayout());
-		
-		
-		internalPanel.add(nomeClienteField,BorderLayout.CENTER);
-		panel.add(lab, BorderLayout.NORTH);
-		panel.add(noPrenotazioneButton,BorderLayout.SOUTH);
-		panel.add(internalPanel, BorderLayout.CENTER);
+		gbc.gridx = 1;
+		gbc.gridy = 1;
+		gbc.anchor = GridBagConstraints.LINE_START;
+		gbc.insets = new Insets(30, 5, 0, 0);
+		panel.add(nomeClienteField,gbc);
+
+		gbc.gridx = 0;
+		gbc.gridy = 2;
+		gbc.weightx = 0.2;
+		gbc.weighty = 0.2;
+		gbc.gridwidth = 2;
+		gbc.anchor = GridBagConstraints.PAGE_START;
+		panel.add(noPrenotazioneButton, gbc);
+
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		gbc.weightx = 0.0;
+		gbc.weighty = 0.0;
+		gbc.insets = new Insets(100, 0, 0, 0);
+		panel.add(lab,gbc);
+
 		return panel;
 
 	}
 
 	public JPanel clienteNoPrenotato(int max) {
-		
+
 		createPanel("g");
 		value.setValue(1);
 		value.setMinimum(1);
 		value.setMaximum(max);
 		lab=new OurLabel("TAVOLO SENZA PRENOTAZIONE", SwingConstants.CENTER, Color.RED);
-		OurLabel lab2 = new OurLabel("Inserisci numero posti:");
+		OurLabel lab2 = new OurLabel("Inserisci numero posti: ");
 		lab2.setForeground(Color.BLACK);
-		
+
 		clienteNoPrenotato.setPreferredSize(new Dimension(60, 35));
-		
+
 
 		gbc.gridx = 0;
 		gbc.gridy = 1;
@@ -128,12 +147,12 @@ public class ClienteGui {
 		gbc.gridx = 1;
 		gbc.gridy = 1;
 		gbc.anchor = GridBagConstraints.LINE_START;
-		gbc.insets = new Insets(30, 5, 0, 0);
+		gbc.insets = new Insets(30, 20, 0, 0);
 		panel.add(clienteNoPrenotato,gbc);
 
 		gbc.gridx = 0;
 		gbc.gridy = 2;
-		gbc.weightx = 0.1;
+		gbc.weightx = 0.2;
 		gbc.weighty = 0.2;
 		gbc.gridwidth = 2;
 		gbc.anchor = GridBagConstraints.PAGE_START;
@@ -143,74 +162,46 @@ public class ClienteGui {
 		gbc.gridy = 0;
 		gbc.weightx = 0.0;
 		gbc.weighty = 0.0;
-
+		gbc.insets = new Insets(100, 0, 0, 0);
 		panel.add(lab,gbc);
 
 		return panel;
 	}
 
 	public JPanel scegliMenu() {
-		createPanel("b");
+		createPanel("g");
 		internalPanel = new OurPanel();
-//		panel.setLayout(new BorderLayout());
-		lab=new OurLabel("Scegli tipo di menu", SwingConstants.CENTER, Color.RED);
-		lab.setPreferredSize(new Dimension(50,100));
-		aLaCarteButton.setPreferredSize(new Dimension(250,400/6));
-		ayceButton.setPreferredSize(new Dimension(250,400/6));
-		
-		panel.add(lab,BorderLayout.NORTH);
-		internalPanel.add(aLaCarteButton);
-		internalPanel.add(ayceButton);
-		panel.add(internalPanel,BorderLayout.CENTER);
-		
+		//		panel.setLayout(new BorderLayout());
+		lab=new OurLabel("SCEGLI TIPO DI MENU", Color.RED);
+//		lab.setPreferredSize(new Dimension(50,100));
+		aLaCarteButton.setPreferredSize(new Dimension(230,400/6));
+		ayceButton.setPreferredSize(new Dimension(230,400/6));
+
+		gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.weightx = 0.1;
+        gbc.weighty = 0.1;
+        gbc.anchor = GridBagConstraints.LINE_END;
+        gbc.insets = new Insets(0, 70, 250, 0);
+        panel.add(ayceButton, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.insets = new Insets(0, 10, 250, 0);
+        panel.add(aLaCarteButton,gbc);
+
+        gbc.insets = new Insets(180, 70, 0, 0);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.gridwidth = 2;
+        gbc.anchor = GridBagConstraints.CENTER;
+        panel.add(lab,gbc);
+
 		return panel;
 	}
-	
-//	public JPanel scegliMenu2() {
-//		//p.setBackground(new Color(0, 0, 0, 110));
-//		panel.setOpaque(false);
-//		panel.setLayout(new GridBagLayout());
-//		panel.setPreferredSize(new Dimension (600, 590));
-//		lab=new OurLabel("Scegli tipo di menu");
-//		//lab.setPreferredSize(new Dimension(100,100));
-//		aLaCarteButton.setPreferredSize(new Dimension(200,400/6));
-//		ayceButton.setPreferredSize(new Dimension(200,400/6));
-//		
-//	
-//		gbc.gridx = 0;
-//		gbc.gridy = 0;
-////		gbc.weightx = 0.1;
-////		gbc.weighty = 0.1;
-//		gbc.gridwidth = 2;
-////		gbc.insets = new Insets(0, 0, 0, 0);
-//
-//		//gbc.anchor = GridBagConstraints.PAGE_START;
-//		panel.add(lab, gbc);	
-//		gbc.insets = new Insets(30, 0, 0, 0);
-//		gbc.anchor = GridBagConstraints.LINE_END;
-//		gbc.gridwidth = 1;
-//		gbc.gridx = 0;
-//		gbc.gridy = 1;
-////		gbc.weightx = 0.0;
-////		gbc.weighty = 0.0;
-//		panel.add(aLaCarteButton, gbc);
-////		gbc.weightx = 0.0;
-////		gbc.weighty = 0.0;
-//		gbc.insets = new Insets(30, 10, 0, 0);
-//		gbc.gridx = 1;
-//		gbc.gridy = 1;
-//		gbc.anchor = GridBagConstraints.LINE_START;
-////		gbc.anchor = GridBagConstraints.LINE_END;
-//		panel.add(ayceButton,gbc);
-//		
-//		
-//		
-//		//p.add(clienteButton,BorderLayout.EAST);
-//		//p.add(dipendenteButton,BorderLayout.WEST);
-//		//f.add(p);
-//	//	f.setVisible(true);
-//		return panel;
-//	}
 
 	public JPanel inviaOrdine(ArrayList<String> nomi, ArrayList<Integer> quantita) {
 		createPanel("g");
@@ -222,7 +213,7 @@ public class ClienteGui {
 		for(String p: nomi) {
 			listModel.addElement(p);
 		}
-		
+
 		piattiMenu.setModel(listModel);
 		piattiMenu.setPreferredSize(new Dimension(400,200));
 		scroll = new JScrollPane(piattiMenu);
@@ -239,26 +230,26 @@ public class ClienteGui {
 		gbc.gridy = 0;
 		gbc.anchor =  GridBagConstraints.LINE_END;
 		panel.add(quantPiattoSpinner,gbc);
-		
+
 		gbc.gridx = 0;
 		gbc.gridy = 1;
 		gbc.anchor =  GridBagConstraints.CENTER;
 		panel.add(inviaOrdineButton,gbc);
-		
+
 		gbc.gridx = 0;
 		gbc.gridy = 2;
 		gbc.anchor =  GridBagConstraints.CENTER;
 		panel.add(totale,gbc);
-		
+
 		gbc.gridx = 0;
 		gbc.gridy = 3;
 		gbc.anchor =  GridBagConstraints.CENTER;
 		panel.add(chiediContoButton,gbc);
-		
-		
+
+
 		return panel;
 	}
-	
+
 	public JButton getInviaOrdineButton() {
 		return inviaOrdineButton;
 	}
@@ -360,11 +351,11 @@ public class ClienteGui {
 	public JScrollPane getScroll() {
 		return scroll;
 	}
-	
+
 	public JLabel getTotale() {
 		return totale;
 	}
-	
+
 	public JButton getinviaOrdineButton() {
 		return inviaOrdineButton;
 	}
