@@ -11,20 +11,19 @@ import it.unipv.ingsfw.model.menu.ALaCarte;
 import it.unipv.ingsfw.model.menu.AYCE;
 import it.unipv.ingsfw.model.persone.Cliente;
 import it.unipv.ingsfw.model.persone.Dipendente;
-import it.unipv.ingsfw.model.ristorante.IRistorante;
 import it.unipv.ingsfw.model.ristorante.Ristorante;
-import it.unipv.ingsfw.view.*;
+import it.unipv.ingsfw.view.RistoranteGui;
 
 public class RistoranteController {
 	
-	private IRistoranteGUI rg;
-	private IRistorante r;
+	private RistoranteGui rg;
+	private Ristorante r;
 	//private Dipendente d;
 	private ClienteController cc;
 	private DipendenteController dc;
 	//private String tmp;
 
-	public RistoranteController(IRistoranteGUI rg,IRistorante r) {
+	public RistoranteController(RistoranteGui rg,Ristorante r) {
 		super();
 		this.rg = rg;
 		this.r=r;

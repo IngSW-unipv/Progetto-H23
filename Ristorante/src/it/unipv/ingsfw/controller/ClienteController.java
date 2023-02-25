@@ -11,19 +11,21 @@ import javax.swing.event.ListSelectionListener;
 import it.unipv.ingsfw.model.menu.ALaCarte;
 import it.unipv.ingsfw.model.menu.AYCE;
 import it.unipv.ingsfw.model.persone.Cliente;
+import it.unipv.ingsfw.model.ristorante.IRistorante;
 import it.unipv.ingsfw.model.ristorante.Ristorante;
+import it.unipv.ingsfw.view.IRistoranteGUI;
 import it.unipv.ingsfw.view.RistoranteGui;
 
 public class ClienteController {
 
-	private RistoranteGui rg;
-	private Ristorante r;
+	private IRistoranteGUI rg;
+	private IRistorante r;
 
 	//attributi temporanei per aiutarci nella risoluzione di listeners
 	String s,tmp;
 	int i;
 	Cliente c,daiMenu;
-	public ClienteController(RistoranteGui rg, Ristorante r) {
+	public ClienteController(IRistoranteGUI rg, IRistorante r) {
 		super();
 		this.r=r;
 		this.rg=rg;
@@ -45,6 +47,7 @@ public class ClienteController {
 						}
 					}
 					rg.scegliMenuR();
+					rg.setTextOfNomeClienteField("");
 				}
 				else 
 					rg.popUpErrore("Nome prenotazione errato");
@@ -58,6 +61,7 @@ public class ClienteController {
 					rg.popUpErrore("Posti finiti, ci dispiace");
 				else {
 					rg.clienteNoPrenotatoR(r.getPostiLiberi());
+					rg.setTextOfNomeClienteField("");
 				}
 
 			}
@@ -182,6 +186,12 @@ public class ClienteController {
 				else {
 					r.rimuoviCliente(daiMenu);
 					System.out.println(r.getPostiLiberi());
+					rg.sceltaPersona();
+					
+					//riazzero gli elementi per un prossimo cliente
+					c=null;
+					daiMenu=null;
+					rg.setTextOfTotale("Totale :");
 					// aggiungere pagina di fine
 				}
 			}

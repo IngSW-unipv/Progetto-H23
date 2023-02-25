@@ -8,7 +8,7 @@ import it.unipv.ingsfw.model.eccezioni.NameAlreadyExistsException;
 import it.unipv.ingsfw.model.eccezioni.NoPostiException;
 import it.unipv.ingsfw.model.persone.*;
 
-public class Ristorante implements IRistorante{
+public class Ristorante {
 	public final int NUMERO_POSTI= 500;
 	private int postiLiberi;
 	private int progressivo;
@@ -31,15 +31,15 @@ public class Ristorante implements IRistorante{
 		conto = 22.90;
 		progressivo = 1;
 	}
-	@Override
+
 	public double getConto() {
 		return conto;
 	}
-	@Override
+
 	public String getPassword() {
 		return password;
 	}
-	@Override
+
 	public Dipendente creaDipendente(String nome) {
 		Dipendente d=new Dipendente(nome);
 		dipendenti.add(d);
@@ -49,7 +49,6 @@ public class Ristorante implements IRistorante{
 	/* 
 	 * Questo metodo effettua la prenotazione fornendo il nome e il numero di clienti
 	 */
-	@Override
 	public boolean prenotaCliente(Cliente c, int posti) {		
 		try {
 			//if(posti<1) 
@@ -77,7 +76,7 @@ public class Ristorante implements IRistorante{
 			return false;
 		}
 	}
-	@Override
+
 	public Cliente prenotaClientenoPrenotazione (int posti) {
 		Cliente c = null;
 		try {
@@ -98,17 +97,17 @@ public class Ristorante implements IRistorante{
 		}
 		return c;
 	}
-	@Override
+
 	public ArrayList<String> getArrayNomeePrezzoPiatti(){
 		ArrayList<String> tmp=new ArrayList();
 		for(IPiatto p: tuttiPiatti)
 		{
-			tmp.add("Nome: "+p.getNome()+" Prezzo: "+p.getPrezzo()+"€");
+			tmp.add("Nome: "+p.getNome()+"                    Prezzo: "+p.getPrezzo()+"€");
 		}
 		return tmp;
 	}
 
-	@Override
+
 	public ArrayList<String> getArrayNomePiatti(){
 		ArrayList<String> tmp=new ArrayList();
 		for(IPiatto p: tuttiPiatti)
@@ -117,7 +116,7 @@ public class Ristorante implements IRistorante{
 		}
 		return tmp;
 	}
-	@Override
+
 	public ArrayList<Integer> getArrayQuantitaPiatti(){
 		ArrayList<Integer> tmp=new ArrayList();
 		for(IPiatto p: tuttiPiatti)
@@ -126,16 +125,16 @@ public class Ristorante implements IRistorante{
 		}
 		return tmp;
 	}
-	@Override
+
 	public ArrayList<Double> getArrayPrezzoPiatti(){
-		ArrayList<Double> tmp=new ArrayList<>();
+		ArrayList<Double> tmp=new ArrayList();
 		for(IPiatto p: tuttiPiatti)
 		{
 			tmp.add(p.getPrezzo());
 		}
 		return tmp;
 	}
-	@Override
+
 	public void stampaPrenotazioni() {
 
 		//System.out.println(prenotazioni.keySet());
@@ -145,62 +144,62 @@ public class Ristorante implements IRistorante{
 			  System.out.println(key+" "+value);
 			}
 	}
-	@Override
+	
 	public void stampaPiatti() {
 		for(IPiatto p:tuttiPiatti) {
 			System.out.println(p.getNome()+" "+p.getPrezzo()+" "+p.getQuantita());
 		}
 	}
-	@Override
+	
 	public void rimuoviCliente(Cliente c) {
 		setPostiLiberi(prenotazioni.get(c.getNome()) + postiLiberi);
 		prenotazioni.remove(c.getNome());
 		clienti.remove(c);
 		c.setIdentificato(false);
 	}
-	@Override
+
 	public void addPiatto(IPiatto p) {
 		tuttiPiatti.add(p);
 	}
-	@Override
+
 	public ArrayList<Cliente> getClienti () {
 		return clienti;
 	}
-	@Override
+	
 	public void stampaClienti () {
 		for (Cliente c: clienti) {
 			System.out.println(c.getNome());
 		}
 	}
-	@Override
+
 	public ArrayList<Dipendente> getDipendenti() {
 		return dipendenti;
 	}
-	@Override
+
 	public ArrayList<IPiatto> getPiatti() {
 		return tuttiPiatti;
 	}
-	@Override
+	
 	public IPiatto getElementOfPiatti(int i) {
 		return tuttiPiatti.get(i);
 	}
-	@Override
+
 	public Map<String, Integer> getPrenotazioni() {
 		return prenotazioni;
 	}
-	@Override
+
 	public int getPostiLiberi() {
 		return postiLiberi;
 	}
-	@Override
+
 	public void setPostiLiberi(int n) {
 		postiLiberi = n;
 	}
-	@Override
+
 	public String getNome() {
 		return nome;
 	}
-	@Override
+	
 	public Dipendente getDipendenteByNome(String s) {
 		for(Dipendente d:dipendenti)
 		{

@@ -6,18 +6,20 @@ import java.awt.event.ActionListener;
 import it.unipv.ingsfw.model.alimenti.IPiatto;
 import it.unipv.ingsfw.model.persone.Cliente;
 import it.unipv.ingsfw.model.persone.Dipendente;
+import it.unipv.ingsfw.model.ristorante.IRistorante;
 import it.unipv.ingsfw.model.ristorante.Ristorante;
+import it.unipv.ingsfw.view.IRistoranteGUI;
 import it.unipv.ingsfw.view.RistoranteGui;
 
 public class DipendenteController {
 
-	private RistoranteGui rg;
-	private Ristorante r;
+	private IRistoranteGUI rg;
+	private IRistorante r;
 	//attributi ausiliari
 	Dipendente d;
 	boolean triggered;
 
-	public DipendenteController(RistoranteGui rg, Ristorante r) {
+	public DipendenteController(IRistoranteGUI rg, IRistorante r) {
 		super();
 		this.r=r;
 		this.rg=rg;
@@ -132,6 +134,7 @@ public class DipendenteController {
 					rg.setMaxOfValueD(r.getPostiLiberi());
 					//rg.getValueD().setValue(0);
 					rg.setValueOfValueD(0);
+					rg.setTextOfClienteDaPrenotare("");
 				}
 			}
 		});
@@ -161,6 +164,7 @@ public class DipendenteController {
 				r.stampaPiatti();
 				//rg.getValueD().setValue(1);
 				rg.setValueOfValueD(1);
+				rg.setTextOfNomePiattoField("");
 			}
 		});
 

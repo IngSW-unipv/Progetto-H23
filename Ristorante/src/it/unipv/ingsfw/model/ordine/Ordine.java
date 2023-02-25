@@ -48,8 +48,8 @@ public class Ordine implements IOrdine{
 	public void setPiattiOrdinati(ArrayList<IPiatto> piattiOrdinati) {
 		this.piattiOrdinati = piattiOrdinati;
 	}
+	
 	@Override
-
 	public void stampaPiattiOrdinati() {
 
 		for (IPiatto p: piattiOrdinati) {
@@ -62,11 +62,21 @@ public class Ordine implements IOrdine{
 	}
 
 
+//	public String getNomiPiattiOrdinati() {
+//		String s="";
+//		for (IPiatto p: piattiOrdinati) {
+//			s=s+ p.getNome() +  "\n";
+//		}
+//		return s;
+//	}
+	@Override
 	public String getNomiPiattiOrdinati() {
-		String s="";
-		for (IPiatto p: piattiOrdinati) {
-			s=s+ p.getNome() +  "\n";
-		}
-		return s;
-	}
+        String s="";
+         for(IPiatto p: piattiOrdinati ) {
+
+             s=s+ p.getNome() + " " + "Quantita: " + Collections.frequency(piattiOrdinati, p) +  "\n";
+         }
+
+        return s;
+    }
 }

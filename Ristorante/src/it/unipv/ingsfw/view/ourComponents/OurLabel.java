@@ -68,4 +68,8 @@ public class OurLabel extends JLabel {
 			setFont(customFont);
 			setForeground(colore);
 		}
+		
+		public Font getOurFont() {
+            return customFont;
+        }
 }
