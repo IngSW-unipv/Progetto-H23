@@ -275,5 +275,27 @@ public class PiattoDAO implements IPiattoDAO{
 		ConnessioneDB.closeConnection(conness);
 		return es;
 	}
+//	public boolean updateAntipasto(String nome, int quantita) {
+//
+//		conness=ConnessioneDB.startConnection(conness);
+//		PreparedStatement st1;
+//
+//		boolean es=true;
+//
+//		try
+//		{
+//			String query="DELETE FROM tabelleristorante.PRENOTAZIONE WHERE NOME_CLIENTE = ?;";
+//			st1 = conness.prepareStatement(query);
+//			st1.setString(1, nome);
+//			st1.executeUpdate(query);
+//
+//		}catch (Exception e){
+//			e.printStackTrace();
+//			es=false;
+//		}
+//
+//		ConnessioneDB.closeConnection(conness);
+//		return es;
+//	}
 }
 

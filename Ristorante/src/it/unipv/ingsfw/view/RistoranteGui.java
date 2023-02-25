@@ -112,25 +112,43 @@ public class RistoranteGui implements IRistoranteGUI{
 		return start;
 	}
 	@Override
+	
+	
 	public void sceltaPersona() {
 		anotherRefreshPanel();
 
-		p.setLayout(new BorderLayout());
+        p.setLayout(new GridBagLayout());
 
-		lab=new OurLabel("Sei un cliente o un dipendente?", SwingConstants.CENTER, Color.RED);
-		lab.setPreferredSize(new Dimension(50,100));
-		clienteButton.setPreferredSize(new Dimension(250,50));
-		dipendenteButton.setPreferredSize(new Dimension(250,50));
-		//p2.setOpaque(false);
-		p2.add(clienteButton,BorderLayout.EAST);
-		p2.add(dipendenteButton,BorderLayout.WEST);
-		//p.setOpaque(false);
-		p.add(p2,BorderLayout.CENTER);
-		p.add(lab,BorderLayout.NORTH);
-		//p.add(clienteButton,BorderLayout.EAST);
-		//p.add(dipendenteButton,BorderLayout.WEST);
-		background.add(p, BorderLayout.CENTER);
-		f.setVisible(true);
+        lab=new OurLabel("SEI UN CLIENTE O DIPENDENTE?", SwingConstants.CENTER, Color.RED);
+        clienteButton.setPreferredSize(new Dimension(230,400/6));
+        dipendenteButton.setPreferredSize(new Dimension(230,400/6));
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.weightx = 0.1;
+        gbc.weighty = 0.1;
+        gbc.anchor = GridBagConstraints.LINE_END;
+        gbc.insets = new Insets(0, 70, 250, 0);
+        p.add(clienteButton, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.insets = new Insets(0, 10, 250, 0);
+        p.add(dipendenteButton,gbc);
+
+        gbc.insets = new Insets(180, 70, 0, 0);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.gridwidth = 2;
+        gbc.anchor = GridBagConstraints.CENTER;
+        p.add(lab,gbc);
+
+        background.add(p, BorderLayout.CENTER);
+        f.setVisible(true);
+
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package it.unipv.ingsfw.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import it.unipv.ingsfw.model.RistoranteSingleton;
 import it.unipv.ingsfw.model.alimenti.IPiatto;
 import it.unipv.ingsfw.model.persone.Cliente;
 import it.unipv.ingsfw.model.persone.Dipendente;
@@ -14,12 +15,12 @@ import it.unipv.ingsfw.view.RistoranteGui;
 public class DipendenteController {
 
 	private IRistoranteGUI rg;
-	private IRistorante r;
+	private RistoranteSingleton r;
 	//attributi ausiliari
 	Dipendente d;
 	boolean triggered;
 
-	public DipendenteController(IRistoranteGUI rg, IRistorante r) {
+	public DipendenteController(IRistoranteGUI rg, RistoranteSingleton r) {
 		super();
 		this.r=r;
 		this.rg=rg;
@@ -36,9 +37,9 @@ public class DipendenteController {
 				char[] c=rg.getPasswordOfPasswordRistorante();
 				String s=new String(c);
 
-				if(s.equals(r.getPassword())) {
+				if(s.equals(r.getRistorante().getPassword())) {
 					//d = r.creaDipendente("Dipendente");
-					d=r.getDipendenteByNome("Paolo");
+					d=r.getRistorante().getDipendenteByNome("Paolo");
 					d.setIdentificato(true);
 					rg.operazioniDipendenteR();
 				}
@@ -52,13 +53,13 @@ public class DipendenteController {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(r.getPostiLiberi()==0)
+				if(r.getRistorante().getPostiLiberi()==0)
 				{
 					rg.popUpErrore("Non puoi aggiungere prenotazioni,posti finiti");
 				}
 				else
 				{
-					rg.aggiungiPrenotazioneR(r.getPostiLiberi());
+					rg.aggiungiPrenotazioneR(r.getRistorante().getPostiLiberi());
 				}
 			}
 		});
@@ -119,19 +120,19 @@ public class DipendenteController {
 				}
 
 				//else if(r.getPrenotazioni().containsKey(rg.getClienteDaPrenotare().getText())){
-				else if(r.getPrenotazioni().containsKey(rg.getTextOfClienteDaPrenotare())) {
+				else if(r.getRistorante().getPrenotazioni().containsKey(rg.getTextOfClienteDaPrenotare())) {
 
 					rg.popUpErrore("Nome già inserito");
 				}
 				else {
-					r.stampaPrenotazioni();
+					r.getRistorante().stampaPrenotazioni();
 					System.out.println("\n");
 					//r.prenotaCliente(new Cliente(rg.getClienteDaPrenotare().getText()), (int)rg.getClienteNoPrenotatoD().getValue());
-					r.prenotaCliente(new Cliente(rg.getTextOfClienteDaPrenotare()), rg.getValueOfClienteNoPrenotatoD());
-					r.stampaPrenotazioni();
+					r.getRistorante().prenotaCliente(new Cliente(rg.getTextOfClienteDaPrenotare()), rg.getValueOfClienteNoPrenotatoD());
+					r.getRistorante().stampaPrenotazioni();
 					System.out.println("\n\n\n\n");
 					//rg.getValueD().setMaximum(r.getPostiLiberi());
-					rg.setMaxOfValueD(r.getPostiLiberi());
+					rg.setMaxOfValueD(r.getRistorante().getPostiLiberi());
 					//rg.getValueD().setValue(0);
 					rg.setValueOfValueD(0);
 					rg.setTextOfClienteDaPrenotare("");
@@ -144,8 +145,8 @@ public class DipendenteController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				triggered=true;
-				r.stampaPiatti();
-				for(IPiatto p:r.getPiatti()) {
+				r.getRistorante().stampaPiatti();
+				for(IPiatto p:r.getRistorante().getPiatti()) {
 					//if(p.getNome().equals(rg.getNomePiattoField().getText())) {
 					if(p.getNome().equals(rg.getTextOfNomePiattoField())) {
 						//p.setQuantita(p.getQuantita()+(int)rg.getQuantitySpinner().getValue());
@@ -161,7 +162,7 @@ public class DipendenteController {
 				}
 				triggered=true;
 				//if(p.getNome().equals(rg.getNomePiattoField().getText()))
-				r.stampaPiatti();
+				r.getRistorante().stampaPiatti();
 				//rg.getValueD().setValue(1);
 				rg.setValueOfValueD(1);
 				rg.setTextOfNomePiattoField("");

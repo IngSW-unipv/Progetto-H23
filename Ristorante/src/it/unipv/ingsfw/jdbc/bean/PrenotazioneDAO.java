@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,6 +58,27 @@ public class PrenotazioneDAO implements IPrenotazioneDAO{
 			st1.setString(1, nome);
 			st1.setInt(2,posti);
 			
+			st1.executeUpdate(query);
+
+		}catch (Exception e){
+			e.printStackTrace();
+			es=false;
+		}
+
+		ConnessioneDB.closeConnection(conness);
+		return es;
+	}
+	public boolean deletePrenotazione(String nome) {
+
+		conness=ConnessioneDB.startConnection(conness);
+		PreparedStatement st1;
+
+		boolean es=true;
+
+		try
+		{
+			String query="DELETE FROM tabelleristorante.PRENOTAZIONE WHERE NOME_CLIENTE = ?;";
+			st1 = conness.prepareStatement(query);
 			st1.executeUpdate(query);
 
 		}catch (Exception e){

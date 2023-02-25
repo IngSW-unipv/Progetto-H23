@@ -4,6 +4,7 @@ public abstract class Piatto implements IPiatto{
 	private double prezzo;
 	private String nome;
 	private int quantita;
+	protected TipoPiatto tipo;
 	
 
 
@@ -14,6 +15,10 @@ public abstract class Piatto implements IPiatto{
 		this.nome = nome;
 		this.quantita = quantita;
 	}
+	public TipoPiatto getTipo() {
+		return tipo;
+	}
+	
 	@Override
 	public int getQuantita() {
 		return quantita;
@@ -35,4 +40,13 @@ public abstract class Piatto implements IPiatto{
 	public String getNome() {
 		return nome;
 	}
+	@ Override
+	public void setPrezzo(double prezzo) {
+		this.prezzo = prezzo;
+	}
+	@ Override
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
 }

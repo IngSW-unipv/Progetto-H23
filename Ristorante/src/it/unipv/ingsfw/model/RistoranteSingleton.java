@@ -1,5 +1,6 @@
 package it.unipv.ingsfw.model;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -89,6 +90,11 @@ public class RistoranteSingleton {
 		
 		r.getPrenotazioni().putAll(tmp);		
 	}
+	public void cancellaPrenotazione (String nome) {
+		pr.deletePrenotazione(nome);
+		
+	}
+	
 	
 	public Ristorante getRistorante() {
 		return r;

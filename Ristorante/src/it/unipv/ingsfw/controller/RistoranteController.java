@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import it.unipv.ingsfw.model.RistoranteSingleton;
 import it.unipv.ingsfw.model.menu.ALaCarte;
 import it.unipv.ingsfw.model.menu.AYCE;
 import it.unipv.ingsfw.model.persone.Cliente;
@@ -18,13 +19,13 @@ import it.unipv.ingsfw.view.*;
 public class RistoranteController {
 	
 	private IRistoranteGUI rg;
-	private IRistorante r;
+	private RistoranteSingleton r;
 	//private Dipendente d;
 	private ClienteController cc;
 	private DipendenteController dc;
 	//private String tmp;
 
-	public RistoranteController(IRistoranteGUI rg,IRistorante r) {
+	public RistoranteController(IRistoranteGUI rg, RistoranteSingleton r) {
 		super();
 		this.rg = rg;
 		this.r=r;

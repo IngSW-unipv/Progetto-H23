@@ -59,12 +59,30 @@ public class Main {
 		//		d1.identificati(r.getPassword());
 		d1.setIdentificato(true);
 		c1.scegliMenu(new ALaCarte());
+		c2.scegliMenu(new ALaCarte());
+		c3.scegliMenu(new ALaCarte());
 
 		c1.creaOrdine(r.getElementOfPiatti(5), 4);
+		Thread.sleep(1);
+		c3.creaOrdine(r.getElementOfPiatti(9), 7);
+		Thread.sleep(1);
 		c1.creaOrdine(r.getElementOfPiatti(9), 1);
+		Thread.sleep(1);
+		c2.creaOrdine(r.getElementOfPiatti(6), 9);
+		Thread.sleep(1);
+		c2.creaOrdine(r.getElementOfPiatti(4), 8);
+		Thread.sleep(1);
+		c3.creaOrdine(r.getElementOfPiatti(8), 1);
+		Thread.sleep(1);
 		c1.creaOrdine(r.getElementOfPiatti(2), 2);
 
 		d1.aggiungiOrdini(r.getClienti());
+		for (IOrdine o: c1.getOrdini() ) {
+			o.stampaPiattiOrdinati();
+		}
+
+		
+		
 		//d1.stampaOrdini();
 		//System.out.println(d1.getStringOrdini());
 
@@ -72,7 +90,7 @@ public class Main {
 		//System.out.println(s);
 
 		RistoranteGui rg=new RistoranteGui();
-		RistoranteController rc=new RistoranteController(rg,r);
+		RistoranteController rc=new RistoranteController(rg,rs);
 
 		//r.creaDipendente("Agostino");
 		//r.creaDipendente("Sabatino");

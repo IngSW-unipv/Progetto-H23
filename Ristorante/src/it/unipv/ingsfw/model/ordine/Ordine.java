@@ -1,6 +1,8 @@
 package it.unipv.ingsfw.model.ordine;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 import it.unipv.ingsfw.model.alimenti.*;
 import it.unipv.ingsfw.model.ausiliari.Comparatore;
@@ -62,20 +64,14 @@ public class Ordine implements IOrdine{
 	}
 
 
-//	public String getNomiPiattiOrdinati() {
-//		String s="";
-//		for (IPiatto p: piattiOrdinati) {
-//			s=s+ p.getNome() +  "\n";
-//		}
-//		return s;
-//	}
 	@Override
 	public String getNomiPiattiOrdinati() {
+		Set <IPiatto> set = new HashSet<>();
         String s="";
-         for(IPiatto p: piattiOrdinati ) {
-
-             s=s+ p.getNome() + " " + "Quantita: " + Collections.frequency(piattiOrdinati, p) +  "\n";
-         }
+        set.addAll(piattiOrdinati);
+         for (IPiatto p: set ) {
+        		 s = s + p.getNome() + " " + "Quantita: "   +   Collections.frequency(piattiOrdinati, p) + "\n";
+        	 }
 
         return s;
     }

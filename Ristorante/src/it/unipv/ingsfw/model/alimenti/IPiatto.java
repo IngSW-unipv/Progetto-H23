@@ -9,4 +9,7 @@ public interface IPiatto {
 	public void incrementaQuantita(int quantita);
 	public double getPrezzo();
 	public String getNome();
+	public void setPrezzo(double prezzo);
+	public void setNome(String nome);
+	public TipoPiatto getTipo();
 }
