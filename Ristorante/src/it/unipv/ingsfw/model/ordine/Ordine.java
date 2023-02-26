@@ -55,7 +55,7 @@ public class Ordine implements IOrdine{
 	public void stampaPiattiOrdinati() {
 
 		for (IPiatto p: piattiOrdinati) {
-			System.out.println("Nome: "+ p.getNome());
+			System.out.println(p.getNome());
 			//System.out.println("Prezzo: " + p.getPrezzo());
 			//System.out.println("Quantita: " + p.getQuantita());
 
@@ -70,7 +70,7 @@ public class Ordine implements IOrdine{
         String s="";
         set.addAll(piattiOrdinati);
          for (IPiatto p: set ) {
-        		 s = s + p.getNome() + " " + "Quantita: "   +   Collections.frequency(piattiOrdinati, p) + "\n";
+        		 s = s + p.getNome() + " " +   Collections.frequency(piattiOrdinati, p);
         	 }
 
         return s;

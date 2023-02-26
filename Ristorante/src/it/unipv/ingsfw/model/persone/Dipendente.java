@@ -18,6 +18,8 @@ import it.unipv.ingsfw.model.ristorante.Ristorante;
 public class Dipendente extends Persona{
 	boolean logIn1;
 	private long ultimaAggiunta;
+	private String ordiniString;
+
 
 	private ArrayList<IOrdine> ordiniAusiliario;
 
@@ -28,6 +30,7 @@ public class Dipendente extends Persona{
 		ultimaAggiunta=0;
 		identificato = false;
 		ordiniAusiliario = new ArrayList<>();
+		this.ordiniString = "";
 	}
 
 	public boolean identificati(String s) throws IOException {
@@ -112,6 +115,13 @@ public class Dipendente extends Persona{
 					
 				}
 				ordini.clear();
+			}
+			public String getStringOrdini() {
+				ordiniString = "";
+				for (IOrdine o: ordini) {
+					ordiniString=ordiniString+o.getNomiPiattiOrdinati()+ " " +  "\n\n";
+				}
+				return ordiniString;
 			}
 
 //		public void preparaOrdine() {

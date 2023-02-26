@@ -13,4 +13,5 @@ public interface IPiattoDAO {
 	public boolean insertDolce(DBPiatto p);
 	public boolean insertPrimo(DBPiatto p);
 	public boolean insertSecondo(DBPiatto p);
+	boolean insertAllPiatti(ArrayList<DBPiatto> p);
 }

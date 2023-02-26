@@ -45,8 +45,8 @@ public class ClienteGui {
 	private Border bordo;
 	private GridBagConstraints gbc;
 	private JTextField nomeClienteField;
-	private JList piattiMenu;
-	private DefaultListModel listModel;
+	private JList<String> piattiMenu;
+	private DefaultListModel<String> listModel;
 	private JScrollPane scroll;
 
 	public ClienteGui() {
@@ -77,8 +77,8 @@ public class ClienteGui {
 		clienteNoPrenotato = new OurSpinner(value);
 		quantPiattoSpinner = new OurSpinner(value);
 		//clienteNoPrenotato.setEditor(new JSpinner.DefaultEditor(clienteNoPrenotato));
-		listModel = new DefaultListModel();
-		piattiMenu = new JList(listModel);
+		listModel = new DefaultListModel<String>();
+		piattiMenu = new JList<String>(listModel);
 	}
 
 	public JPanel identificaCliente() {
@@ -207,6 +207,7 @@ public class ClienteGui {
 		createPanel("g");
 		value.setValue(0);
 		value.setMinimum(0);
+		quantPiattoSpinner.setPreferredSize(new Dimension(50, 35));
 
 		lab = new OurLabel("Scegli cosa desideri ordinare", Color.RED);
 

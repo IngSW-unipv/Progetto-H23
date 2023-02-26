@@ -103,7 +103,7 @@ public class Ristorante implements IRistorante{
 		ArrayList<String> tmp=new ArrayList();
 		for(IPiatto p: tuttiPiatti)
 		{
-			tmp.add("Nome: "+p.getNome()+" Prezzo: "+p.getPrezzo()+"€");
+			tmp.add(p.getNome()+ "  " + p.getPrezzo()+"€");
 		}
 		return tmp;
 	}

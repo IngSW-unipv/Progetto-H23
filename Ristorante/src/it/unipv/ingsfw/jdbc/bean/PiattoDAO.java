@@ -140,7 +140,6 @@ public class PiattoDAO implements IPiattoDAO{
 		ConnessioneDB.closeConnection(conness);
 		return piatti;
 	}
-	
 	@Override
 	public boolean insertAntipasto(DBPiatto p) {
 
@@ -151,13 +150,15 @@ public class PiattoDAO implements IPiattoDAO{
 
 		try
 		{
-			String query="tabelleristorante.ANTIPASTI (NOME,QUANTITA,PREZZO) VALUES(?,?,?)";
+			String query="INSERT INTO tabelleristorante.ANTIPASTI (NOME,QUANTITA,PREZZO) VALUES(?,?,?)";
 			st1 = conness.prepareStatement(query);
 			st1.setString(1, p.getNome());
 			st1.setInt(2,p.getQuantita());
 			st1.setDouble(3,p.getPrezzo());
 
-			st1.executeUpdate(query);
+			//st1.executeQuery(query);
+			st1.executeUpdate();
+			//st1.execute();
 
 		}catch (Exception e){
 			e.printStackTrace();
@@ -167,7 +168,7 @@ public class PiattoDAO implements IPiattoDAO{
 		ConnessioneDB.closeConnection(conness);
 		return es;
 	}
-	
+
 	@Override
 	public boolean insertBibita(DBPiatto p) {
 
@@ -178,13 +179,15 @@ public class PiattoDAO implements IPiattoDAO{
 
 		try
 		{
-			String query="tabelleristorante.BIBITE (NOME,QUANTITA,PREZZO) VALUES(?,?,?)";
+			String query="INSERT INTO tabelleristorante.BIBITE (NOME,QUANTITA,PREZZO) VALUES(?,?,?)";
 			st1 = conness.prepareStatement(query);
 			st1.setString(1, p.getNome());
 			st1.setInt(2,p.getQuantita());
 			st1.setDouble(3,p.getPrezzo());
 
-			st1.executeUpdate(query);
+			//st1.executeQuery(query);
+			st1.executeUpdate();
+			//st1.execute();
 
 		}catch (Exception e){
 			e.printStackTrace();
@@ -194,7 +197,7 @@ public class PiattoDAO implements IPiattoDAO{
 		ConnessioneDB.closeConnection(conness);
 		return es;
 	}
-	
+
 	@Override
 	public boolean insertDolce(DBPiatto p) {
 
@@ -205,13 +208,15 @@ public class PiattoDAO implements IPiattoDAO{
 
 		try
 		{
-			String query="tabelleristorante.DOLCI (NOME,QUANTITA,PREZZO) VALUES(?,?,?)";
+			String query="INSERT INTO tabelleristorante.DOLCI (NOME,QUANTITA,PREZZO) VALUES(?,?,?)";
 			st1 = conness.prepareStatement(query);
 			st1.setString(1, p.getNome());
 			st1.setInt(2,p.getQuantita());
 			st1.setDouble(3,p.getPrezzo());
 
-			st1.executeUpdate(query);
+			//st1.executeQuery(query);
+			st1.executeUpdate();
+			//st1.execute();
 
 		}catch (Exception e){
 			e.printStackTrace();
@@ -221,7 +226,7 @@ public class PiattoDAO implements IPiattoDAO{
 		ConnessioneDB.closeConnection(conness);
 		return es;
 	}
-	
+
 	@Override
 	public boolean insertPrimo(DBPiatto p) {
 
@@ -232,13 +237,15 @@ public class PiattoDAO implements IPiattoDAO{
 
 		try
 		{
-			String query="tabelleristorante.PRIMI (NOME,QUANTITA,PREZZO) VALUES(?,?,?)";
+			String query="INSERT INTO tabelleristorante.PRIMI (NOME,QUANTITA,PREZZO) VALUES(?,?,?)";
 			st1 = conness.prepareStatement(query);
 			st1.setString(1, p.getNome());
 			st1.setInt(2,p.getQuantita());
 			st1.setDouble(3,p.getPrezzo());
 
-			st1.executeUpdate(query);
+			//st1.executeQuery(query);
+			st1.executeUpdate();
+			//st1.execute();
 
 		}catch (Exception e){
 			e.printStackTrace();
@@ -248,7 +255,7 @@ public class PiattoDAO implements IPiattoDAO{
 		ConnessioneDB.closeConnection(conness);
 		return es;
 	}
-	
+
 	@Override
 	public boolean insertSecondo(DBPiatto p) {
 
@@ -259,13 +266,15 @@ public class PiattoDAO implements IPiattoDAO{
 
 		try
 		{
-			String query="tabelleristorante.SECONDI (NOME,QUANTITA,PREZZO) VALUES(?,?,?)";
+			String query="INSERT INTO tabelleristorante.SECONDI (NOME,QUANTITA,PREZZO) VALUES(?,?,?)";
 			st1 = conness.prepareStatement(query);
 			st1.setString(1, p.getNome());
 			st1.setInt(2,p.getQuantita());
 			st1.setDouble(3,p.getPrezzo());
 
-			st1.executeUpdate(query);
+			//st1.executeQuery(query);
+			st1.executeUpdate();
+			//st1.execute();
 
 		}catch (Exception e){
 			e.printStackTrace();
@@ -275,27 +284,70 @@ public class PiattoDAO implements IPiattoDAO{
 		ConnessioneDB.closeConnection(conness);
 		return es;
 	}
-//	public boolean updateAntipasto(String nome, int quantita) {
-//
-//		conness=ConnessioneDB.startConnection(conness);
-//		PreparedStatement st1;
-//
-//		boolean es=true;
-//
-//		try
-//		{
-//			String query="DELETE FROM tabelleristorante.PRENOTAZIONE WHERE NOME_CLIENTE = ?;";
-//			st1 = conness.prepareStatement(query);
-//			st1.setString(1, nome);
-//			st1.executeUpdate(query);
-//
-//		}catch (Exception e){
-//			e.printStackTrace();
-//			es=false;
-//		}
-//
-//		ConnessioneDB.closeConnection(conness);
-//		return es;
-//	}
+
+	@Override
+	public boolean insertAllPiatti(ArrayList<DBPiatto> p) {
+
+		conness=ConnessioneDB.startConnection(conness);
+		PreparedStatement st1;
+
+		boolean es=true;
+
+		try
+		{
+//						+ "DELETE FROM tabelleristorante.DOLCI;"
+//						+ "DELETE FROM tabelleristorante.PRIMI;"
+//						+ "DELETE FROM tabelleristorante.SECONDI;";
+			String query="DELETE FROM tabelleristorante.ANTIPASTI";
+			st1 = conness.prepareStatement(query);
+			st1.execute();
+			
+			query="DELETE FROM tabelleristorante.BIBITE";
+			st1 = conness.prepareStatement(query);
+			st1.execute();
+			
+			query="DELETE FROM tabelleristorante.DOLCI";
+			st1 = conness.prepareStatement(query);
+			st1.execute();
+			
+			query="DELETE FROM tabelleristorante.PRIMI";
+			st1 = conness.prepareStatement(query);
+			st1.execute();
+			
+			query="DELETE FROM tabelleristorante.SECONDI";
+			st1 = conness.prepareStatement(query);
+			st1.execute();
+			
+			for(DBPiatto piatt:p) {
+				switch(piatt.getTp()) {
+				case ANTIPASTO:
+					insertAntipasto(piatt);
+					break;
+				case BIBITA:
+					insertBibita(piatt);
+					break;
+				case DOLCE:
+					insertDolce(piatt);
+					break;
+				case PRIMO:
+					insertPrimo(piatt);
+					break;
+				case SECONDO:
+					insertSecondo(piatt);
+					break;
+				}
+			}
+			
+		}catch (Exception e){
+			e.printStackTrace();
+			es=false;
+		}
+
+		ConnessioneDB.closeConnection(conness);
+		return es;
+	}
+
+	
+	
 }
 

@@ -16,6 +16,7 @@ import it.unipv.ingsfw.model.alimenti.Dolce;
 import it.unipv.ingsfw.model.alimenti.IPiatto;
 import it.unipv.ingsfw.model.alimenti.Primo;
 import it.unipv.ingsfw.model.alimenti.Secondo;
+import it.unipv.ingsfw.model.alimenti.TipoPiatto;
 import it.unipv.ingsfw.model.ristorante.Ristorante;
 
 public class RistoranteSingleton {
@@ -87,12 +88,45 @@ public class RistoranteSingleton {
 	private void riempiPrenotazioni() {
 		Map<String, Integer> tmp=new HashMap<>();
 		tmp=pr.selectAllPrenotazioni();
+		int posti = 0;
+		r.getPrenotazioni().putAll(tmp);
+		for (int i : r.getPrenotazioni().values()) {
+		    posti = posti + i;
+		}
+		r.setPostiLiberi(r.getPostiLiberi() - posti);
 		
-		r.getPrenotazioni().putAll(tmp);		
 	}
+
 	public void cancellaPrenotazione (String nome) {
 		pr.deletePrenotazione(nome);
 		
+	}
+	
+	public void aggiornaPiatti() {
+        DBPiatto dbp;
+        ArrayList<DBPiatto> dbpArr=new ArrayList<>();
+
+        for(int i=0;i<r.getPiatti().size();i++) {
+            dbp=new DBPiatto(r.getPiatti().get(i).getNome(),r.getPiatti().get(i).getQuantita(),r.getPiatti().get(i).getPrezzo());
+            switch(r.getPiatti().get(i).getTipo())
+            {
+            case ANTIPASTO:dbp.setTp(TipoPiatto.ANTIPASTO);
+                break;
+            case BIBITA: dbp.setTp(TipoPiatto.BIBITA);
+            break;
+            case DOLCE: dbp.setTp(TipoPiatto.DOLCE);
+                break;
+            case PRIMO: dbp.setTp(TipoPiatto.PRIMO);
+                break;
+            case SECONDO: dbp.setTp(TipoPiatto.SECONDO);
+                break;
+            }
+            dbpArr.add(dbp);
+        }
+        p.insertAllPiatti(dbpArr);
+    }
+	public ArrayList<String> selezionaNomi() {
+		return pr.selectAllNomiPrenotazioni();
 	}
 	
 	

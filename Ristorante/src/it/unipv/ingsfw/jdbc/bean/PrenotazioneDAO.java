@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,7 +53,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO{
 
 		try
 		{
-			String query="tabelleristorante.PRENOTAZIONE (NOME_CLIENTE,NUMERO_PERSONE) VALUES(?,?)";
+			String query="tabelleristorante.PRENOTAZIONI (NOME_CLIENTE,NUMERO_PERSONE) VALUES(?,?)";
 			st1 = conness.prepareStatement(query);
 			st1.setString(1, nome);
 			st1.setInt(2,posti);
@@ -77,9 +77,10 @@ public class PrenotazioneDAO implements IPrenotazioneDAO{
 
 		try
 		{
-			String query="DELETE FROM tabelleristorante.PRENOTAZIONE WHERE NOME_CLIENTE = ?;";
-			st1 = conness.prepareStatement(query);
-			st1.executeUpdate(query);
+			
+			st1 = conness.prepareStatement("DELETE FROM tabelleristorante.PRENOTAZIONI WHERE tabelleristorante.PRENOTAZIONI.NOME_CLIENTE = ?;");
+			st1.setString(1, nome);
+			st1.executeUpdate();
 
 		}catch (Exception e){
 			e.printStackTrace();
@@ -89,4 +90,29 @@ public class PrenotazioneDAO implements IPrenotazioneDAO{
 		ConnessioneDB.closeConnection(conness);
 		return es;
 	}
+	@Override
+    public ArrayList<String> selectAllNomiPrenotazioni(){
+        ArrayList<String> nomiclienti=new ArrayList<>();
+        conness=ConnessioneDB.startConnection(conness);
+        Statement st1;
+        ResultSet rs1;
+
+        try
+        {
+            st1 = conness.createStatement();
+            String query="SELECT NOME_CLIENTE from tabelleristorante.PRENOTAZIONI";
+            rs1=st1.executeQuery(query);
+
+            while(rs1.next())
+            {
+                //DBPrenotazione p=new DBPrenotazione(rs1.getString(1), rs1.getInt(2));
+                nomiclienti.add(rs1.getString(1));
+            }
+        }catch (Exception e){e.printStackTrace();}
+
+        ConnessioneDB.closeConnection(conness);
+        return nomiclienti;
+    }
+ 
+
 }

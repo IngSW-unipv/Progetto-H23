@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import it.unipv.ingsfw.jdbc.bean.IPrenotazioneDAO;
+import it.unipv.ingsfw.jdbc.bean.PrenotazioneDAO;
 import it.unipv.ingsfw.model.RistoranteSingleton;
 import it.unipv.ingsfw.model.menu.ALaCarte;
 import it.unipv.ingsfw.model.menu.AYCE;
@@ -23,7 +25,7 @@ public class ClienteController {
 	private RistoranteSingleton rs;
 
 	//attributi temporanei per aiutarci nella risoluzione di listeners
-	String s,tmp;
+	String tmp;
 	int i;
 	Cliente c,daiMenu;
 	public ClienteController(IRistoranteGUI rg, RistoranteSingleton r) {
@@ -39,14 +41,27 @@ public class ClienteController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//s = rg.getNomeClienteField().getText();
-				s=rg.getTextNomeClienteField();
+				String s=rg.getTextNomeClienteField();
 				if (rs.getRistorante().getPrenotazioni().containsKey(s)) {
 					tmp = s;
+
+					ArrayList<String> nomiClienti=rs.selezionaNomi();
+					//ArrayList<Integer> postiClienti=pd.selectAllNumeroPrenotazioni();
+
+					for(int i=0;i<nomiClienti.size();i++) {
+						if(nomiClienti.get(i).equals(tmp)) {
+							Cliente cl=new Cliente(nomiClienti.get(i));
+							//cl.setIdentificato(true);
+							rs.getRistorante().getClienti().add(cl);
+							//cl.setIdentificato(true);
+						}
+					}
 					for(Cliente c : rs.getRistorante().getClienti()) {
 						if (c.getNome().equals(tmp)) {
 							c.setIdentificato(true);
 						}
 					}
+
 					rg.scegliMenuR();
 					rg.setTextOfNomeClienteField("");
 				}
@@ -54,6 +69,7 @@ public class ClienteController {
 					rg.popUpErrore("Nome prenotazione errato");
 			}
 		});
+
 
 		rg.getNoPrenotazioneButton().addActionListener(new ActionListener() {
 			@Override
@@ -188,12 +204,13 @@ public class ClienteController {
 					rs.getRistorante().rimuoviCliente(daiMenu);
 					System.out.println(rs.getRistorante().getPostiLiberi());
 					rg.sceltaPersona();
-					
-					//rs.cancellaPrenotazione(daiMenu.getNome());
+
+					rs.cancellaPrenotazione(daiMenu.getNome());
 					//riazzero gli elementi per un prossimo cliente
 					c=null;
 					daiMenu=null;
 					rg.setTextOfTotale("Totale :");
+					rs.aggiornaPiatti();
 					// aggiungere pagina di fine
 				}
 			}

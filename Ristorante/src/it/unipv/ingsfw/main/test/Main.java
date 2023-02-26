@@ -26,45 +26,50 @@ public class Main {
 		Ristorante r=rs.getRistorante();
 		r.stampaPiatti();
 		r.stampaPrenotazioni();
-
+		System.out.println(r.getPostiLiberi());
 		Cliente c1 = new Cliente ("GinoPippo");
 		Cliente c2 = new Cliente ("Pippo");
 		Cliente c3 = new Cliente ("Franceschina");
-
-		r.prenotaCliente(c1, 300);
-		r.prenotaCliente(c2,  101);
-
+		Cliente c4 = new Cliente ("Sabatino");
+		r.prenotaCliente(c1, 400);
+		r.prenotaCliente(c2, 6);
+		r.prenotaCliente(c3, 10);
+		r.prenotaCliente(c4, 1);
+		System.out.println(r.getPostiLiberi());
+		
 		r.stampaPrenotazioni();
 
-		r.prenotaCliente(c3, 81);
+	
 
-		r.stampaPrenotazioni();
+
+
 
 		//se nomi diversi prezzi non allineati
 //		IPiatto p1=new Antipasto(4, "pgggggggggggg1", 6);
 //		IPiatto p2=new Antipasto(3, "p2", 7);
 //		IPiatto p3=new Antipasto(5, "p3", 8);
-
-//		rs.getRistorante().addPiatto(p1);
-//		rs.getRistorante().addPiatto(p2);
-//		rs.getRistorante().addPiatto(p3);
-
-		r.prenotaClientenoPrenotazione(1);
-		r.prenotaClientenoPrenotazione(2);
-		r.prenotaClientenoPrenotazione(6);
-
-		//scommentare qua sotto per provare vediOrdini(se c'è devi identificarti prima di fare apparire la gui)
-
-		Dipendente d1 = r.creaDipendente("Paolo");
-		//		d1.identificati(r.getPassword());
+//
+////		rs.getRistorante().addPiatto(p1);
+////		rs.getRistorante().addPiatto(p2);
+////		rs.getRistorante().addPiatto(p3);
+//
+//		r.prenotaClientenoPrenotazione(1);
+//		r.prenotaClientenoPrenotazione(2);
+//		r.prenotaClientenoPrenotazione(6);
+//
+//		//scommentare qua sotto per provare vediOrdini(se c'è devi identificarti prima di fare apparire la gui)
+//
+	Dipendente d1 = r.creaDipendente("Paolo");
+		//d1.identificati(r.getPassword());
 		d1.setIdentificato(true);
 		c1.scegliMenu(new ALaCarte());
 		c2.scegliMenu(new ALaCarte());
 		c3.scegliMenu(new ALaCarte());
+		
 
 		c1.creaOrdine(r.getElementOfPiatti(5), 4);
 		Thread.sleep(1);
-		c3.creaOrdine(r.getElementOfPiatti(9), 7);
+		c1.creaOrdine(r.getElementOfPiatti(9), 7);
 		Thread.sleep(1);
 		c1.creaOrdine(r.getElementOfPiatti(9), 1);
 		Thread.sleep(1);
@@ -74,7 +79,7 @@ public class Main {
 		Thread.sleep(1);
 		c3.creaOrdine(r.getElementOfPiatti(8), 1);
 		Thread.sleep(1);
-		c1.creaOrdine(r.getElementOfPiatti(2), 2);
+		c3.creaOrdine(r.getElementOfPiatti(2), 2);
 
 		d1.aggiungiOrdini(r.getClienti());
 		for (IOrdine o: c1.getOrdini() ) {
@@ -91,6 +96,8 @@ public class Main {
 
 		RistoranteGui rg=new RistoranteGui();
 		RistoranteController rc=new RistoranteController(rg,rs);
+		
+		r.stampaPrenotazioni();
 
 		//r.creaDipendente("Agostino");
 		//r.creaDipendente("Sabatino");
