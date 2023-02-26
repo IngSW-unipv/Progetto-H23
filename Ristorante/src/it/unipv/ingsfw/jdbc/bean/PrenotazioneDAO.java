@@ -13,12 +13,12 @@ import it.unipv.ingsfw.jdbc.util.ConnessioneDB;
 public class PrenotazioneDAO implements IPrenotazioneDAO{
 	private Connection conness;
 	Map<String,Integer> prenotaz;
-	
+
 	public PrenotazioneDAO(){
 		super();
 		prenotaz=new HashMap<>();
 	}
-	
+
 	@Override
 	public Map<String,Integer> selectAllPrenotazioni(){
 
@@ -42,7 +42,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO{
 		ConnessioneDB.closeConnection(conness);
 		return prenotaz;
 	}
-	
+
 	@Override
 	public boolean insertPrenotazione(String nome, int posti) {
 
@@ -57,7 +57,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO{
 			st1 = conness.prepareStatement(query);
 			st1.setString(1, nome);
 			st1.setInt(2,posti);
-			
+
 			st1.executeUpdate(query);
 
 		}catch (Exception e){
@@ -77,7 +77,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO{
 
 		try
 		{
-			
+
 			st1 = conness.prepareStatement("DELETE FROM tabelleristorante.PRENOTAZIONI WHERE tabelleristorante.PRENOTAZIONI.NOME_CLIENTE = ?;");
 			st1.setString(1, nome);
 			st1.executeUpdate();
@@ -91,28 +91,25 @@ public class PrenotazioneDAO implements IPrenotazioneDAO{
 		return es;
 	}
 	@Override
-    public ArrayList<String> selectAllNomiPrenotazioni(){
-        ArrayList<String> nomiclienti=new ArrayList<>();
-        conness=ConnessioneDB.startConnection(conness);
-        Statement st1;
-        ResultSet rs1;
+	public ArrayList<String> selectAllNomiPrenotazioni(){
+		ArrayList<String> nomiclienti=new ArrayList<>();
+		conness=ConnessioneDB.startConnection(conness);
+		Statement st1;
+		ResultSet rs1;
 
-        try
-        {
-            st1 = conness.createStatement();
-            String query="SELECT NOME_CLIENTE from tabelleristorante.PRENOTAZIONI";
-            rs1=st1.executeQuery(query);
+		try
+		{
+			st1 = conness.createStatement();
+			String query="SELECT NOME_CLIENTE from tabelleristorante.PRENOTAZIONI";
+			rs1=st1.executeQuery(query);
 
-            while(rs1.next())
-            {
-                //DBPrenotazione p=new DBPrenotazione(rs1.getString(1), rs1.getInt(2));
-                nomiclienti.add(rs1.getString(1));
-            }
-        }catch (Exception e){e.printStackTrace();}
+			while(rs1.next())
+			{
+				nomiclienti.add(rs1.getString(1));
+			}
+		}catch (Exception e){e.printStackTrace();}
 
-        ConnessioneDB.closeConnection(conness);
-        return nomiclienti;
-    }
- 
-
+		ConnessioneDB.closeConnection(conness);
+		return nomiclienti;
+	}
 }

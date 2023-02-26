@@ -135,7 +135,6 @@ public class ClienteGui {
 
 		clienteNoPrenotato.setPreferredSize(new Dimension(60, 35));
 
-
 		gbc.gridx = 0;
 		gbc.gridy = 1;
 		gbc.weightx = 0.1;
@@ -171,9 +170,7 @@ public class ClienteGui {
 	public JPanel scegliMenu() {
 		createPanel("g");
 		internalPanel = new OurPanel();
-		//		panel.setLayout(new BorderLayout());
 		lab=new OurLabel("SCEGLI TIPO DI MENU", Color.RED);
-//		lab.setPreferredSize(new Dimension(50,100));
 		aLaCarteButton.setPreferredSize(new Dimension(230,400/6));
 		ayceButton.setPreferredSize(new Dimension(230,400/6));
 

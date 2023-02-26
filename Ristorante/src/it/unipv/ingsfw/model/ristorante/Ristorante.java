@@ -9,7 +9,7 @@ import it.unipv.ingsfw.model.eccezioni.NoPostiException;
 import it.unipv.ingsfw.model.persone.*;
 
 public class Ristorante implements IRistorante{
-	public final int NUMERO_POSTI= 500;
+	public final int NUMERO_POSTI= 100;
 	private int postiLiberi;
 	private int progressivo;
 	private ArrayList<Cliente> clienti;
@@ -81,8 +81,7 @@ public class Ristorante implements IRistorante{
 	public Cliente prenotaClientenoPrenotazione (int posti) {
 		Cliente c = null;
 		try {
-			//if(posti<1) 
-			//throw new
+
 			if(postiLiberi-posti<0) {
 				throw new NoPostiException();
 			}
@@ -98,6 +97,7 @@ public class Ristorante implements IRistorante{
 		}
 		return c;
 	}
+	
 	@Override
 	public ArrayList<String> getArrayNomeePrezzoPiatti(){
 		ArrayList<String> tmp=new ArrayList();
@@ -138,7 +138,6 @@ public class Ristorante implements IRistorante{
 	@Override
 	public void stampaPrenotazioni() {
 
-		//System.out.println(prenotazioni.keySet());
 		for (Map.Entry <String,Integer> entry : prenotazioni.entrySet()) {
 			  String key = entry.getKey();
 			  int value = entry.getValue();
@@ -210,5 +209,4 @@ public class Ristorante implements IRistorante{
 		}
 		return null;
 	}
-
 }

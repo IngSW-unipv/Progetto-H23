@@ -66,16 +66,6 @@ public class Dipendente extends Persona{
 			}	
 		}
 
-//		public void aggiungiOrdini(ArrayList<Cliente> clienti) {
-//			this.controllaPrenotazione();
-//			for (Cliente c: clienti) {
-//				for (IOrdine o: c.getOrdini()) {
-//					if(o.getTempo()>ultimaAggiunta) {
-//						ordiniAusiliario.add(o);
-//					}
-//				}	
-//			}
-
 			Collections.sort(ordiniAusiliario, new Comparator<IOrdine>() {
 				@Override
 				public int compare(IOrdine o1, IOrdine o2) {
@@ -88,17 +78,12 @@ public class Dipendente extends Persona{
 					for(IOrdine oa : ordiniAusiliario) {
 						ordini.add(oa);
 					}
-
-
 				}
 				else if (o.getTempo() > ordini.get(ordini.size() -1).getTempo())
 					ordini.add(o);
-
 			}
 
 			ordiniAusiliario.clear();
-
-
 		}
 
 		public void aggiornaStatoPiatto(IOrdine o) {
@@ -123,30 +108,5 @@ public class Dipendente extends Persona{
 				}
 				return ordiniString;
 			}
-
-//		public void preparaOrdine() {
-//			this.controllaPrenotazione();
-//			for (int i = 0; i<ordini.size(); i++) {
-//
-//				aggiornaStatoPiatto(ordini.get(i));
-//
-//			}
-////			for(IOrdine o:ordini) {
-////				if(o.getTempo()<System.currentTimeMillis())
-////				{
-////					ordini.remove(o);
-////				}
-////			}
-//			
-//			for(int i=0;i<ordini.size();i++) {
-//				IOrdine o=new Ordine();
-//				if(o.getTempo()<System.currentTimeMillis())
-//					{
-//						ordini.remove(o);
-//					}
-//			}
-//			//ordini.clear();
-//			ultimaAggiunta=System.currentTimeMillis();
-//		}
 
 	}
