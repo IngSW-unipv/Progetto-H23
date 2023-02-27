@@ -29,14 +29,13 @@ public class RistoranteStarter {
 		r.prenotaCliente(c2, 6);
 
 		Dipendente d1 = r.creaDipendente("Bruno");
-		//d1.setIdentificato(true);
-		
+		d1.setIdentificato(true);
 		c1.setIdentificato(true);
 		c2.setIdentificato(true);
-		
+
 		c1.scegliMenu(new ALaCarte());
 		c2.scegliMenu(new AYCE(r.getConto()));
-		
+
 		//inserimento di ordini per il "vedi ordini" del dipendente
 		c1.creaOrdine(r.getElementOfPiatti(5), 4);
 		Thread.sleep(1);
@@ -47,11 +46,11 @@ public class RistoranteStarter {
 		c2.creaOrdine(r.getElementOfPiatti(6), 9);
 		Thread.sleep(1);
 		c2.creaOrdine(r.getElementOfPiatti(4), 8);
-		
+
 		//il dipendente aggiunge tutti gli ordini dei clienti
-		d1.setIdentificato(true);
+		//d1.setIdentificato(true);
 		d1.aggiungiOrdini(r.getClienti());
-		
+
 		RistoranteGui rg=new RistoranteGui();
 		RistoranteController rc=new RistoranteController(rg,rs);
 	}

@@ -2,6 +2,8 @@ package it.unipv.ingsfw.jdbc.bean;
 
 import java.util.ArrayList;
 
+import it.unipv.ingsfw.model.alimenti.IPiatto;
+
 public interface IPiattoDAO {
 	public ArrayList<DBPiatto> selectAllAntipasti();
 	public ArrayList<DBPiatto> selectAllBibite();
@@ -13,5 +15,6 @@ public interface IPiattoDAO {
 	public boolean insertDolce(DBPiatto p);
 	public boolean insertPrimo(DBPiatto p);
 	public boolean insertSecondo(DBPiatto p);
-	boolean insertAllPiatti(ArrayList<DBPiatto> p);
+	//boolean insertAllPiatti(ArrayList<DBPiatto> p);
+	public boolean updateQuantita(IPiatto p, int quantita);
 }

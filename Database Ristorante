@@ -41,6 +41,13 @@ CREATE TABLE PRENOTAZIONI
 	(NOME_CLIENTE CHAR(30) primary key,
     NUMERO_PERSONE INTEGER);
 -- -------------------------------------------------------------
+-- -------------------------------------------------------
+    drop TABLE IF EXISTS DIPENDENTI;
+CREATE TABLE DIPENDENTI
+	(MATRICOLA INTEGER primary key,
+    NOME_DIPENDENTE CHAR(30));
+-- -------------------------------------------------------------
+
 
 -- INSERIMENTO ANTIPASTI
 INSERT INTO ANTIPASTI VALUES ('Anelli di cipolla',8,5.5);

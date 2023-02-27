@@ -9,7 +9,6 @@ import it.unipv.ingsfw.model.eccezioni.NoPostiException;
 import it.unipv.ingsfw.model.persone.*;
 
 public class Ristorante implements IRistorante{
-	public final int NUMERO_POSTI= 100;
 	private int postiLiberi;
 	private int progressivo;
 	private ArrayList<Cliente> clienti;

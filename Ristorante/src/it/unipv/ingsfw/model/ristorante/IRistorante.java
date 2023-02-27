@@ -8,6 +8,7 @@ import it.unipv.ingsfw.model.persone.Cliente;
 import it.unipv.ingsfw.model.persone.Dipendente;
 
 public interface IRistorante {
+	public final int NUMERO_POSTI= 100;
 	public double getConto();
 	public String getPassword();
 	public Dipendente creaDipendente(String nome);

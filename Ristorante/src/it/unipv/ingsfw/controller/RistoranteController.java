@@ -21,10 +21,8 @@ public class RistoranteController {
 	private IRistoranteGUI rg;
 	private RistoranteSingleton rs;
 	private IRistorante r;
-	//private Dipendente d;
 	private ClienteController cc;
 	private DipendenteController dc;
-	//private String tmp;
 
 	public RistoranteController(IRistoranteGUI rg, RistoranteSingleton rs) {
 		super();

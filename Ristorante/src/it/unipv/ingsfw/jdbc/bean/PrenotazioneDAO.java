@@ -53,12 +53,11 @@ public class PrenotazioneDAO implements IPrenotazioneDAO{
 
 		try
 		{
-			String query="tabelleristorante.PRENOTAZIONI (NOME_CLIENTE,NUMERO_PERSONE) VALUES(?,?)";
-			st1 = conness.prepareStatement(query);
+			st1 = conness.prepareStatement("INSERT INTO tabelleristorante.PRENOTAZIONI (NOME_CLIENTE,NUMERO_PERSONE) VALUES(?,?)");
 			st1.setString(1, nome);
 			st1.setInt(2,posti);
 
-			st1.executeUpdate(query);
+			st1.executeUpdate();
 
 		}catch (Exception e){
 			e.printStackTrace();

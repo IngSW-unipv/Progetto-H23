@@ -15,12 +15,11 @@ import it.unipv.ingsfw.model.ristorante.Ristorante;
 
 public class Cliente extends Persona{
 	private IMenu menu;
-	//private Ristorante r;
+
 
 	public Cliente(String nome) {
 		super(nome);
 		this.menu=null;
-		//this.r = null;
 	}
 
 	public boolean accediPrenotazione(Map<String, Integer> m) throws IOException {	

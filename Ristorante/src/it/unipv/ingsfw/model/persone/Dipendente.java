@@ -33,6 +33,7 @@ public class Dipendente extends Persona{
 		this.ordiniString = "";
 	}
 
+
 	public boolean identificati(String s) throws IOException {
 		InputStreamReader input=new InputStreamReader(System.in);
 		BufferedReader t=new BufferedReader(input);

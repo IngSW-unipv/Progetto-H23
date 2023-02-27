@@ -17,7 +17,6 @@ public class DipendenteController {
 	private IRistoranteGUI rg;
 	private RistoranteSingleton rs;
 	private IRistorante r;
-	//attributi ausiliari
 	Dipendente d;
 	boolean triggered;
 
@@ -42,7 +41,8 @@ public class DipendenteController {
 					
 					//dipendente preso dal main per mostrare gli ordini arrivati
 					d=r.getDipendenteByNome("Bruno");
-					d.setIdentificato(true);
+					//d.setIdentificato(true);
+					
 					rg.operazioniDipendenteR();
 				}
 				else {
@@ -79,6 +79,7 @@ public class DipendenteController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				rg.vediOrdiniR(d.getStringOrdini());
+				
 			}
 		});
 
@@ -122,6 +123,7 @@ public class DipendenteController {
 				else {
 
 					r.prenotaCliente(new Cliente(rg.getTextOfClienteDaPrenotare()), rg.getValueOfClienteNoPrenotatoD());
+					rs.inserisciCliente(rg.getTextOfClienteDaPrenotare(), rg.getValueOfClienteNoPrenotatoD());
 					rg.setMaxOfValueD(r.getPostiLiberi());
 					rg.setValueOfValueD(0);
 					rg.setTextOfClienteDaPrenotare("");
@@ -138,8 +140,8 @@ public class DipendenteController {
 				for(IPiatto p:r.getPiatti()) {
 					
 					if(p.getNome().equals(rg.getTextOfNomePiattoField())) {
-						
 						p.setQuantita(p.getQuantita()+rg.getValueOfQuantitySpinner());
+						rs.aggiungiQuantita(p, p.getQuantita());
 						triggered=false;
 					}
 				}
@@ -151,8 +153,7 @@ public class DipendenteController {
 				}
 				triggered=true;
 				rg.setValueOfValueD(1);
-				rg.setTextOfNomePiattoField("");
-				rs.aggiornaPiatti();		
+				rg.setTextOfNomePiattoField("");		
 			}
 		});
 	}

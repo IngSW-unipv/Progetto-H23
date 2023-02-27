@@ -157,6 +157,7 @@ public class ClienteController {
 							daiMenu=c;
 					}
 					try {
+						rs.diminuisciQuantita(r.getElementOfPiatti(i),  rg.getValueOfQuantPiattoSpinner());
 						daiMenu.creaOrdine(r.getElementOfPiatti(i), rg.getValueOfQuantPiattoSpinner());
 					} catch (IOException e1) {
 						e1.printStackTrace();
@@ -191,7 +192,7 @@ public class ClienteController {
 					c=null;
 					daiMenu=null;
 					rg.setTextOfTotale("Totale :");
-					rs.aggiornaPiatti();
+					//rs.aggiornaPiatti();
 				}
 			}
 		});	

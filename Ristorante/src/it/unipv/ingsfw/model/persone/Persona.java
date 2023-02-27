@@ -14,7 +14,6 @@ public abstract class Persona implements IPersona{
 	protected ArrayList<IOrdine> ordini;
 	protected boolean identificato;
 	
-	//stringa ausiliaria
 	
 	public Persona(String nome) {
 		super();

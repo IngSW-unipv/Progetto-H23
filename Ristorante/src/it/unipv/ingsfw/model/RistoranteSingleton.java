@@ -25,8 +25,6 @@ public class RistoranteSingleton {
 	private IPiattoDAO p;
 	private IPrenotazioneDAO pr;
 	private Ristorante r;
-	//private ArrayList<IPiatto> piatti;
-	//private Map<String,Integer> prenotazione;
 
 	private RistoranteSingleton() {
 		super();
@@ -99,36 +97,50 @@ public class RistoranteSingleton {
 
 	}
 
-	public void aggiornaPiatti() {
-		DBPiatto dbp;
-		ArrayList<DBPiatto> dbpArr=new ArrayList<>();
-
-		for(int i=0;i<r.getPiatti().size();i++) {
-			dbp=new DBPiatto(r.getPiatti().get(i).getNome(),r.getPiatti().get(i).getQuantita(),r.getPiatti().get(i).getPrezzo());
-			switch(r.getPiatti().get(i).getTipo())
-			{
-			case ANTIPASTO:dbp.setTp(TipoPiatto.ANTIPASTO);
-			break;
-			case BIBITA: dbp.setTp(TipoPiatto.BIBITA);
-			break;
-			case DOLCE: dbp.setTp(TipoPiatto.DOLCE);
-			break;
-			case PRIMO: dbp.setTp(TipoPiatto.PRIMO);
-			break;
-			case SECONDO: dbp.setTp(TipoPiatto.SECONDO);
-			break;
-			}
-			dbpArr.add(dbp);
-		}
-		p.insertAllPiatti(dbpArr);
-	}
+//	public void aggiornaPiatti() {
+//		DBPiatto dbp;
+//		ArrayList<DBPiatto> dbpArr=new ArrayList<>();
+//
+//		for(int i=0;i<r.getPiatti().size();i++) {
+//			dbp=new DBPiatto(r.getPiatti().get(i).getNome(),r.getPiatti().get(i).getQuantita(),r.getPiatti().get(i).getPrezzo());
+//			switch(r.getPiatti().get(i).getTipo())
+//			{
+//			case ANTIPASTO:dbp.setTp(TipoPiatto.ANTIPASTO);
+//			break;
+//			case BIBITA: dbp.setTp(TipoPiatto.BIBITA);
+//			break;
+//			case DOLCE: dbp.setTp(TipoPiatto.DOLCE);
+//			break;
+//			case PRIMO: dbp.setTp(TipoPiatto.PRIMO);
+//			break;
+//			case SECONDO: dbp.setTp(TipoPiatto.SECONDO);
+//			break;
+//			}
+//			dbpArr.add(dbp);
+//		}
+//		p.insertAllPiatti(dbpArr);
+//	}
 	public ArrayList<String> selezionaNomi() {
 		return pr.selectAllNomiPrenotazioni();
 	}
-
+	
+	public void diminuisciQuantita(IPiatto piatto, int quantita) {
+		p.updateQuantita(piatto, piatto.getQuantita()- quantita);
+	
+		
+	}
+	public void aggiungiQuantita(IPiatto piatto, int quantita) {
+		p.updateQuantita(piatto, quantita);
+	
+		
+	}
+	public void inserisciCliente(String nome, int posti) {
+		pr.insertPrenotazione(nome, posti);
+	}
 
 	public Ristorante getRistorante() {
 		return r;
 	}
+	
 
 }
