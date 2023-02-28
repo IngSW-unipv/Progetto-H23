@@ -50,7 +50,8 @@ public class RistoranteStarter {
 		//il dipendente aggiunge tutti gli ordini dei clienti
 		//d1.setIdentificato(true);
 		d1.aggiungiOrdini(r.getClienti());
-
+//		r.stampaPrenotazioni();
+		
 		RistoranteGui rg=new RistoranteGui();
 		RistoranteController rc=new RistoranteController(rg,rs);
 	}

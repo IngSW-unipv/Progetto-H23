@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import it.unipv.ingsfw.model.ausiliari.Comparatore;
 import it.unipv.ingsfw.model.eccezioni.NoIdentificatoException;
 import it.unipv.ingsfw.model.ordine.IOrdine;
 import it.unipv.ingsfw.model.ordine.Ordine;

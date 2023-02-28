@@ -35,7 +35,7 @@ public class ClienteTest {
 	
 	@Test
 	public void testPrenotazioneCliente() throws IOException {
-		r.prenotaCliente(c1, 100);
+		r.prenotaCliente(c1, 80);
 		r.prenotaCliente(c2, 2);
 		r.prenotaCliente(c3, 5);
 		
@@ -46,7 +46,7 @@ public class ClienteTest {
 	@Test
 	public void testPostiFiniti() {
 		r.setPostiLiberi(r.NUMERO_POSTI);
-		assertFalse(r.prenotaCliente(c2, 502));
+		assertFalse(r.prenotaCliente(c2, 102));
 		assertFalse(r.prenotaCliente(c1, r.NUMERO_POSTI+1));
 	}
 	

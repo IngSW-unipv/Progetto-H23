@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import it.unipv.ingsfw.model.alimenti.*;
-import it.unipv.ingsfw.model.ausiliari.Comparatore;
 
 public class Ordine implements IOrdine{
 	private long tempo;

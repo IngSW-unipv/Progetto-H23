@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 
+import it.unipv.ingsfw.view.ourComponents.BackButton;
 import it.unipv.ingsfw.view.ourComponents.OurButton;
 import it.unipv.ingsfw.view.ourComponents.OurLabel;
 import it.unipv.ingsfw.view.ourComponents.OurPanel;
@@ -18,7 +19,7 @@ public class RistoranteGui implements IRistoranteGUI{
 
 	protected JPanel p,p2;
 	protected JLabel background, lab/*,dip*/;
-	protected JButton start;
+	protected JButton startButton, backButton;
 	protected JButton clienteButton,dipendenteButton,indietro;
 	//protected JTextField nomeCliente;
 	protected Border bordo;
@@ -43,7 +44,7 @@ public class RistoranteGui implements IRistoranteGUI{
 		//aggiungere salvare piatti e prenotazioni in db
 		p=new OurPanel();
 		p2= new OurPanel();
-		gbc= new GridBagConstraints();
+//		gbc= new GridBagConstraints();
 		bordo=BorderFactory.createEmptyBorder(0,10,10,10);
 		
 		//dip=new OurLabel("");
@@ -54,7 +55,8 @@ public class RistoranteGui implements IRistoranteGUI{
 		cg=new ClienteGui();
 		dg=new DipendenteGui();
 
-		start=new OurButton("");
+		startButton=new OurButton("");
+		backButton = new BackButton();
 		clienteButton=new OurButton("Cliente");
 		dipendenteButton=new OurButton("Dipendente");
 		//clienteButton.setFont(customFont);
@@ -73,7 +75,7 @@ public class RistoranteGui implements IRistoranteGUI{
 
 	}
 	@Override
-	public void anotherRefreshPanel() {
+	public void refreshPanel() {
 		f.setVisible(false);
 		f.getContentPane().removeAll();
 		background=new JLabel(new ImageIcon("images/background.png"));
@@ -82,42 +84,35 @@ public class RistoranteGui implements IRistoranteGUI{
 		f.add(background);
 		f.setVisible(true);
 	}
-	@Override
-	public void refreshPanel() {
-		Image backgroundImage = Toolkit.getDefaultToolkit().getImage("images/sfondo-riga-ricette.png");
-		f.setVisible(false);
-		f.getContentPane().removeAll();
-		f.setContentPane(new JPanel() {
-			@Override
-			public void paintComponent(Graphics g) {
-				super.paintComponent(g);
-				g.drawImage(backgroundImage, 0, 0, null);
-			}
-		});
-
-
-		f.pack();
-		f.setSize(width, height);
-		f.setVisible(true);
-	}
+	
 	@Override
 	public void startPage() {
 		f.setLayout(new BorderLayout());
-		start.setBorderPainted(false);
-		f.add(start, BorderLayout.CENTER);
+		startButton.setBorderPainted(false);
+		f.add(startButton, BorderLayout.CENTER);
 		f.setVisible(true);
 	}
 	@Override
 	public JButton getStartButton() {
-		return start;
+		return startButton;
 	}
-	@Override
 	
+	@Override
+	public void lastClientPage() {
+		f.setVisible(false);
+		f.getContentPane().removeAll();
+		background=new JLabel(new ImageIcon("images/endPage.png"));
+		background.setLayout(new BorderLayout());
+		f.setSize(width, height);
+		f.add(background);
+		f.setVisible(true);
+	}
 	
 	public void sceltaPersona() {
-		anotherRefreshPanel();
+		refreshPanel();
 
-        p.setLayout(new GridBagLayout());
+        p = new OurPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
 
         lab=new OurLabel("SEI UN CLIENTE O DIPENDENTE?", SwingConstants.CENTER, Color.RED);
         clienteButton.setPreferredSize(new Dimension(230,400/6));
@@ -161,7 +156,7 @@ public class RistoranteGui implements IRistoranteGUI{
 	}
 	@Override
 	public void clienteNoPrenotatoR(int i) {
-		anotherRefreshPanel();
+		refreshPanel();
 		background.add(cg.clienteNoPrenotato(i));
 		f.setVisible(true);
 	}
@@ -184,12 +179,16 @@ public class RistoranteGui implements IRistoranteGUI{
 		aggiungiPannello(dg.vediOrdini(ordiniText));
 	}
 	@Override
+	public void vediPrenotazioniR(String prenotazioniText) {
+		aggiungiPannello(dg.vediPrenotazioni(prenotazioniText));
+	}
+	@Override
 	public void addDishR() {
 		aggiungiPannello(dg.addDish());
 	}
 	@Override
 	public void aggiungiPrenotazioneR(int max) {
-		anotherRefreshPanel();
+		refreshPanel();
 		background.add(dg.aggiungiPrenotazione(max));
 		f.setVisible(true);
 	}
@@ -203,7 +202,7 @@ public class RistoranteGui implements IRistoranteGUI{
 	}
 	@Override
 	public void aggiungiPannello(JPanel panel) {
-		anotherRefreshPanel();
+		refreshPanel();
 		background.add(panel);
 		f.setVisible(true);
 	}
@@ -211,6 +210,16 @@ public class RistoranteGui implements IRistoranteGUI{
 	public void popUpErrore(String s) {
 		JOptionPane.showMessageDialog(null, s, "ERRORE", JOptionPane.INFORMATION_MESSAGE);
 	}
+	@Override
+	public JButton getHomeButton() {
+		return dg.getHomeButton();
+	}
+	
+	@Override
+	public JButton getHomeClienteButton() {
+		return cg.getHomeButton();
+	}
+	
 	@Override
 	public JButton getTornaIndietroButton() {
 		return dg.getTornaIndietroButton();
@@ -237,7 +246,7 @@ public class RistoranteGui implements IRistoranteGUI{
 	}
 	@Override
 	public JButton getStart() {
-		return start;
+		return startButton;
 	}
 	@Override
 	public JButton getClienteButton() {
@@ -268,6 +277,16 @@ public class RistoranteGui implements IRistoranteGUI{
 		return this.getPasswordRistorante().getPassword();
 	}
 	@Override
+	public JLabel getPostiLiberiLabel() {
+		return dg.getLabPosti();
+	}
+	
+	@Override
+	public JLabel getClientiPrenotatiLabel() {
+		return dg.getLabClientiPrenotati();
+	}
+	
+	@Override
 	public JButton getAggiungiPrenotazioneButton() {
 		return dg.getAggiungiPrenotazioneButton();
 	}
@@ -280,10 +299,19 @@ public class RistoranteGui implements IRistoranteGUI{
 		return dg.getVediOrdiniButton();
 	}
 	@Override
+	public JButton getVediPrenotazioniButton() {
+		return dg.getVediPrenotazioniButton();
+	}
+	@Override
 	public JButton aggiungiPrenotazioneButton() {
 		return dg.getAggiungiPrenotazioneButton();
 	}
 
+	@Override
+	public JTextArea getPrenotazioniArea() {
+		return dg.getPrenotazioniArea();
+	}
+	
 	//text field per inserire nome cliente
 	@Override
 	public JTextField getClienteDaPrenotare() {
@@ -329,7 +357,7 @@ public class RistoranteGui implements IRistoranteGUI{
 	public JButton getNoPrenotazioneButton() {
 		return cg.getNoPrenotazioneButton();
 	}
-	//bottone "vai a scelta menù" nella gui del cliente senza prenotazione
+	//bottone "vai a scelta menï¿½" nella gui del cliente senza prenotazione
 	@Override
 	public JButton getSceltaMenuButton() {
 		return cg.getSceltaMenuButton();
@@ -352,7 +380,7 @@ public class RistoranteGui implements IRistoranteGUI{
 		return cg.getaLaCarteButton();
 	}
 
-	//lista dove il cliente vede i piatti che può ordinare
+	//lista dove il cliente vede i piatti che puï¿½ ordinare
 	@Override
 	public JList getPiattiMenu() {
 		return cg.getPiattiMenu();
@@ -366,7 +394,7 @@ public class RistoranteGui implements IRistoranteGUI{
 		return this.getPiattiMenu().getSelectedValue();
 	}
 
-	//spinner per inserire la quantità del piatto
+	//spinner per inserire la quantitï¿½ del piatto
 	@Override
 	public JSpinner getQuantPiattoSpinner() {
 		return cg.getQuantPiattoSpinner();
@@ -430,7 +458,7 @@ public class RistoranteGui implements IRistoranteGUI{
 	public JButton getinviaOrdineButton() {
 		return cg.getinviaOrdineButton();
 	}
-	//bottone aggiungi nella pagina per aggiornare le quantità
+	//bottone aggiungi nella pagina per aggiornare le quantitï¿½
 	@Override
 	public JButton getAggiungi() {
 		return dg.getAggiungi();
@@ -475,6 +503,7 @@ public class RistoranteGui implements IRistoranteGUI{
 	public JButton getChiediContoButton() {
 		return cg.getChiediContoButton();
 	}
+	
 }
 
 

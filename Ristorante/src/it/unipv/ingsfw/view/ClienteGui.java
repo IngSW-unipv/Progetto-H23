@@ -28,6 +28,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
+import it.unipv.ingsfw.view.ourComponents.BackButton;
 import it.unipv.ingsfw.view.ourComponents.OurButton;
 import it.unipv.ingsfw.view.ourComponents.OurLabel;
 import it.unipv.ingsfw.view.ourComponents.OurPanel;
@@ -36,7 +37,7 @@ import it.unipv.ingsfw.view.ourComponents.OurTextField;
 
 public class ClienteGui {
 
-	private JButton noPrenotazioneButton,aLaCarteButton,ayceButton,sceltaMenuButton, addButton,inviaOrdineButton, chiediContoButton;
+	private JButton noPrenotazioneButton,aLaCarteButton,ayceButton,sceltaMenuButton, addButton,inviaOrdineButton, chiediContoButton, homeButton;
 	private JPanel panel,internalPanel;
 	private JLabel lab,totale;
 	private JSpinner clienteNoPrenotato, quantPiattoSpinner;
@@ -64,6 +65,7 @@ public class ClienteGui {
 		//f.add(p);
 
 		nomeClienteField=new OurTextField();
+		homeButton = new BackButton();
 		noPrenotazioneButton= new OurButton("Non hai prenotato?");
 		aLaCarteButton=new OurButton("A La Carte");
 		ayceButton=new OurButton("All you can eat");
@@ -86,7 +88,6 @@ public class ClienteGui {
 		createPanel("g");
 		lab=new OurLabel("TAVOLO CON PRENOTAZIONE", SwingConstants.CENTER, Color.RED);
 		OurLabel lab2 = new OurLabel("Nome della prenotazione: ", Color.BLACK);
-//		lab.setPreferredSize(new Dimension(50,100));
 		nomeClienteField.setFont(new Font("Italic", Font.ITALIC, 20));
 		nomeClienteField.setPreferredSize(new Dimension(200,50));
 
@@ -104,6 +105,12 @@ public class ClienteGui {
 		gbc.insets = new Insets(30, 5, 0, 0);
 		panel.add(nomeClienteField,gbc);
 
+		gbc.gridx = 1;
+		gbc.gridy = 3;
+		gbc.anchor = GridBagConstraints.EAST;
+		gbc.insets = new Insets(10, 0, 0, 0);
+		panel.add(homeButton, gbc);
+		
 		gbc.gridx = 0;
 		gbc.gridy = 2;
 		gbc.weightx = 0.2;
@@ -111,6 +118,7 @@ public class ClienteGui {
 		gbc.gridwidth = 2;
 		gbc.anchor = GridBagConstraints.PAGE_START;
 		panel.add(noPrenotazioneButton, gbc);
+		
 
 		gbc.gridx = 0;
 		gbc.gridy = 0;
@@ -121,6 +129,10 @@ public class ClienteGui {
 
 		return panel;
 
+	}
+
+	public JButton getHomeButton() {
+		return homeButton;
 	}
 
 	public JPanel clienteNoPrenotato(int max) {

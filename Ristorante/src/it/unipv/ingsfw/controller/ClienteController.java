@@ -8,16 +8,12 @@ import java.util.ArrayList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import it.unipv.ingsfw.jdbc.bean.IPrenotazioneDAO;
-import it.unipv.ingsfw.jdbc.bean.PrenotazioneDAO;
 import it.unipv.ingsfw.model.RistoranteSingleton;
 import it.unipv.ingsfw.model.menu.ALaCarte;
 import it.unipv.ingsfw.model.menu.AYCE;
 import it.unipv.ingsfw.model.persone.Cliente;
 import it.unipv.ingsfw.model.ristorante.IRistorante;
-import it.unipv.ingsfw.model.ristorante.Ristorante;
 import it.unipv.ingsfw.view.IRistoranteGUI;
-import it.unipv.ingsfw.view.RistoranteGui;
 
 public class ClienteController {
 
@@ -69,6 +65,15 @@ public class ClienteController {
 			}
 		});
 
+		rg.getHomeClienteButton().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				rg.sceltaPersona();
+			}
+		});
+		
 		rg.getNoPrenotazioneButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -149,7 +154,7 @@ public class ClienteController {
 
 				}
 				else if (rg.getValueOfValueC()==0) {
-					rg.popUpErrore("Seleziona una quantità valida");
+					rg.popUpErrore("Seleziona una quantitï¿½ valida");
 				}
 				else {
 					for(Cliente c : r.getClienti()) {
@@ -186,7 +191,7 @@ public class ClienteController {
 				}
 				else {
 					r.rimuoviCliente(daiMenu);
-					rg.sceltaPersona();
+					rg.lastClientPage();;
 					rs.cancellaPrenotazione(daiMenu.getNome());
 					//riazzero gli elementi per un prossimo cliente
 					c=null;

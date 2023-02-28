@@ -51,7 +51,7 @@ public class Cliente extends Persona{
 			if (p.getQuantita()-quantita < 0) {
 				throw new PiattoFinitoException();
 			}
-			Ordine o=new Ordine();
+			IOrdine o=new Ordine();
 			o.addPiatto(p, quantita);
 			this.aggiornaConto(o);
 			long t=System.currentTimeMillis();

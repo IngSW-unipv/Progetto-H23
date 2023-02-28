@@ -26,6 +26,11 @@
 			<location>C:/Users/gabri/git/Progetto-H23/images/background.png</location>
 		</link>
 		<link>
+			<name>images/endPage.png</name>
+			<type>1</type>
+			<location>C:/Users/gabri/git/Progetto-H23/images/endPage.png</location>
+		</link>
+		<link>
 			<name>images/icons8.png</name>
 			<type>1</type>
 			<location>C:/Users/gabri/git/Progetto-H23/images/icons8.png</location>

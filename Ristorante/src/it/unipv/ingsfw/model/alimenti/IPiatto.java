@@ -1,5 +1,4 @@
 package it.unipv.ingsfw.model.alimenti;
-import it.unipv.ingsfw.model.alimenti.*;
 
 public interface IPiatto {
 	

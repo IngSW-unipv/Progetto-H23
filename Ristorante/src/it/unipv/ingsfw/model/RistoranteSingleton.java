@@ -16,7 +16,6 @@ import it.unipv.ingsfw.model.alimenti.Dolce;
 import it.unipv.ingsfw.model.alimenti.IPiatto;
 import it.unipv.ingsfw.model.alimenti.Primo;
 import it.unipv.ingsfw.model.alimenti.Secondo;
-import it.unipv.ingsfw.model.alimenti.TipoPiatto;
 import it.unipv.ingsfw.model.ristorante.Ristorante;
 
 public class RistoranteSingleton {

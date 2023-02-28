@@ -6,18 +6,11 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Map;
-
 import it.unipv.ingsfw.model.alimenti.IPiatto;
-import it.unipv.ingsfw.model.alimenti.Piatto;
-import it.unipv.ingsfw.model.eccezioni.NoIdentificatoException;
 import it.unipv.ingsfw.model.ordine.IOrdine;
-import it.unipv.ingsfw.model.ordine.Ordine;
-import it.unipv.ingsfw.model.ristorante.Ristorante;
 
 public class Dipendente extends Persona{
 	boolean logIn1;
-	private long ultimaAggiunta;
 	private String ordiniString;
 
 
@@ -25,9 +18,7 @@ public class Dipendente extends Persona{
 
 	public Dipendente(String nome) {
 		super(nome);
-		//this.r = r;
 		logIn1=true;
-		ultimaAggiunta=0;
 		identificato = false;
 		ordiniAusiliario = new ArrayList<>();
 		this.ordiniString = "";
@@ -67,47 +58,48 @@ public class Dipendente extends Persona{
 			}	
 		}
 
-			Collections.sort(ordiniAusiliario, new Comparator<IOrdine>() {
-				@Override
-				public int compare(IOrdine o1, IOrdine o2) {
-					return (int) (o1.getTempo() - o2.getTempo());
-				}
-			});
-
-			for (IOrdine o: ordiniAusiliario) {
-				if (ordini.size() == 0) {
-					for(IOrdine oa : ordiniAusiliario) {
-						ordini.add(oa);
-					}
-				}
-				else if (o.getTempo() > ordini.get(ordini.size() -1).getTempo())
-					ordini.add(o);
+		Collections.sort(ordiniAusiliario, new Comparator<IOrdine>() {
+			@Override
+			public int compare(IOrdine o1, IOrdine o2) {
+				return (int) (o1.getTempo() - o2.getTempo());
 			}
+		});
 
-			ordiniAusiliario.clear();
+		for (IOrdine o: ordiniAusiliario) {
+			if (ordini.size() == 0) {
+				for(IOrdine oa : ordiniAusiliario) {
+					ordini.add(oa);
+				}
+			}
+			else if (o.getTempo() > ordini.get(ordini.size() -1).getTempo())
+				ordini.add(o);
 		}
 
-		public void aggiornaStatoPiatto(IOrdine o) {
-			this.controllaPrenotazione();
-			o.setStato(true);
-			System.out.println("ordine in arrivo!");
-		}
-
-			public void preparaOrdine() {
-				this.controllaPrenotazione();
-				for (int i = 0; i<ordini.size(); i++) {
-		
-					aggiornaStatoPiatto(ordini.get(i));
-					
-				}
-				ordini.clear();
-			}
-			public String getStringOrdini() {
-				ordiniString = "";
-				for (IOrdine o: ordini) {
-					ordiniString=ordiniString+o.getNomiPiattiOrdinati()+ " " +  "\n\n";
-				}
-				return ordiniString;
-			}
-
+		ordiniAusiliario.clear();
 	}
+
+	public void aggiornaStatoPiatto(IOrdine o) {
+		this.controllaPrenotazione();
+		o.setStato(true);
+		System.out.println("ordine in arrivo!");
+	}
+
+	public void preparaOrdine() {
+		this.controllaPrenotazione();
+		for (int i = 0; i<ordini.size(); i++) {
+
+			aggiornaStatoPiatto(ordini.get(i));
+
+		}
+		ordini.clear();
+	}
+	public String getStringOrdini() {
+		ordiniString = "";
+		for (IOrdine o: ordini) {
+			ordiniString=ordiniString+o.getNomiPiattiOrdinati()+ " " +  "\n\n";
+		}
+		return ordiniString;
+	}
+	
+	
+}

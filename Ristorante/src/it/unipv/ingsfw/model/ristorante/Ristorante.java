@@ -6,6 +6,7 @@ import java.util.Map;
 import it.unipv.ingsfw.model.alimenti.IPiatto;
 import it.unipv.ingsfw.model.eccezioni.NameAlreadyExistsException;
 import it.unipv.ingsfw.model.eccezioni.NoPostiException;
+import it.unipv.ingsfw.model.ordine.IOrdine;
 import it.unipv.ingsfw.model.persone.*;
 
 public class Ristorante implements IRistorante{
@@ -14,7 +15,7 @@ public class Ristorante implements IRistorante{
 	private ArrayList<Cliente> clienti;
 	private ArrayList<Dipendente> dipendenti;
 	private ArrayList<IPiatto> tuttiPiatti;
-	private String nome,password;
+	private String nome,password, prenotazioniString;
 	private Map<String,Integer> prenotazioni;
 	private double conto;
 
@@ -25,6 +26,7 @@ public class Ristorante implements IRistorante{
 		this.tuttiPiatti = new ArrayList<>();
 		this.nome = nome;
 		this.password = password;
+		this.prenotazioniString = "";
 		prenotazioni=new HashMap<String,Integer>();
 		postiLiberi=NUMERO_POSTI;
 		conto = 22.90;
@@ -102,7 +104,7 @@ public class Ristorante implements IRistorante{
 		ArrayList<String> tmp=new ArrayList();
 		for(IPiatto p: tuttiPiatti)
 		{
-			tmp.add(p.getNome()+ "  " + p.getPrezzo()+"€");
+			tmp.add(p.getNome()+ "  " + p.getPrezzo()+"ï¿½");
 		}
 		return tmp;
 	}
@@ -143,6 +145,17 @@ public class Ristorante implements IRistorante{
 			  System.out.println(key+" "+value);
 			}
 	}
+	
+//	@Override
+//	public String prenotazioni() {
+//		for (Map.Entry <String,Integer> entry : prenotazioni.entrySet()) {
+//			  String key = entry.getKey();
+//			  int value = entry.getValue();
+//			  prenotazioniString+=key + " " + value + "\n";
+//		}
+//		return prenotazioniString;
+//	}
+	
 	@Override
 	public void stampaPiatti() {
 		for(IPiatto p:tuttiPiatti) {
@@ -208,4 +221,5 @@ public class Ristorante implements IRistorante{
 		}
 		return null;
 	}
+	
 }

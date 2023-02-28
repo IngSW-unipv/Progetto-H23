@@ -1,7 +1,4 @@
 package it.unipv.ingsfw.model.menu;
-import java.util.ArrayList;
-
-import it.unipv.ingsfw.model.alimenti.*;
 
 //Sistemare menu
 

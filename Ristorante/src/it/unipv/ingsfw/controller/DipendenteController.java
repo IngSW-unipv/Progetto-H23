@@ -8,9 +8,7 @@ import it.unipv.ingsfw.model.alimenti.IPiatto;
 import it.unipv.ingsfw.model.persone.Cliente;
 import it.unipv.ingsfw.model.persone.Dipendente;
 import it.unipv.ingsfw.model.ristorante.IRistorante;
-import it.unipv.ingsfw.model.ristorante.Ristorante;
 import it.unipv.ingsfw.view.IRistoranteGUI;
-import it.unipv.ingsfw.view.RistoranteGui;
 
 public class DipendenteController {
 
@@ -44,6 +42,8 @@ public class DipendenteController {
 					//d.setIdentificato(true);
 					
 					rg.operazioniDipendenteR();
+					rg.getPostiLiberiLabel().setText("Posti liberi: "+r.getPostiLiberi());
+					rg.getClientiPrenotatiLabel().setText("Tavoli prenotati: "+ r.getPrenotazioni().size());
 				}
 				else {
 					rg.popUpErrore("password errata");
@@ -82,6 +82,16 @@ public class DipendenteController {
 				
 			}
 		});
+		
+//		rg.getVediPrenotazioniButton().addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				System.out.println(r.prenotazioni());
+//				rg.getPrenotazioniArea().setText("");
+//				rg.vediPrenotazioniR(r.prenotazioni());	
+//			}
+//		});
 
 		rg.getPreparaTuttoButton().addActionListener(new ActionListener() {
 
@@ -93,11 +103,22 @@ public class DipendenteController {
 			}
 		});
 
+		rg.getHomeButton().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				rg.sceltaPersona();
+			}
+		});
+		
 		rg.getTornaIndietroButton().addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				rg.operazioniDipendenteR();
+				rg.getPostiLiberiLabel().setText("Posti liberi: "+r.getPostiLiberi());
+				rg.getClientiPrenotatiLabel().setText("Tavoli prenotati "+ r.getPrenotazioni().size());
 			}
 		});
 
@@ -118,7 +139,7 @@ public class DipendenteController {
 
 				else if(r.getPrenotazioni().containsKey(rg.getTextOfClienteDaPrenotare())) {
 
-					rg.popUpErrore("Nome già inserito");
+					rg.popUpErrore("Nome giï¿½ inserito");
 				}
 				else {
 

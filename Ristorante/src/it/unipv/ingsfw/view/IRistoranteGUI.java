@@ -15,9 +15,9 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.border.Border;
 
 public interface IRistoranteGUI {
-	public void anotherRefreshPanel();
 	public void refreshPanel();
 	public void startPage();
+	public void lastClientPage();
 	public JButton getStartButton();
 	public void sceltaPersona();
 	public void identificaClienteR();
@@ -93,4 +93,11 @@ public interface IRistoranteGUI {
 	public void setTextOfNomeClienteField(String s);
 	public void setTextOfClienteDaPrenotare(String s);
 	public void setTextOfNomePiattoField(String s);
+	public JButton getHomeButton();
+	public JButton getHomeClienteButton();
+	public JLabel getPostiLiberiLabel();
+	public JLabel getClientiPrenotatiLabel();
+	public JButton getVediPrenotazioniButton();
+	public void vediPrenotazioniR(String prenotazioniText);
+	public JTextArea getPrenotazioniArea();
 }

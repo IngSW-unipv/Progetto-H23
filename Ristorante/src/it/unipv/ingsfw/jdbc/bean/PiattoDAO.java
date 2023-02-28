@@ -286,68 +286,6 @@ public class PiattoDAO implements IPiattoDAO{
 		return es;
 	}
 
-	//	@Override
-	//	public boolean insertAllPiatti(ArrayList<DBPiatto> p) {
-	//
-	//		conness=ConnessioneDB.startConnection(conness);
-	//		PreparedStatement st1;
-	//
-	//		boolean es=true;
-	//
-	//		try
-	//		{
-	////						+ "DELETE FROM tabelleristorante.DOLCI;"
-	////						+ "DELETE FROM tabelleristorante.PRIMI;"
-	////						+ "DELETE FROM tabelleristorante.SECONDI;";
-	//			String query="DELETE FROM tabelleristorante.ANTIPASTI";
-	//			st1 = conness.prepareStatement(query);
-	//			st1.execute();
-	//			
-	//			query="DELETE FROM tabelleristorante.BIBITE";
-	//			st1 = conness.prepareStatement(query);
-	//			st1.execute();
-	//			
-	//			query="DELETE FROM tabelleristorante.DOLCI";
-	//			st1 = conness.prepareStatement(query);
-	//			st1.execute();
-	//			
-	//			query="DELETE FROM tabelleristorante.PRIMI";
-	//			st1 = conness.prepareStatement(query);
-	//			st1.execute();
-	//			
-	//			query="DELETE FROM tabelleristorante.SECONDI";
-	//			st1 = conness.prepareStatement(query);
-	//			st1.execute();
-	//			
-	//			for(DBPiatto piatt:p) {
-	//				switch(piatt.getTp()) {
-	//				case ANTIPASTO:
-	//					insertAntipasto(piatt);
-	//					break;
-	//				case BIBITA:
-	//					insertBibita(piatt);
-	//					break;
-	//				case DOLCE:
-	//					insertDolce(piatt);
-	//					break;
-	//				case PRIMO:
-	//					insertPrimo(piatt);
-	//					break;
-	//				case SECONDO:
-	//					insertSecondo(piatt);
-	//					break;
-	//				}
-	//			}
-	//			
-	//		}catch (Exception e){
-	//			e.printStackTrace();
-	//			es=false;
-	//		}
-	//
-	//		ConnessioneDB.closeConnection(conness);
-	//		return es;
-	//	}
-
 	@ Override
 	public boolean updateQuantita(IPiatto p, int quantita) {
 
