@@ -78,6 +78,7 @@ public class DipendenteController {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				d.aggiungiOrdini(r.getClienti());
 				rg.vediOrdiniR(d.getStringOrdini());
 				
 			}
@@ -97,8 +98,9 @@ public class DipendenteController {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				d.getStringOrdini();
+				//d.getStringOrdini();
 				d.preparaOrdine();
+				d.getOrdini().clear();
 				rg.setTextOfOrdini(d.getStringOrdini());
 			}
 		});

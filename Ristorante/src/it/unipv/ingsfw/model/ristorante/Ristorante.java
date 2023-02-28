@@ -65,7 +65,7 @@ public class Ristorante implements IRistorante{
 			prenotazioni.put(c.getNome(), posti);
 
 			postiLiberi=postiLiberi-posti;
-			clienti.add(c);
+			//clienti.add(c);
 			return true;
 		}
 		catch(NoPostiException e) {
@@ -91,7 +91,7 @@ public class Ristorante implements IRistorante{
 			c.setIdentificato(true);
 			postiLiberi=postiLiberi-posti;
 			prenotazioni.put(c.getNome(), posti);
-			clienti.add(c);
+			//clienti.add(c);
 		}
 		catch(NoPostiException e) {
 			System.out.println(e.getMessage());
@@ -104,7 +104,7 @@ public class Ristorante implements IRistorante{
 		ArrayList<String> tmp=new ArrayList();
 		for(IPiatto p: tuttiPiatti)
 		{
-			tmp.add(p.getNome()+ "  " + p.getPrezzo()+"ï¿½");
+			tmp.add(p.getNome()+ "  " + p.getPrezzo()+"€");
 		}
 		return tmp;
 	}
@@ -166,7 +166,7 @@ public class Ristorante implements IRistorante{
 	public void rimuoviCliente(Cliente c) {
 		setPostiLiberi(prenotazioni.get(c.getNome()) + postiLiberi);
 		prenotazioni.remove(c.getNome());
-		clienti.remove(c);
+		//clienti.remove(c);
 		c.setIdentificato(false);
 	}
 	@Override
