@@ -36,6 +36,15 @@ public class ClienteController {
 	
 
 	private void setClienteListeners() {
+		
+		rg.getHomeClienteButton().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				rg.sceltaPersona();
+			}
+		});
 
 		rg.getNomeClienteField().addActionListener(new ActionListener() {
 			@Override
@@ -131,7 +140,7 @@ public class ClienteController {
 
 				}
 				else if (rg.getValueOfValueC()==0) {
-					rg.popUpErrore("Seleziona una quantità valida");
+					rg.popUpErrore("Seleziona una quantitï¿½ valida");
 				}
 				else {
 					try {

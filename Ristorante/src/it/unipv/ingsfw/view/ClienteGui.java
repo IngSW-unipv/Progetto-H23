@@ -56,9 +56,7 @@ public class ClienteGui {
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //aggiungere salvare piatti e prenotazioni in db
 
 		panel=new OurPanel();
-		internalPanel= new OurPanel();
-		internalPanel = new OurPanel(new BorderLayout());
-
+		
 		bordo=BorderFactory.createEmptyBorder(0,10,10,10);
 
 		panel.setBorder(bordo);
@@ -85,7 +83,7 @@ public class ClienteGui {
 
 	public JPanel identificaCliente() {
 
-		createPanel("g");
+		createPanel();
 		lab=new OurLabel("TAVOLO CON PRENOTAZIONE", SwingConstants.CENTER, Color.RED);
 		OurLabel lab2 = new OurLabel("Nome della prenotazione: ", Color.BLACK);
 		nomeClienteField.setFont(new Font("Italic", Font.ITALIC, 20));
@@ -137,7 +135,7 @@ public class ClienteGui {
 
 	public JPanel clienteNoPrenotato(int max) {
 
-		createPanel("g");
+		createPanel();
 		value.setValue(1);
 		value.setMinimum(1);
 		value.setMaximum(max);
@@ -180,8 +178,7 @@ public class ClienteGui {
 	}
 
 	public JPanel scegliMenu() {
-		createPanel("g");
-		internalPanel = new OurPanel();
+		createPanel();
 		lab=new OurLabel("SCEGLI TIPO DI MENU", Color.RED);
 		aLaCarteButton.setPreferredSize(new Dimension(230,400/6));
 		ayceButton.setPreferredSize(new Dimension(230,400/6));
@@ -213,7 +210,7 @@ public class ClienteGui {
 	}
 
 	public JPanel inviaOrdine(ArrayList<String> nomi, ArrayList<Integer> quantita) {
-		createPanel("g");
+		createPanel();
 		value.setValue(0);
 		value.setMinimum(0);
 		quantPiattoSpinner.setPreferredSize(new Dimension(50, 35));
@@ -276,20 +273,12 @@ public class ClienteGui {
 		return internalPanel;
 	}
 
-	public void createPanel (String p1) {
-
-		if (p1.equals("g")) {
-			panel = new OurPanel(new GridBagLayout());
-			gbc = new GridBagConstraints();
-		}
-		else if (p1.equals("b")){
-			panel = new OurPanel(new BorderLayout());
-		}
-		panel.setBorder(bordo);
-		internalPanel = new OurPanel(new BorderLayout());
-	}
-
-
+	public void createPanel() {
+        panel = new OurPanel(new GridBagLayout());
+        gbc = new GridBagConstraints();
+        panel.setBorder(bordo);
+    }
+   
 	public JButton getNoPrenotazioneButton() {
 		return noPrenotazioneButton;
 	}

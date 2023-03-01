@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class ConnessioneDB {
 
     private static String username="root";    //inserire utente che lavora su mysql
-    private static String password="";    //inserire password per accedere al proprio mysql
+    private static String password="psw-mysql";    //inserire password per accedere al proprio mysql
     private static String dbURL;
 
     public static Connection startConnection(Connection conn)

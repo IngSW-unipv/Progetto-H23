@@ -32,4 +32,17 @@ public class OurButton extends JButton {
 
 		setBorder(new RoundedBorder(10));
 	}
+	
+	public OurButton() {
+		try {
+			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("images/art-nuvo.ttf")).deriveFont(30f);
+			GraphicsEnvironment ge = 
+					GraphicsEnvironment.getLocalGraphicsEnvironment();
+			ge.registerFont(customFont);
+		} catch (IOException|FontFormatException e) {
+			//Handle exception
+		}
+		setFont(customFont);
+		
+	}
 }
