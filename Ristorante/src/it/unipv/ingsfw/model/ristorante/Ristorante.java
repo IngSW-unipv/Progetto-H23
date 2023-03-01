@@ -6,7 +6,6 @@ import java.util.Map;
 import it.unipv.ingsfw.model.alimenti.IPiatto;
 import it.unipv.ingsfw.model.eccezioni.NameAlreadyExistsException;
 import it.unipv.ingsfw.model.eccezioni.NoPostiException;
-import it.unipv.ingsfw.model.ordine.IOrdine;
 import it.unipv.ingsfw.model.persone.*;
 
 public class Ristorante implements IRistorante{
@@ -61,7 +60,7 @@ public class Ristorante implements IRistorante{
 			if(prenotazioni.containsKey(c.getNome())) {
 				throw new NameAlreadyExistsException();
 			}
-			
+
 			prenotazioni.put(c.getNome(), posti);
 
 			postiLiberi=postiLiberi-posti;
@@ -72,7 +71,7 @@ public class Ristorante implements IRistorante{
 			System.out.println(e.getMessage());
 			return false;
 		}
-		
+
 		catch(NameAlreadyExistsException e) {
 			System.out.println(e.getMessage());
 			return false;
@@ -98,7 +97,7 @@ public class Ristorante implements IRistorante{
 		}
 		return c;
 	}
-	
+
 	@Override
 	public ArrayList<String> getArrayNomeePrezzoPiatti(){
 		ArrayList<String> tmp=new ArrayList();
@@ -140,22 +139,12 @@ public class Ristorante implements IRistorante{
 	public void stampaPrenotazioni() {
 
 		for (Map.Entry <String,Integer> entry : prenotazioni.entrySet()) {
-			  String key = entry.getKey();
-			  int value = entry.getValue();
-			  System.out.println(key+" "+value);
-			}
+			String key = entry.getKey();
+			int value = entry.getValue();
+			System.out.println(key+" "+value);
+		}
 	}
-	
-//	@Override
-//	public String prenotazioni() {
-//		for (Map.Entry <String,Integer> entry : prenotazioni.entrySet()) {
-//			  String key = entry.getKey();
-//			  int value = entry.getValue();
-//			  prenotazioniString+=key + " " + value + "\n";
-//		}
-//		return prenotazioniString;
-//	}
-	
+
 	@Override
 	public void stampaPiatti() {
 		for(IPiatto p:tuttiPiatti) {
@@ -211,6 +200,7 @@ public class Ristorante implements IRistorante{
 	public String getNome() {
 		return nome;
 	}
+	
 	@Override
 	public Dipendente getDipendenteByNome(String s) {
 		for(Dipendente d:dipendenti)
@@ -221,5 +211,20 @@ public class Ristorante implements IRistorante{
 		}
 		return null;
 	}
-	
+
+	@Override
+	public int getSizeOfPrenotazioni() {
+		return prenotazioni.size();
+	}
+
+	@Override
+	public void addCliente(Cliente c) {
+		clienti.add(c);
+	}
+
+	@Override
+	public boolean containsKeyPrenotazioni(String s) {
+		return prenotazioni.containsKey(s);
+	}
+
 }

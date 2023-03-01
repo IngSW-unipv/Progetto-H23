@@ -100,4 +100,9 @@ public interface IRistoranteGUI {
 	public JButton getVediPrenotazioniButton();
 	public void vediPrenotazioniR(String prenotazioniText);
 	public JTextArea getPrenotazioniArea();
+	void setTextOfPostiLiberiLabel(String s);
+	void setTextOfClientiPrenotatiLabel(String s);
+	String getDefaultTextOfLabPosti();
+	String getDefaultTextOfLabClientiPrenotati();
+	String getDefaultTextOfTotale();
 }

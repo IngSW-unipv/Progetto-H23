@@ -1,22 +1,16 @@
 package it.unipv.ingsfw.view;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -37,12 +31,12 @@ import it.unipv.ingsfw.view.ourComponents.OurTextField;
 
 public class ClienteGui {
 
+	private String defaultTextOfTotale;
 	private JButton noPrenotazioneButton,aLaCarteButton,ayceButton,sceltaMenuButton, addButton,inviaOrdineButton, chiediContoButton, homeButton;
 	private JPanel panel,internalPanel;
 	private JLabel lab,totale;
 	private JSpinner clienteNoPrenotato, quantPiattoSpinner;
 	private SpinnerNumberModel value;
-	private JFrame f;
 	private Border bordo;
 	private GridBagConstraints gbc;
 	private JTextField nomeClienteField;
@@ -51,23 +45,20 @@ public class ClienteGui {
 	private JScrollPane scroll;
 
 	public ClienteGui() {
-		f=new JFrame();
-		f.setSize(800, 400);
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //aggiungere salvare piatti e prenotazioni in db
 
 		panel=new OurPanel();
 		
 		bordo=BorderFactory.createEmptyBorder(0,10,10,10);
 
 		panel.setBorder(bordo);
-		//f.add(p);
 
 		nomeClienteField=new OurTextField();
 		homeButton = new BackButton();
 		noPrenotazioneButton= new OurButton("Non hai prenotato?");
 		aLaCarteButton=new OurButton("A La Carte");
 		ayceButton=new OurButton("All you can eat");
-		totale=new OurLabel("Totale: ", SwingConstants.CENTER, Color.RED);
+		defaultTextOfTotale="Totale: ";
+		totale=new OurLabel(defaultTextOfTotale, SwingConstants.CENTER, Color.RED);
 		inviaOrdineButton=new OurButton("Aggiungi Piatto");
 
 		chiediContoButton  = new OurButton ("Chiedi il conto");
@@ -76,7 +67,6 @@ public class ClienteGui {
 		value = new SpinnerNumberModel (0, 0, 1, 1);
 		clienteNoPrenotato = new OurSpinner(value);
 		quantPiattoSpinner = new OurSpinner(value);
-		//clienteNoPrenotato.setEditor(new JSpinner.DefaultEditor(clienteNoPrenotato));
 		listModel = new DefaultListModel<String>();
 		piattiMenu = new JList<String>(listModel);
 	}
@@ -323,10 +313,6 @@ public class ClienteGui {
 		return value;
 	}
 
-	public JFrame getF() {
-		return f;
-	}
-
 	public Border getBordo() {
 		return bordo;
 	}
@@ -357,5 +343,9 @@ public class ClienteGui {
 
 	public JButton getinviaOrdineButton() {
 		return inviaOrdineButton;
+	}
+	
+	public String getDefaultTextOfTotale() {
+		return defaultTextOfTotale;
 	}
 }

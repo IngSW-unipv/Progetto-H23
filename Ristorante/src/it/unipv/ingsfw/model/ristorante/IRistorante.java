@@ -32,5 +32,7 @@ public interface IRistorante {
 	public void setPostiLiberi(int n);
 	public String getNome();
 	public Dipendente getDipendenteByNome(String s);
-//	String prenotazioni();
+	int getSizeOfPrenotazioni();
+	void addCliente(Cliente c);
+	boolean containsKeyPrenotazioni(String s);
 }

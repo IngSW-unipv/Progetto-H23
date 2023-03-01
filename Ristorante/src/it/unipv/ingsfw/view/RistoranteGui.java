@@ -1,12 +1,7 @@
 package it.unipv.ingsfw.view;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 
@@ -44,9 +39,9 @@ public class RistoranteGui implements IRistoranteGUI{
 		//aggiungere salvare piatti e prenotazioni in db
 		p=new OurPanel();
 		p2= new OurPanel();
-//		gbc= new GridBagConstraints();
+		//		gbc= new GridBagConstraints();
 		bordo=BorderFactory.createEmptyBorder(0,10,10,10);
-		
+
 		//dip=new OurLabel("");
 
 		p.setBorder(bordo);
@@ -84,7 +79,7 @@ public class RistoranteGui implements IRistoranteGUI{
 		f.add(background);
 		f.setVisible(true);
 	}
-	
+
 	@Override
 	public void startPage() {
 		f.setLayout(new BorderLayout());
@@ -96,7 +91,7 @@ public class RistoranteGui implements IRistoranteGUI{
 	public JButton getStartButton() {
 		return startButton;
 	}
-	
+
 	@Override
 	public void lastClientPage() {
 		f.setVisible(false);
@@ -107,42 +102,42 @@ public class RistoranteGui implements IRistoranteGUI{
 		f.add(background);
 		f.setVisible(true);
 	}
-	
+
 	public void sceltaPersona() {
 		refreshPanel();
 
-        p = new OurPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
+		p = new OurPanel(new GridBagLayout());
+		GridBagConstraints gbc = new GridBagConstraints();
 
-        lab=new OurLabel("SEI UN CLIENTE O DIPENDENTE?", SwingConstants.CENTER, Color.RED);
-        clienteButton.setPreferredSize(new Dimension(230,400/6));
-        dipendenteButton.setPreferredSize(new Dimension(230,400/6));
+		lab=new OurLabel("SEI UN CLIENTE O DIPENDENTE?", SwingConstants.CENTER, Color.RED);
+		clienteButton.setPreferredSize(new Dimension(230,400/6));
+		dipendenteButton.setPreferredSize(new Dimension(230,400/6));
 
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.weightx = 0.1;
-        gbc.weighty = 0.1;
-        gbc.anchor = GridBagConstraints.LINE_END;
-        gbc.insets = new Insets(0, 70, 250, 0);
-        p.add(clienteButton, gbc);
+		gbc.gridx = 0;
+		gbc.gridy = 1;
+		gbc.weightx = 0.1;
+		gbc.weighty = 0.1;
+		gbc.anchor = GridBagConstraints.LINE_END;
+		gbc.insets = new Insets(0, 70, 250, 0);
+		p.add(clienteButton, gbc);
 
-        gbc.gridx = 1;
-        gbc.gridy = 1;
-        gbc.anchor = GridBagConstraints.LINE_START;
-        gbc.insets = new Insets(0, 10, 250, 0);
-        p.add(dipendenteButton,gbc);
+		gbc.gridx = 1;
+		gbc.gridy = 1;
+		gbc.anchor = GridBagConstraints.LINE_START;
+		gbc.insets = new Insets(0, 10, 250, 0);
+		p.add(dipendenteButton,gbc);
 
-        gbc.insets = new Insets(180, 70, 0, 0);
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
-        gbc.gridwidth = 2;
-        gbc.anchor = GridBagConstraints.CENTER;
-        p.add(lab,gbc);
+		gbc.insets = new Insets(180, 70, 0, 0);
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		gbc.weightx = 0.0;
+		gbc.weighty = 0.0;
+		gbc.gridwidth = 2;
+		gbc.anchor = GridBagConstraints.CENTER;
+		p.add(lab,gbc);
 
-        background.add(p, BorderLayout.CENTER);
-        f.setVisible(true);
+		background.add(p, BorderLayout.CENTER);
+		f.setVisible(true);
 
 	}
 
@@ -162,9 +157,9 @@ public class RistoranteGui implements IRistoranteGUI{
 	}
 	@Override
 	public void identificaDipendenteR() {
-//		dip=dg.refreshDipendente(dg.identificaDipendente());
-//		f.add(dip);
-//		f.setVisible(true);
+		//		dip=dg.refreshDipendente(dg.identificaDipendente());
+		//		f.add(dip);
+		//		f.setVisible(true);
 		aggiungiPannello(dg.identificaDipendente());
 	}
 	@Override
@@ -173,9 +168,9 @@ public class RistoranteGui implements IRistoranteGUI{
 	}
 	@Override
 	public void vediOrdiniR(String ordiniText) {
-//		dip=dg.refreshDipendente(dg.vediOrdini(ordiniText));
-//		f.add(dip);
-//		f.setVisible(true);
+		//		dip=dg.refreshDipendente(dg.vediOrdini(ordiniText));
+		//		f.add(dip);
+		//		f.setVisible(true);
 		aggiungiPannello(dg.vediOrdini(ordiniText));
 	}
 	@Override
@@ -214,12 +209,12 @@ public class RistoranteGui implements IRistoranteGUI{
 	public JButton getHomeButton() {
 		return dg.getHomeButton();
 	}
-	
+
 	@Override
 	public JButton getHomeClienteButton() {
 		return cg.getHomeButton();
 	}
-	
+
 	@Override
 	public JButton getTornaIndietroButton() {
 		return dg.getTornaIndietroButton();
@@ -280,12 +275,12 @@ public class RistoranteGui implements IRistoranteGUI{
 	public JLabel getPostiLiberiLabel() {
 		return dg.getLabPosti();
 	}
-	
+
 	@Override
 	public JLabel getClientiPrenotatiLabel() {
 		return dg.getLabClientiPrenotati();
 	}
-	
+
 	@Override
 	public JButton getAggiungiPrenotazioneButton() {
 		return dg.getAggiungiPrenotazioneButton();
@@ -311,7 +306,7 @@ public class RistoranteGui implements IRistoranteGUI{
 	public JTextArea getPrenotazioniArea() {
 		return dg.getPrenotazioniArea();
 	}
-	
+
 	//text field per inserire nome cliente
 	@Override
 	public JTextField getClienteDaPrenotare() {
@@ -321,7 +316,7 @@ public class RistoranteGui implements IRistoranteGUI{
 	public String getTextOfClienteDaPrenotare() {
 		return this.getClienteDaPrenotare().getText();
 	}
-	
+
 	@Override
 	public void setTextOfClienteDaPrenotare(String s) {
 		this.getClienteDaPrenotare().setText(s);
@@ -503,7 +498,30 @@ public class RistoranteGui implements IRistoranteGUI{
 	public JButton getChiediContoButton() {
 		return cg.getChiediContoButton();
 	}
-	
+
+	@Override
+	public void setTextOfPostiLiberiLabel(String s) {
+		this.getPostiLiberiLabel().setText(s);
+	}
+
+	@Override
+	public void setTextOfClientiPrenotatiLabel(String s) {
+		this.getClientiPrenotatiLabel().setText(s);
+	}
+
+	@Override
+	public String getDefaultTextOfLabPosti() {
+		return dg.getDefaultTextOfLabPosti();
+	}
+
+	@Override
+	public String getDefaultTextOfLabClientiPrenotati() {
+		return dg.getDefaultTextOfLabClientiPrenotati();
+	}
+	@Override
+	public String getDefaultTextOfTotale() {
+		return cg.getDefaultTextOfTotale();
+	}
 }
 
 

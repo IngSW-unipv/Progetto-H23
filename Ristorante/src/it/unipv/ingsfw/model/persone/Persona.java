@@ -3,10 +3,8 @@ package it.unipv.ingsfw.model.persone;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-
 import it.unipv.ingsfw.model.eccezioni.NoIdentificatoException;
 import it.unipv.ingsfw.model.ordine.IOrdine;
-import it.unipv.ingsfw.model.ordine.Ordine;
 
 public abstract class Persona implements IPersona{
 	private String nome;
@@ -29,7 +27,6 @@ public abstract class Persona implements IPersona{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
 
 	@Override
 	public void setIdentificato(boolean b) {
@@ -40,6 +37,11 @@ public abstract class Persona implements IPersona{
 	public ArrayList<IOrdine> getOrdini() {
 		return ordini;
 	}
+	@Override
+	public int getSizeOfOrdini() {
+		return ordini.size();
+	}
+	
 	@Override
 	public void stampaOrdini() {
 		for (IOrdine o: this.ordini) {

@@ -14,4 +14,5 @@ public interface IPersona {
 	public ArrayList<IOrdine> getOrdini();
 	public void stampaOrdini();
 	public void setIdentificato(boolean b);
+	int getSizeOfOrdini();
 }

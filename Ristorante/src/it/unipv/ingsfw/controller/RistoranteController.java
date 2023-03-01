@@ -1,19 +1,9 @@
 package it.unipv.ingsfw.controller;
 
 import java.awt.event.*;
-import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 import it.unipv.ingsfw.model.RistoranteSingleton;
-import it.unipv.ingsfw.model.menu.ALaCarte;
-import it.unipv.ingsfw.model.menu.AYCE;
-import it.unipv.ingsfw.model.persone.Cliente;
-import it.unipv.ingsfw.model.persone.Dipendente;
 import it.unipv.ingsfw.model.ristorante.IRistorante;
-import it.unipv.ingsfw.model.ristorante.Ristorante;
 import it.unipv.ingsfw.view.*;
 
 public class RistoranteController {

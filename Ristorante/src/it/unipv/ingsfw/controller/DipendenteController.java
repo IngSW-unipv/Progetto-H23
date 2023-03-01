@@ -39,11 +39,10 @@ public class DipendenteController {
 					
 					//dipendente preso dal main per mostrare gli ordini arrivati
 					d=r.getDipendenteByNome("Bruno");
-					//d.setIdentificato(true);
-					
+					//d.setIdentificato(true);		
 					rg.operazioniDipendenteR();
-					rg.getPostiLiberiLabel().setText("Posti liberi: "+r.getPostiLiberi());
-					rg.getClientiPrenotatiLabel().setText("Tavoli prenotati: "+ r.getPrenotazioni().size());
+					rg.setTextOfPostiLiberiLabel(rg.getDefaultTextOfLabPosti()+r.getPostiLiberi());
+					rg.setTextOfClientiPrenotatiLabel(rg.getDefaultTextOfLabClientiPrenotati()+r.getSizeOfPrenotazioni());
 				}
 				else {
 					rg.popUpErrore("password errata");
@@ -84,16 +83,6 @@ public class DipendenteController {
 			}
 		});
 		
-//		rg.getVediPrenotazioniButton().addActionListener(new ActionListener() {
-//
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				System.out.println(r.prenotazioni());
-//				rg.getPrenotazioniArea().setText("");
-//				rg.vediPrenotazioniR(r.prenotazioni());	
-//			}
-//		});
-
 		rg.getPreparaTuttoButton().addActionListener(new ActionListener() {
 
 			@Override
@@ -119,8 +108,8 @@ public class DipendenteController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				rg.operazioniDipendenteR();
-				rg.getPostiLiberiLabel().setText("Posti liberi: "+r.getPostiLiberi());
-				rg.getClientiPrenotatiLabel().setText("Tavoli prenotati "+ r.getPrenotazioni().size());
+				rg.setTextOfPostiLiberiLabel(rg.getDefaultTextOfLabPosti()+r.getPostiLiberi());
+				rg.setTextOfClientiPrenotatiLabel(rg.getDefaultTextOfLabClientiPrenotati()+r.getSizeOfPrenotazioni());
 			}
 		});
 

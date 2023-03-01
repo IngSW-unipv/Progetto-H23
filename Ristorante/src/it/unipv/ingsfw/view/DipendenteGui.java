@@ -32,7 +32,8 @@ import it.unipv.ingsfw.view.ourComponents.OurSpinner;
 import it.unipv.ingsfw.view.ourComponents.OurTextField;
 
 public class DipendenteGui {
-
+	
+	private String defaultTextOfLabPosti,defaultTextOfLabClientiPrenotati;
 	private JPanel panel,panel2;
 	private JPasswordField passwordRistorante;
 	private JButton prenota,preparaTutto, backButton, aggiungi, vediOrdiniButton, aggiungiQuantitaButton, aggiungiPrenotazioneButton, homeButton, vediPrenotazioniButton;
@@ -72,8 +73,10 @@ public class DipendenteGui {
 		aggiungi = new OurButton("Aggiorna quantita`");
 		nomePiattoField = new OurTextField();
 		quantitySpinner = new OurSpinner(value);
-		labPosti=new OurLabel("Posti liberi: ");
-		labClientiPrenotati = new OurLabel("Clienti prenotati: ");
+		defaultTextOfLabPosti="Posti liberi: ";
+		labPosti=new OurLabel(defaultTextOfLabPosti);
+		defaultTextOfLabClientiPrenotati="Clienti prenotati: ";
+		labClientiPrenotati = new OurLabel(defaultTextOfLabClientiPrenotati);
 	}
 
 
@@ -496,6 +499,14 @@ public class DipendenteGui {
 	
 	public Border getBordo() {
 		return bordo;
+	}
+	
+	public String getDefaultTextOfLabPosti() {
+		return defaultTextOfLabPosti;
+	}
+
+	public String getDefaultTextOfLabClientiPrenotati() {
+		return defaultTextOfLabClientiPrenotati;
 	}
 
 }

@@ -23,7 +23,7 @@ public class ClienteController {
 	private IRistorante r;
 	private RistoranteSingleton rs;
 
-	
+
 	private Cliente cl;
 	public ClienteController(IRistoranteGUI rg, RistoranteSingleton rs) {
 		super();
@@ -32,16 +32,16 @@ public class ClienteController {
 		this.rg=rg;
 		this.setClienteListeners();
 	}
-	
-	
+
+
 
 	private void setClienteListeners() {
-		
+
 		rg.getHomeClienteButton().addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				rg.sceltaPersona();
 			}
 		});
@@ -49,11 +49,11 @@ public class ClienteController {
 		rg.getNomeClienteField().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-		
+
 				String s=rg.getTextNomeClienteField();
-				if (r.getPrenotazioni().containsKey(s)) {
+				if(r.containsKeyPrenotazioni(s)) {
 					cl=new Cliente(s);
-					r.getClienti().add(cl);
+					r.addCliente(cl);
 					cl.setIdentificato(true);
 
 					rg.scegliMenuR();
@@ -82,9 +82,8 @@ public class ClienteController {
 			public void actionPerformed(ActionEvent e) {
 
 				cl=r.prenotaClientenoPrenotazione(rg.getValueClienteNoPrenotato());
-				r.getClienti().add(cl);
-				
-				
+				r.addCliente(cl);
+
 				rg.scegliMenuR();
 			}
 		});
@@ -92,18 +91,18 @@ public class ClienteController {
 		rg.getAyceButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-						cl.scegliMenu(new AYCE(r.getConto()));
-						rg.inviaOrdineR(r.getArrayNomeePrezzoPiatti(),r.getArrayQuantitaPiatti());
-				
+				cl.scegliMenu(new AYCE(r.getConto()));
+				rg.inviaOrdineR(r.getArrayNomeePrezzoPiatti(),r.getArrayQuantitaPiatti());
+
 			}
 		});
 
 		rg.getALaCaButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-						cl.scegliMenu(new ALaCarte());
-						rg.inviaOrdineR(r.getArrayNomeePrezzoPiatti(),r.getArrayQuantitaPiatti());
-					
+				cl.scegliMenu(new ALaCarte());
+				rg.inviaOrdineR(r.getArrayNomeePrezzoPiatti(),r.getArrayQuantitaPiatti());
+
 			}
 		});
 
@@ -144,13 +143,13 @@ public class ClienteController {
 				}
 				else {
 					try {
-						rs.diminuisciQuantita(r.getElementOfPiatti(i),  rg.getValueOfQuantPiattoSpinner());
+						rs.diminuisciQuantita(r.getElementOfPiatti(i), rg.getValueOfQuantPiattoSpinner());
 						cl.creaOrdine(r.getElementOfPiatti(i), rg.getValueOfQuantPiattoSpinner());
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
 
-					rg.setTextOfTotale("Totale :"+cl.chiediConto());
+					rg.setTextOfTotale(rg.getDefaultTextOfTotale()+cl.chiediConto());
 
 					if(r.getElementOfPiatti(i).getQuantita()==0)
 					{
@@ -167,7 +166,7 @@ public class ClienteController {
 		rg.getChiediContoButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (cl == null) {
+				if (cl.getSizeOfOrdini()==0) {
 					rg.popUpErrore("Prima devi ordinare");
 				}
 				else {
@@ -176,7 +175,7 @@ public class ClienteController {
 					rs.cancellaPrenotazione(cl.getNome());
 					//riazzero gli elementi per un prossimo cliente
 					cl=null;
-					rg.setTextOfTotale("Totale :");
+					rg.setTextOfTotale(rg.getDefaultTextOfTotale());
 				}
 			}
 		});	
