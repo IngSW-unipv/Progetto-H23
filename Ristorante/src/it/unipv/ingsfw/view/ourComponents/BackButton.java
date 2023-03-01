@@ -1,7 +1,6 @@
 package it.unipv.ingsfw.view.ourComponents;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 
 @SuppressWarnings("serial")
 public class BackButton extends OurButton {
@@ -14,5 +13,5 @@ public class BackButton extends OurButton {
 		setBorderPainted(false);
 		setIcon(img);
 	}
-	
+
 }

@@ -10,8 +10,8 @@ public abstract class Persona implements IPersona{
 	private String nome;
 	protected ArrayList<IOrdine> ordini;
 	protected boolean identificato;
-	
-	
+
+
 	public Persona(String nome) {
 		super();
 		this.nome = nome;
@@ -22,7 +22,7 @@ public abstract class Persona implements IPersona{
 	public String getNome() {
 		return nome;
 	}
-	
+
 	@Override
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -32,7 +32,7 @@ public abstract class Persona implements IPersona{
 	public void setIdentificato(boolean b) {
 		this.identificato = b;
 	}
-	
+
 	@Override
 	public ArrayList<IOrdine> getOrdini() {
 		return ordini;
@@ -41,7 +41,7 @@ public abstract class Persona implements IPersona{
 	public int getSizeOfOrdini() {
 		return ordini.size();
 	}
-	
+
 	@Override
 	public void stampaOrdini() {
 		for (IOrdine o: this.ordini) {
@@ -55,14 +55,8 @@ public abstract class Persona implements IPersona{
 			}
 		});
 	}
-	
-	
-//	public void getAndPrintOrdini() {
-//		for (IOrdine o: this.ordini) {
-//			o.stampaPiattiOrdinati();
-//		}
-//		//return void;
-//	}
+
+
 	public void controllaPrenotazione() {
 		try {
 			if(identificato == false) {
@@ -71,7 +65,7 @@ public abstract class Persona implements IPersona{
 		}
 		catch(NoIdentificatoException e) {
 			System.out.println(e.getMessage());
-			
+
 		}
 	}
 }

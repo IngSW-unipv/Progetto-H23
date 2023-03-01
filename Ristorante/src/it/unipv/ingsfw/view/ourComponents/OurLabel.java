@@ -22,7 +22,6 @@ public class OurLabel extends JLabel {
 			e.printStackTrace();
 		}
 		setFont(customFont);
-		//setForeground(Color.RED);
 	}
 
 		public OurLabel(String nome, int i) {
@@ -36,7 +35,6 @@ public class OurLabel extends JLabel {
 				e.printStackTrace();
 			}
 			setFont(customFont);
-			//setForeground(Color.RED);
 		}
 		
 		//costruttore in cui passi un colore, aggiunto printStackTrace nel catch dell'exception

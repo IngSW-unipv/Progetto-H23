@@ -59,7 +59,7 @@ public class ClienteGui {
 		ayceButton=new OurButton("All you can eat");
 		defaultTextOfTotale="Totale: ";
 		totale=new OurLabel(defaultTextOfTotale, SwingConstants.CENTER, Color.RED);
-		inviaOrdineButton=new OurButton("Aggiungi Piatto");
+		inviaOrdineButton=new OurButton("Aggiungi e invia Portata");
 
 		chiediContoButton  = new OurButton ("Chiedi il conto");
 
@@ -199,53 +199,71 @@ public class ClienteGui {
 		return panel;
 	}
 
-	public JPanel inviaOrdine(ArrayList<String> nomi, ArrayList<Integer> quantita) {
-		createPanel();
-		value.setValue(0);
-		value.setMinimum(0);
-		quantPiattoSpinner.setPreferredSize(new Dimension(50, 35));
-
-		lab = new OurLabel("Scegli cosa desideri ordinare", Color.RED);
-
-		for(String p: nomi) {
-			listModel.addElement(p);
-		}
-
-		piattiMenu.setModel(listModel);
-		piattiMenu.setPreferredSize(new Dimension(400,200));
-		scroll = new JScrollPane(piattiMenu);
-
-		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		addButton = new OurButton("Aggiungi piatti all'ordine");
-
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		gbc.anchor =  GridBagConstraints.LINE_START;
-		panel.add(scroll, gbc);
-
-		gbc.gridx = 1;
-		gbc.gridy = 0;
-		gbc.anchor =  GridBagConstraints.LINE_END;
-		panel.add(quantPiattoSpinner,gbc);
-
-		gbc.gridx = 0;
-		gbc.gridy = 1;
-		gbc.anchor =  GridBagConstraints.CENTER;
-		panel.add(inviaOrdineButton,gbc);
-
-		gbc.gridx = 0;
-		gbc.gridy = 2;
-		gbc.anchor =  GridBagConstraints.CENTER;
-		panel.add(totale,gbc);
-
-		gbc.gridx = 0;
-		gbc.gridy = 3;
-		gbc.anchor =  GridBagConstraints.CENTER;
-		panel.add(chiediContoButton,gbc);
+	public JPanel addStatusPanel() {
+        internalPanel= new OurPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        internalPanel.add(totale, gbc);
+        internalPanel.add(chiediContoButton, gbc);
+        return internalPanel;
+    }
 
 
-		return panel;
-	}
+    public JPanel inviaOrdine(ArrayList<String> nomi, ArrayList<Integer> quantita) {
+        createPanel();
+        value.setValue(0);
+        value.setMinimum(0);
+        quantPiattoSpinner.setPreferredSize(new Dimension(50, 35));
+
+        lab = new OurLabel("AGGIUNGI PORTATE AL TUO ORDINE", Color.RED);
+
+        for(String p: nomi) {
+            listModel.addElement(p);
+        }
+
+        piattiMenu.setModel(listModel);
+        piattiMenu.setPreferredSize(new Dimension(400,400));
+        scroll = new JScrollPane(piattiMenu);
+
+        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        gbc.insets = new Insets(20, 20, 0, 0);
+        gbc.gridx = 2;
+        gbc.gridy = 3;
+
+
+        gbc.anchor=GridBagConstraints.LINE_END;
+        panel.add(addStatusPanel(), gbc);
+
+        gbc.insets = new Insets(20, 360, 0, 0);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor =  GridBagConstraints.LINE_START;
+        panel.add(lab, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.anchor =  GridBagConstraints.LINE_START;
+        panel.add(scroll, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        gbc.anchor =  GridBagConstraints.LINE_END;
+        panel.add(quantPiattoSpinner,gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.anchor =  GridBagConstraints.CENTER;
+        panel.add(inviaOrdineButton,gbc);
+
+        gbc.insets = new Insets(20, 20, 0, 0);
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        gbc.anchor =  GridBagConstraints.LINE_END;
+        panel.add(quantPiattoSpinner,gbc);
+
+        return panel;
+    }
 
 	public JButton getInviaOrdineButton() {
 		return inviaOrdineButton;

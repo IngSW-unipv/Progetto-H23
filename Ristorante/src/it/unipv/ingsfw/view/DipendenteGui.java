@@ -32,7 +32,7 @@ import it.unipv.ingsfw.view.ourComponents.OurSpinner;
 import it.unipv.ingsfw.view.ourComponents.OurTextField;
 
 public class DipendenteGui {
-	
+
 	private String defaultTextOfLabPosti,defaultTextOfLabClientiPrenotati;
 	private JPanel panel,panel2;
 	private JPasswordField passwordRistorante;
@@ -50,7 +50,7 @@ public class DipendenteGui {
 	public DipendenteGui(){
 
 		bordo=BorderFactory.createEmptyBorder(0,10,10,10);
-		
+
 		passwordRistorante=new JPasswordField();
 		vediOrdiniButton = new  OurButton("Vedi ordini");
 		vediPrenotazioniButton = new OurButton("Vedi prenotazioni");
@@ -63,13 +63,13 @@ public class DipendenteGui {
 		clienteNoPrenotato = new OurSpinner(value);
 		nomeCliente=new OurTextField();
 		prenota = new OurButton("Prenota il cliente");
-		
+
 		ordini=new JTextArea(18, 25);
 		ordini.setEditable(false);
-		
+
 		prenotazioni=new JTextArea(20, 25);
 		prenotazioni.setEditable(false);
-		
+
 		aggiungi = new OurButton("Aggiorna quantita`");
 		nomePiattoField = new OurTextField();
 		quantitySpinner = new OurSpinner(value);
@@ -101,7 +101,7 @@ public class DipendenteGui {
 		gbc.anchor = GridBagConstraints.LINE_START;
 		gbc.insets = new Insets(0, 10, 200, 0);
 		panel.add(passwordRistorante,gbc);
-		
+
 		gbc.gridx = 1;
 		gbc.gridy = 2;
 		gbc.anchor = GridBagConstraints.EAST;
@@ -119,7 +119,7 @@ public class DipendenteGui {
 
 		return panel;
 	}
-	
+
 	public JPanel addStatusPanel() {
 		panel2= new OurPanel(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
@@ -145,29 +145,25 @@ public class DipendenteGui {
 
 		gbc.gridx = 0;
 		gbc.insets = new Insets(0, 400, 10, 0);
-		
+
 
 		gbc.gridy = 2;
 		panel.add(aggiungiQuantitaButton, gbc);
 		gbc.gridy = 3;
 		panel.add(vediOrdiniButton, gbc);
-		
-		
-		gbc.gridy =4;
-		panel.add(vediPrenotazioniButton, gbc);
-		
-		
+
+
 		gbc.insets = new Insets(0, 400, 30, 0);
 		gbc.gridy = 1;
 		panel.add(lab, gbc);
 
 		gbc.insets = new Insets(0, 400, 120, 0);
-		gbc.gridy = 5;
+		gbc.gridy = 4;
 		panel.add(aggiungiPrenotazioneButton, gbc);   
 
 		return panel;
 	}
-	
+
 	public JPanel aggiungiPrenotazione(int max) {
 		createPanel();
 		lab=new OurLabel("AGGIUNGI NUOVA PRENOTAZIONE", SwingConstants.CENTER, Color.RED);
@@ -196,7 +192,7 @@ public class DipendenteGui {
 		gbc.weighty = 0.1;
 		gbc.anchor = GridBagConstraints.LINE_END;
 		panel.add(lab2, gbc);
-		
+
 		gbc.gridwidth= 1;
 		gbc.gridx = 0;
 		gbc.gridy = 2;
@@ -204,7 +200,7 @@ public class DipendenteGui {
 		gbc.weighty = 0.1;
 		gbc.anchor = GridBagConstraints.LINE_END;
 		panel.add(lab3, gbc);
-		
+
 		gbc.insets = new Insets(10, 10, 0, 0);
 		gbc.gridx = 1;
 		gbc.gridy = 1;
@@ -228,7 +224,7 @@ public class DipendenteGui {
 		gbc.weightx = 0.2;
 		gbc.weighty = 0.2;
 		panel.add(prenota,gbc);
-		
+
 		gbc.anchor = GridBagConstraints.LINE_END;
 		gbc.insets = new Insets(10, 0, 40, 0);
 		gbc.gridx = 0;
@@ -317,55 +313,11 @@ public class DipendenteGui {
 	}
 
 	public JPanel vediOrdini(String testoOrdini) {
-        createBothPanels();
-        scroll = new JScrollPane(ordini);
-        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        lab=new OurLabel("ORDINI IN ARRIVO", SwingConstants.CENTER, Color.RED);
-        ordini.setText(testoOrdini);
-
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
-        gbc.gridwidth= 3;
-        gbc.anchor = GridBagConstraints.PAGE_START;
-        gbc.insets = new Insets(20, 40, 10, 0);
-        panel.add(lab, gbc);
-
-        gbc.gridwidth= 1;
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.weightx = 0.1;
-        gbc.weighty = 0.1;
-
-        panel.add(scroll, gbc);
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-//        gbc.insets = new Insets(10, 0, 10, 0);
-        panel.add(preparaTutto,gbc);
-        
-        gbc.anchor = GridBagConstraints.LINE_END;
-        gbc.insets = new Insets(10, 0, 10, 0);
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        gbc.weightx = 0.2;
-        gbc.weighty = 0.2;
-        panel.add(backButton,gbc);
-        return panel;
-    }
-
-	
-	public JPanel vediPrenotazioni(String testoPrenotazioni) {
 		createBothPanels();
-
-		lab=new OurLabel("CLIENTI PRENOTATI", SwingConstants.CENTER, Color.RED);
-		scroll = new JScrollPane(prenotazioni);
+		scroll = new JScrollPane(ordini);
 		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		prenotazioni.setText(testoPrenotazioni);
-
-		gbc.gridwidth = GridBagConstraints.REMAINDER;
-//		panel2.add(preparaTutto, BorderLayout.NORTH);
-		panel2.add(backButton, BorderLayout.LINE_END);
+		lab=new OurLabel("ORDINI IN ARRIVO", SwingConstants.CENTER, Color.RED);
+		ordini.setText(testoOrdini);
 
 		gbc.gridx = 0;
 		gbc.gridy = 0;
@@ -385,20 +337,30 @@ public class DipendenteGui {
 		panel.add(scroll, gbc);
 		gbc.gridx = 0;
 		gbc.gridy = 2;
-		panel.add(panel2,gbc);
+		//        gbc.insets = new Insets(10, 0, 10, 0);
+		panel.add(preparaTutto,gbc);
+
+		gbc.anchor = GridBagConstraints.LINE_END;
+		gbc.insets = new Insets(10, 0, 10, 0);
+		gbc.gridx = 0;
+		gbc.gridy = 3;
+		gbc.weightx = 0.2;
+		gbc.weighty = 0.2;
+		panel.add(backButton,gbc);
 		return panel;
 	}
 
+
 	public void createPanel() {
-        panel = new OurPanel(new GridBagLayout());
-        gbc = new GridBagConstraints();
-        panel.setBorder(bordo);
-    }
-    
-    public void createBothPanels() {
-        createPanel();
-        panel2 = new OurPanel(new BorderLayout());
-    }
+		panel = new OurPanel(new GridBagLayout());
+		gbc = new GridBagConstraints();
+		panel.setBorder(bordo);
+	}
+
+	public void createBothPanels() {
+		createPanel();
+		panel2 = new OurPanel(new BorderLayout());
+	}
 
 	public JLabel getLabPosti() {
 		return labPosti;
@@ -408,7 +370,7 @@ public class DipendenteGui {
 		return labClientiPrenotati;
 	}
 
-	
+
 	public JPanel getPanel() {
 		return panel;
 	}
@@ -432,7 +394,7 @@ public class DipendenteGui {
 	public JButton getTornaIndietroButton() {
 		return backButton;
 	}
-	
+
 	public JButton getHomeButton() {
 		return homeButton;
 	}
@@ -444,7 +406,7 @@ public class DipendenteGui {
 	public JButton getVediPrenotazioniButton() {
 		return vediPrenotazioniButton;
 	}
-	
+
 	public JButton getVediOrdiniButton() {
 		return vediOrdiniButton;
 	}
@@ -492,15 +454,15 @@ public class DipendenteGui {
 	public JTextField getNomePiattoField() {
 		return nomePiattoField;
 	}
-	
+
 	public JTextArea getPrenotazioniArea() {
 		return prenotazioni;
 	}
-	
+
 	public Border getBordo() {
 		return bordo;
 	}
-	
+
 	public String getDefaultTextOfLabPosti() {
 		return defaultTextOfLabPosti;
 	}

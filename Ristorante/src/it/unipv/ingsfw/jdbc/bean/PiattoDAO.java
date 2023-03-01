@@ -244,9 +244,8 @@ public class PiattoDAO implements IPiattoDAO{
 			st1.setInt(2,p.getQuantita());
 			st1.setDouble(3,p.getPrezzo());
 
-			//st1.executeQuery(query);
+
 			st1.executeUpdate();
-			//st1.execute();
 
 		}catch (Exception e){
 			e.printStackTrace();
@@ -273,9 +272,8 @@ public class PiattoDAO implements IPiattoDAO{
 			st1.setInt(2,p.getQuantita());
 			st1.setDouble(3,p.getPrezzo());
 
-			//st1.executeQuery(query);
+
 			st1.executeUpdate();
-			//st1.execute();
 
 		}catch (Exception e){
 			e.printStackTrace();

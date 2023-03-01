@@ -98,11 +98,10 @@ public interface IRistoranteGUI {
 	public JLabel getPostiLiberiLabel();
 	public JLabel getClientiPrenotatiLabel();
 	public JButton getVediPrenotazioniButton();
-	public void vediPrenotazioniR(String prenotazioniText);
 	public JTextArea getPrenotazioniArea();
-	void setTextOfPostiLiberiLabel(String s);
-	void setTextOfClientiPrenotatiLabel(String s);
-	String getDefaultTextOfLabPosti();
-	String getDefaultTextOfLabClientiPrenotati();
-	String getDefaultTextOfTotale();
+	public void setTextOfPostiLiberiLabel(String s);
+	public void setTextOfClientiPrenotatiLabel(String s);
+	public String getDefaultTextOfLabPosti();
+	public String getDefaultTextOfLabClientiPrenotati();
+	public String getDefaultTextOfTotale();
 }

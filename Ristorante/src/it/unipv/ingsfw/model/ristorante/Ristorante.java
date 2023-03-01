@@ -52,8 +52,7 @@ public class Ristorante implements IRistorante{
 	@Override
 	public boolean prenotaCliente(Cliente c, int posti) {		
 		try {
-			//if(posti<1) 
-			//throw new
+
 			if(postiLiberi-posti<0) {
 				throw new NoPostiException();
 			}
@@ -200,7 +199,7 @@ public class Ristorante implements IRistorante{
 	public String getNome() {
 		return nome;
 	}
-	
+
 	@Override
 	public Dipendente getDipendenteByNome(String s) {
 		for(Dipendente d:dipendenti)

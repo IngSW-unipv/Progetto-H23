@@ -173,10 +173,7 @@ public class RistoranteGui implements IRistoranteGUI{
 		//		f.setVisible(true);
 		aggiungiPannello(dg.vediOrdini(ordiniText));
 	}
-	@Override
-	public void vediPrenotazioniR(String prenotazioniText) {
-		aggiungiPannello(dg.vediPrenotazioni(prenotazioniText));
-	}
+	
 	@Override
 	public void addDishR() {
 		aggiungiPannello(dg.addDish());

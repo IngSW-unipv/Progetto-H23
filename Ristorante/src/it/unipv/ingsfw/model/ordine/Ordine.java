@@ -49,14 +49,13 @@ public class Ordine implements IOrdine{
 	public void setPiattiOrdinati(ArrayList<IPiatto> piattiOrdinati) {
 		this.piattiOrdinati = piattiOrdinati;
 	}
-	
+
 	@Override
 	public void stampaPiattiOrdinati() {
 
 		for (IPiatto p: piattiOrdinati) {
 			System.out.println(p.getNome());
-			//System.out.println("Prezzo: " + p.getPrezzo());
-			//System.out.println("Quantita: " + p.getQuantita());
+
 
 		}
 
@@ -66,12 +65,12 @@ public class Ordine implements IOrdine{
 	@Override
 	public String getNomiPiattiOrdinati() {
 		Set <IPiatto> set = new HashSet<>();
-        String s="";
-        set.addAll(piattiOrdinati);
-         for (IPiatto p: set ) {
-        		 s = s + p.getNome() + " " +   Collections.frequency(piattiOrdinati, p);
-        	 }
+		String s="";
+		set.addAll(piattiOrdinati);
+		for (IPiatto p: set ) {
+			s = s + p.getNome() + " " +   Collections.frequency(piattiOrdinati, p);
+		}
 
-        return s;
-    }
+		return s;
+	}
 }

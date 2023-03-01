@@ -5,7 +5,6 @@ public class Primo extends Piatto{
 	public Primo(double prezzo, String nome, int quantita) {
 		super(prezzo, nome, quantita);
 		tipo = tipo.PRIMO;
-		// TODO Auto-generated constructor stub
 	}
 	
 }

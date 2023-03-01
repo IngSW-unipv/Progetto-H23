@@ -6,7 +6,7 @@ public class AYCE extends Menu{
 		super();
 		this.conto=conto;
 	}
-	
+
 	@Override
 	public void setConto(double conto) {
 		//non fa niente -> non posso cambiare il conto dell'AYCE

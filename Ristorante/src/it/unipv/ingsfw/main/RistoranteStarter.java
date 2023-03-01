@@ -6,7 +6,6 @@ import it.unipv.ingsfw.controller.RistoranteController;
 import it.unipv.ingsfw.model.RistoranteSingleton;
 import it.unipv.ingsfw.model.menu.ALaCarte;
 import it.unipv.ingsfw.model.menu.AYCE;
-import it.unipv.ingsfw.model.ordine.IOrdine;
 import it.unipv.ingsfw.model.persone.Cliente;
 import it.unipv.ingsfw.model.persone.Dipendente;
 import it.unipv.ingsfw.model.ristorante.IRistorante;
@@ -25,11 +24,10 @@ public class RistoranteStarter {
 
 		Cliente c1 = new Cliente ("Fabio");
 		Cliente c2 = new Cliente ("Zoe");
-		r.prenotaCliente(c1, 4);
-		r.prenotaCliente(c2, 6);
+		r.addCliente(c1);
+		r.addCliente(c2);
 
-		Dipendente d1 = r.creaDipendente("Bruno");
-		d1.setIdentificato(true);
+		Dipendente d1 = r.getDipendenteByNome("Sara");
 		c1.setIdentificato(true);
 		c2.setIdentificato(true);
 
@@ -48,10 +46,10 @@ public class RistoranteStarter {
 		c2.creaOrdine(r.getElementOfPiatti(4), 8);
 
 		//il dipendente aggiunge tutti gli ordini dei clienti
-		//d1.setIdentificato(true);
+		d1.setIdentificato(true);
 		d1.aggiungiOrdini(r.getClienti());
-//		r.stampaPrenotazioni();
-		
+		//		r.stampaPrenotazioni();
+
 		RistoranteGui rg=new RistoranteGui();
 		RistoranteController rc=new RistoranteController(rg,rs);
 	}

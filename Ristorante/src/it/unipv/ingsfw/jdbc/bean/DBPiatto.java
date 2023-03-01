@@ -7,7 +7,7 @@ public class DBPiatto {
 	int quantita;
 	double prezzo;
 	private TipoPiatto tp;
-	
+
 	public DBPiatto(String nome, int quantita, double prezzo) {
 		super();
 		this.nome = nome;
@@ -46,7 +46,7 @@ public class DBPiatto {
 	public void setPrezzo(double prezzo) {
 		this.prezzo = prezzo;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Piatto ("+nome+", "+quantita+", "+prezzo+")";

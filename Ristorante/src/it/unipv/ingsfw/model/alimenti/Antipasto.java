@@ -5,7 +5,7 @@ public class Antipasto extends Piatto{
 	public Antipasto(double prezzo, String nome, int quantita) {
 		super(prezzo, nome, quantita);
 		tipo = tipo.ANTIPASTO;
-		// TODO Auto-generated constructor stub
+		
 	}
-	
+
 }

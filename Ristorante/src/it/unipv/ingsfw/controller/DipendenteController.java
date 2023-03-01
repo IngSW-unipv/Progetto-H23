@@ -15,8 +15,8 @@ public class DipendenteController {
 	private IRistoranteGUI rg;
 	private RistoranteSingleton rs;
 	private IRistorante r;
-	Dipendente d;
-	boolean triggered;
+	private Dipendente d;
+	private boolean triggered;
 
 	public DipendenteController(IRistoranteGUI rg, RistoranteSingleton rs) {
 		super();
@@ -36,9 +36,9 @@ public class DipendenteController {
 				String s=new String(c);
 
 				if(s.equals(r.getPassword())) {
-					
+
 					//dipendente preso dal main per mostrare gli ordini arrivati
-					d=r.getDipendenteByNome("Bruno");
+					d=r.getDipendenteByNome("Sara");
 					//d.setIdentificato(true);		
 					rg.operazioniDipendenteR();
 					rg.setTextOfPostiLiberiLabel(rg.getDefaultTextOfLabPosti()+r.getPostiLiberi());
@@ -77,17 +77,16 @@ public class DipendenteController {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				d.aggiungiOrdini(r.getClienti());
+				//d.aggiungiOrdini(r.getClienti());
 				rg.vediOrdiniR(d.getStringOrdini());
-				
+
 			}
 		});
-		
+
 		rg.getPreparaTuttoButton().addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//d.getStringOrdini();
 				d.preparaOrdine();
 				d.getOrdini().clear();
 				rg.setTextOfOrdini(d.getStringOrdini());
@@ -98,11 +97,11 @@ public class DipendenteController {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				rg.sceltaPersona();
 			}
 		});
-		
+
 		rg.getTornaIndietroButton().addActionListener(new ActionListener() {
 
 			@Override
@@ -148,9 +147,9 @@ public class DipendenteController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				triggered=true;
-				
+
 				for(IPiatto p:r.getPiatti()) {
-					
+
 					if(p.getNome().equals(rg.getTextOfNomePiattoField())) {
 						p.setQuantita(p.getQuantita()+rg.getValueOfQuantitySpinner());
 						rs.aggiungiQuantita(p, p.getQuantita());

@@ -34,7 +34,6 @@ public class PrenotazioneDAO implements IPrenotazioneDAO{
 
 			while(rs1.next())
 			{
-				//DBPrenotazione p=new DBPrenotazione(rs1.getString(1), rs1.getInt(2));
 				prenotaz.put(rs1.getString(1), rs1.getInt(2));
 			}
 		}catch (Exception e){e.printStackTrace();}

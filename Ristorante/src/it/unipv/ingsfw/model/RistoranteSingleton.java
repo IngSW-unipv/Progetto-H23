@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import it.unipv.ingsfw.jdbc.bean.DBDipendente;
 import it.unipv.ingsfw.jdbc.bean.DBPiatto;
+import it.unipv.ingsfw.jdbc.bean.DipendenteDAO;
 import it.unipv.ingsfw.jdbc.bean.IPiattoDAO;
 import it.unipv.ingsfw.jdbc.bean.IPrenotazioneDAO;
 import it.unipv.ingsfw.jdbc.bean.PiattoDAO;
@@ -16,6 +18,7 @@ import it.unipv.ingsfw.model.alimenti.Dolce;
 import it.unipv.ingsfw.model.alimenti.IPiatto;
 import it.unipv.ingsfw.model.alimenti.Primo;
 import it.unipv.ingsfw.model.alimenti.Secondo;
+import it.unipv.ingsfw.model.persone.Dipendente;
 import it.unipv.ingsfw.model.ristorante.Ristorante;
 
 public class RistoranteSingleton {
@@ -23,6 +26,7 @@ public class RistoranteSingleton {
 	private static RistoranteSingleton rs;
 	private IPiattoDAO p;
 	private IPrenotazioneDAO pr;
+	private DipendenteDAO d;
 	private Ristorante r;
 
 	private RistoranteSingleton() {
@@ -30,9 +34,11 @@ public class RistoranteSingleton {
 		this.r= new Ristorante("NOME", "PASS");
 		p= new PiattoDAO();
 		pr= new PrenotazioneDAO();
+		d = new DipendenteDAO();
 
 		riempiPiatti();
 		riempiPrenotazioni();
+		riempiDipendenti();
 	}
 
 	public static RistoranteSingleton getSingleton() {
@@ -42,6 +48,18 @@ public class RistoranteSingleton {
 		}
 		return rs;
 	}
+	
+	private void riempiDipendenti() {
+
+		ArrayList<DBDipendente> tmp = new ArrayList<>();
+
+		tmp=d.selectAllDipendenti();
+		
+		for (DBDipendente d: tmp) {
+			r.getDipendenti().add(new Dipendente(d.getNome()));
+		}
+		
+		}
 
 	private void riempiPiatti() {
 
@@ -78,6 +96,8 @@ public class RistoranteSingleton {
 			r.getPiatti().add(new Secondo(d.getPrezzo(), d.getNome(), d.getQuantita()));
 		}
 	}
+	
+
 
 	private void riempiPrenotazioni() {
 		Map<String, Integer> tmp=new HashMap<>();
@@ -96,29 +116,7 @@ public class RistoranteSingleton {
 
 	}
 
-//	public void aggiornaPiatti() {
-//		DBPiatto dbp;
-//		ArrayList<DBPiatto> dbpArr=new ArrayList<>();
-//
-//		for(int i=0;i<r.getPiatti().size();i++) {
-//			dbp=new DBPiatto(r.getPiatti().get(i).getNome(),r.getPiatti().get(i).getQuantita(),r.getPiatti().get(i).getPrezzo());
-//			switch(r.getPiatti().get(i).getTipo())
-//			{
-//			case ANTIPASTO:dbp.setTp(TipoPiatto.ANTIPASTO);
-//			break;
-//			case BIBITA: dbp.setTp(TipoPiatto.BIBITA);
-//			break;
-//			case DOLCE: dbp.setTp(TipoPiatto.DOLCE);
-//			break;
-//			case PRIMO: dbp.setTp(TipoPiatto.PRIMO);
-//			break;
-//			case SECONDO: dbp.setTp(TipoPiatto.SECONDO);
-//			break;
-//			}
-//			dbpArr.add(dbp);
-//		}
-//		p.insertAllPiatti(dbpArr);
-//	}
+
 	public ArrayList<String> selezionaNomi() {
 		return pr.selectAllNomiPrenotazioni();
 	}

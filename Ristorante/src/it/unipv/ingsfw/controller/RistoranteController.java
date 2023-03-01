@@ -7,7 +7,7 @@ import it.unipv.ingsfw.model.ristorante.IRistorante;
 import it.unipv.ingsfw.view.*;
 
 public class RistoranteController {
-	
+
 	private IRistoranteGUI rg;
 	private RistoranteSingleton rs;
 	private IRistorante r;

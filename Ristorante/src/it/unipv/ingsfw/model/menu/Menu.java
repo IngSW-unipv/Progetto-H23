@@ -1,14 +1,12 @@
 package it.unipv.ingsfw.model.menu;
 
-//Sistemare menu
 
 public abstract class Menu implements IMenu{
-	protected double conto;
-	//protected ArrayList<Piatto> alimenti;
 	
+	protected double conto;
+
 	public Menu() {
 		super();
-		//this.alimenti = new ArrayList<>();
 	}
 	@Override
 	public void setConto(double conto) {
