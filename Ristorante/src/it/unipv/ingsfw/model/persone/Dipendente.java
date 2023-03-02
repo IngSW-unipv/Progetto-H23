@@ -12,6 +12,7 @@ import it.unipv.ingsfw.model.ordine.IOrdine;
 public class Dipendente extends Persona{
 	boolean logIn1;
 	private String ordiniString;
+	private long lastAdd;
 
 
 	private ArrayList<IOrdine> ordiniAusiliario;
@@ -22,6 +23,7 @@ public class Dipendente extends Persona{
 		identificato = false;
 		ordiniAusiliario = new ArrayList<>();
 		this.ordiniString = "";
+		lastAdd=0;
 	}
 
 
@@ -54,10 +56,15 @@ public class Dipendente extends Persona{
 		this.controllaPrenotazione();
 		for (Cliente c: clienti) {
 			for (IOrdine o: c.getOrdini()) {
-				ordiniAusiliario.add(o);
+				if(o.getTempo()>lastAdd)
+				{
+					ordiniAusiliario.add(o);
+				}
 			}	
 		}
+		lastAdd=System.currentTimeMillis();
 
+		//li ordino per tempo crescente
 		Collections.sort(ordiniAusiliario, new Comparator<IOrdine>() {
 			@Override
 			public int compare(IOrdine o1, IOrdine o2) {
@@ -66,13 +73,7 @@ public class Dipendente extends Persona{
 		});
 
 		for (IOrdine o: ordiniAusiliario) {
-			if (ordini.size() == 0) {
-				for(IOrdine oa : ordiniAusiliario) {
-					ordini.add(oa);
-				}
-			}
-			else if (o.getTempo() > ordini.get(ordini.size() -1).getTempo())
-				ordini.add(o);
+			ordini.add(o);
 		}
 
 		ordiniAusiliario.clear();
@@ -100,6 +101,6 @@ public class Dipendente extends Persona{
 		}
 		return ordiniString;
 	}
-	
-	
+
+
 }

@@ -38,8 +38,6 @@ public class Cliente extends Persona{
 		return identificato;
 		
 	}
-	
-	
 
 	public boolean creaOrdine(IPiatto p,int quantita) throws IOException {
 		

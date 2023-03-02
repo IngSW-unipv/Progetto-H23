@@ -38,8 +38,9 @@ public class DipendenteController {
 				if(s.equals(r.getPassword())) {
 
 					//dipendente preso dal main per mostrare gli ordini arrivati
-					d=r.getDipendenteByNome("Sara");
-					//d.setIdentificato(true);		
+					d=r.getDipendenteByNome("Giancarlo");
+					d.setIdentificato(true);
+					
 					rg.operazioniDipendenteR();
 					rg.setTextOfPostiLiberiLabel(rg.getDefaultTextOfLabPosti()+r.getPostiLiberi());
 					rg.setTextOfClientiPrenotatiLabel(rg.getDefaultTextOfLabClientiPrenotati()+r.getSizeOfPrenotazioni());
@@ -60,7 +61,7 @@ public class DipendenteController {
 				}
 				else
 				{
-					rg.aggiungiPrenotazioneR(rs.getRistorante().getPostiLiberi());
+					rg.aggiungiPrenotazioneR(r.getPostiLiberi());
 				}
 			}
 		});
@@ -77,7 +78,7 @@ public class DipendenteController {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//d.aggiungiOrdini(r.getClienti());
+				d.aggiungiOrdini(r.getClienti());
 				rg.vediOrdiniR(d.getStringOrdini());
 
 			}
