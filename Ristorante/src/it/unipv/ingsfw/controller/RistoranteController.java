@@ -49,5 +49,13 @@ public class RistoranteController {
 				rg.identificaDipendenteR();
 			}
 		});
+		
+		rg.getEndButton().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				rg.sceltaPersona();
+			}
+		});
 	}
 }

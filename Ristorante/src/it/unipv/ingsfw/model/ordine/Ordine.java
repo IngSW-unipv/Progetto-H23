@@ -13,16 +13,15 @@ public class Ordine implements IOrdine{
 
 	public Ordine() {
 		super();
-		//this.tempo = System.currentTimeMillis();
 		this.tempo=0;
 		this.piattiOrdinati = new ArrayList<>();
 		this.stato = false;
 	} 
 	@Override
-	public void addPiatto(IPiatto p, int quantita) {
+	public void addPiatto(IPiatto piatto, int quantita) {
 
 		for(int i=0;i<quantita;i++) {
-			piattiOrdinati.add(p);
+			piattiOrdinati.add(piatto);
 		}
 	}
 	@Override
@@ -55,22 +54,19 @@ public class Ordine implements IOrdine{
 
 		for (IPiatto p: piattiOrdinati) {
 			System.out.println(p.getNome());
-
-
 		}
-
 	}
 
 
 	@Override
 	public String getNomiPiattiOrdinati() {
-		Set <IPiatto> set = new HashSet<>();
-		String s="";
-		set.addAll(piattiOrdinati);
-		for (IPiatto p: set ) {
-			s = s + p.getNome() + " " +   Collections.frequency(piattiOrdinati, p);
+		Set <IPiatto> setPiatti = new HashSet<>();
+		String piattiString="";
+		setPiatti.addAll(piattiOrdinati);
+		for (IPiatto p: setPiatti ) {
+			piattiString = piattiString + p.getNome() + " " +   Collections.frequency(piattiOrdinati, p);
 		}
 
-		return s;
+		return piattiString;
 	}
 }

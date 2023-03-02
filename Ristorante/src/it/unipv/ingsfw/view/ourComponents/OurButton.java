@@ -19,12 +19,11 @@ public class OurButton extends JButton {
 					GraphicsEnvironment.getLocalGraphicsEnvironment();
 			ge.registerFont(customFont);
 		} catch (IOException|FontFormatException e) {
-			//Handle exception
+			e.printStackTrace();
 		}
 		setFont(customFont);
 		setBackground(Color.WHITE);
 		setForeground(Color.BLACK);
-		//setFont(new Font("Roman", Font.ROMAN_BASELINE, 25));
 		setOpaque(false);
 		
 
@@ -40,7 +39,7 @@ public class OurButton extends JButton {
 					GraphicsEnvironment.getLocalGraphicsEnvironment();
 			ge.registerFont(customFont);
 		} catch (IOException|FontFormatException e) {
-			//Handle exception
+			e.printStackTrace();
 		}
 		setFont(customFont);
 		

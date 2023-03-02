@@ -37,7 +37,6 @@ public class DipendenteController {
 
 				if(s.equals(r.getPassword())) {
 
-					//dipendente preso dal main per mostrare gli ordini arrivati
 					d=r.getDipendenteByNome("Giancarlo");
 					d.setIdentificato(true);
 					
@@ -71,6 +70,14 @@ public class DipendenteController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				rg.addDishR();
+			}
+		});
+		
+		rg.getVediPrenotazioniButton().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				rg.vediPrenotazioniR(r.prenotazioni());	
 			}
 		});
 
@@ -143,7 +150,7 @@ public class DipendenteController {
 			}
 		});
 
-		rg.getAggiungi().addActionListener(new ActionListener() {
+		rg.getAggiornaQuantitaButton().addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {

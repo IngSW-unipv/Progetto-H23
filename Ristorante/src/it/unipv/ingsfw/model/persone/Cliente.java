@@ -2,16 +2,13 @@ package it.unipv.ingsfw.model.persone;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Map;
 
 import it.unipv.ingsfw.model.alimenti.*;
 import it.unipv.ingsfw.model.eccezioni.InvalidQuantityException;
-import it.unipv.ingsfw.model.eccezioni.NoIdentificatoException;
 import it.unipv.ingsfw.model.eccezioni.PiattoFinitoException;
 import it.unipv.ingsfw.model.menu.*;
 import it.unipv.ingsfw.model.ordine.*;
-import it.unipv.ingsfw.model.ristorante.Ristorante;
 
 public class Cliente extends Persona{
 	private IMenu menu;

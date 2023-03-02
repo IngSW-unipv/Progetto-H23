@@ -63,7 +63,6 @@ public class Ristorante implements IRistorante{
 			prenotazioni.put(c.getNome(), posti);
 
 			postiLiberi=postiLiberi-posti;
-			//clienti.add(c);
 			return true;
 		}
 		catch(NoPostiException e) {
@@ -89,7 +88,6 @@ public class Ristorante implements IRistorante{
 			c.setIdentificato(true);
 			postiLiberi=postiLiberi-posti;
 			prenotazioni.put(c.getNome(), posti);
-			//clienti.add(c);
 		}
 		catch(NoPostiException e) {
 			System.out.println(e.getMessage());
@@ -102,7 +100,7 @@ public class Ristorante implements IRistorante{
 		ArrayList<String> tmp=new ArrayList();
 		for(IPiatto p: tuttiPiatti)
 		{
-			tmp.add(p.getNome()+ "  " + p.getPrezzo()+"€");
+			tmp.add(p.getNome()+ "  " + p.getPrezzo()+"ï¿½");
 		}
 		return tmp;
 	}
@@ -143,6 +141,17 @@ public class Ristorante implements IRistorante{
 			System.out.println(key+" "+value);
 		}
 	}
+	
+	@Override
+	public String prenotazioni() {
+		prenotazioniString = "\n";
+		for (Map.Entry <String,Integer> entry : prenotazioni.entrySet()) {
+			  String key = entry.getKey();
+			  int value = entry.getValue();
+			  prenotazioniString+="  " + key + "\t  Posti: " + value + "\n";
+		}
+		return prenotazioniString;
+	}
 
 	@Override
 	public void stampaPiatti() {
@@ -154,7 +163,6 @@ public class Ristorante implements IRistorante{
 	public void rimuoviCliente(Cliente c) {
 		setPostiLiberi(prenotazioni.get(c.getNome()) + postiLiberi);
 		prenotazioni.remove(c.getNome());
-		//clienti.remove(c);
 		c.setIdentificato(false);
 	}
 	@Override

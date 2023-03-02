@@ -13,5 +13,4 @@ public class BackButton extends OurButton {
 		setBorderPainted(false);
 		setIcon(img);
 	}
-
 }

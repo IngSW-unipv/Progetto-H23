@@ -35,4 +35,5 @@ public interface IRistorante {
 	public int getSizeOfPrenotazioni();
 	public void addCliente(Cliente c);
 	public boolean containsKeyPrenotazioni(String s);
+	public String prenotazioni();
 }

@@ -171,7 +171,7 @@ public class ClienteController {
 				}
 				else {
 					r.rimuoviCliente(cl);
-					rg.sceltaPersona();
+					rg.lastPage();
 					rs.cancellaPrenotazione(cl.getNome());
 					//riazzero gli elementi per un prossimo cliente
 					cl=null;

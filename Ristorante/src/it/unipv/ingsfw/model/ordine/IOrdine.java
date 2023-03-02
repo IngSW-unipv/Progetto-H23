@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import it.unipv.ingsfw.model.alimenti.IPiatto;
 
 public interface IOrdine {
-	public void addPiatto(IPiatto p, int quantita);
+	public void addPiatto(IPiatto piatto, int quantita);
 	public long getTempo();
 	public void setTempo(long tempo);
 	public boolean getStato();

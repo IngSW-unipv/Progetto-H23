@@ -37,7 +37,6 @@ public class OurLabel extends JLabel {
 			setFont(customFont);
 		}
 		
-		//costruttore in cui passi un colore, aggiunto printStackTrace nel catch dell'exception
 		
 		public OurLabel(String nome, Color colore) {
 			super(nome);

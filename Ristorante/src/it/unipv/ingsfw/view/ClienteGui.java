@@ -33,10 +33,10 @@ public class ClienteGui {
 
 	private String defaultTextOfTotale;
 	private JButton noPrenotazioneButton,aLaCarteButton,ayceButton,sceltaMenuButton, addButton,inviaOrdineButton, chiediContoButton, homeButton;
-	private JPanel panel,internalPanel;
+	private JPanel panel,statusPanel;
 	private JLabel lab,totale;
-	private JSpinner clienteNoPrenotato, quantPiattoSpinner;
-	private SpinnerNumberModel value;
+	private JSpinner clienteNoPrenotatoSpinner, quantPiattoSpinner;
+	private SpinnerNumberModel spinnerValue;
 	private Border bordo;
 	private GridBagConstraints gbc;
 	private JTextField nomeClienteField;
@@ -64,9 +64,9 @@ public class ClienteGui {
 		chiediContoButton  = new OurButton ("Chiedi il conto");
 
 		sceltaMenuButton = new OurButton("Vai alla scelta del menu");
-		value = new SpinnerNumberModel (0, 0, 1, 1);
-		clienteNoPrenotato = new OurSpinner(value);
-		quantPiattoSpinner = new OurSpinner(value);
+		spinnerValue = new SpinnerNumberModel (0, 0, 1, 1);
+		clienteNoPrenotatoSpinner = new OurSpinner(spinnerValue);
+		quantPiattoSpinner = new OurSpinner(spinnerValue);
 		listModel = new DefaultListModel<String>();
 		piattiMenu = new JList<String>(listModel);
 	}
@@ -126,14 +126,14 @@ public class ClienteGui {
 	public JPanel clienteNoPrenotato(int max) {
 
 		createPanel();
-		value.setValue(1);
-		value.setMinimum(1);
-		value.setMaximum(max);
+		spinnerValue.setValue(1);
+		spinnerValue.setMinimum(1);
+		spinnerValue.setMaximum(max);
 		lab=new OurLabel("TAVOLO SENZA PRENOTAZIONE", SwingConstants.CENTER, Color.RED);
 		OurLabel lab2 = new OurLabel("Inserisci numero posti: ");
 		lab2.setForeground(Color.BLACK);
 
-		clienteNoPrenotato.setPreferredSize(new Dimension(60, 35));
+		clienteNoPrenotatoSpinner.setPreferredSize(new Dimension(60, 35));
 
 		gbc.gridx = 0;
 		gbc.gridy = 1;
@@ -147,7 +147,7 @@ public class ClienteGui {
 		gbc.gridy = 1;
 		gbc.anchor = GridBagConstraints.LINE_START;
 		gbc.insets = new Insets(30, 20, 0, 0);
-		panel.add(clienteNoPrenotato,gbc);
+		panel.add(clienteNoPrenotatoSpinner,gbc);
 
 		gbc.gridx = 0;
 		gbc.gridy = 2;
@@ -200,19 +200,19 @@ public class ClienteGui {
 	}
 
 	public JPanel addStatusPanel() {
-        internalPanel= new OurPanel(new GridBagLayout());
+        statusPanel= new OurPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridwidth = GridBagConstraints.REMAINDER;
-        internalPanel.add(totale, gbc);
-        internalPanel.add(chiediContoButton, gbc);
-        return internalPanel;
+        statusPanel.add(totale, gbc);
+        statusPanel.add(chiediContoButton, gbc);
+        return statusPanel;
     }
 
 
     public JPanel inviaOrdine(ArrayList<String> nomi, ArrayList<Integer> quantita) {
         createPanel();
-        value.setValue(0);
-        value.setMinimum(0);
+        spinnerValue.setValue(0);
+        spinnerValue.setMinimum(0);
         quantPiattoSpinner.setPreferredSize(new Dimension(50, 35));
 
         lab = new OurLabel("AGGIUNGI PORTATE AL TUO ORDINE", Color.RED);
@@ -264,7 +264,13 @@ public class ClienteGui {
 
         return panel;
     }
-
+    
+	public void createPanel() {
+        panel = new OurPanel(new GridBagLayout());
+        gbc = new GridBagConstraints();
+        panel.setBorder(bordo);
+    }
+   
 	public JButton getInviaOrdineButton() {
 		return inviaOrdineButton;
 	}
@@ -273,20 +279,8 @@ public class ClienteGui {
 		return chiediContoButton;
 	}
 
-	public JPanel getPanel() {
-		return panel;
-	}
 
-	public JPanel getInternalPanel() {
-		return internalPanel;
-	}
 
-	public void createPanel() {
-        panel = new OurPanel(new GridBagLayout());
-        gbc = new GridBagConstraints();
-        panel.setBorder(bordo);
-    }
-   
 	public JButton getNoPrenotazioneButton() {
 		return noPrenotazioneButton;
 	}
@@ -307,36 +301,16 @@ public class ClienteGui {
 		return addButton;
 	}
 
-	public JPanel getP() {
-		return panel;
-	}
-
-	public JPanel getP2() {
-		return internalPanel;
-	}
-
-	public JLabel getLab() {
-		return lab;
-	}
-
 	public JSpinner getClienteNoPrenotato() {
-		return clienteNoPrenotato;
+		return clienteNoPrenotatoSpinner;
 	}
 
 	public JSpinner getQuantPiattoSpinner() {
 		return quantPiattoSpinner;
 	}
 
-	public SpinnerNumberModel getValue() {
-		return value;
-	}
-
-	public Border getBordo() {
-		return bordo;
-	}
-
-	public GridBagConstraints getGbc() {
-		return gbc;
+	public SpinnerNumberModel getSpinnerValue() {
+		return spinnerValue;
 	}
 
 	public JTextField getNomeClienteField() {
