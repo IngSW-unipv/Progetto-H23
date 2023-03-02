@@ -1,6 +1,6 @@
 
 # Trattoria all you can eat
-## Progetto Gruppo H-23 InsertNameHere
+## Progetto H-23 [Gruppo InsertNameHere]
 
 ![you can eat](https://user-images.githubusercontent.com/80647042/222444384-be0d04c9-1b73-4486-bf03-335c2d96f984.png)
 
@@ -23,7 +23,7 @@ git clone https://github.com/IngSW-unipv/Progetto-H23.gitt
 Una volta faccio ciò, eseguire l'import del progetto tramite l'apposito comando sull'IDE a disposizione.
  
 ## **3. Esecuzione codice**
-Importata la cartella, sarà sufficiente eseguire la classe `src\it\unipv\ingsfw\main\RistoranteStarter.java`.
+Importata la cartella, sarà sufficiente fare un check delle credenziali MySql nella classe `src\it\unipv\ingsfw\jdbc\util\ConnessioneDb.java` ed eseguire la classe `src\it\unipv\ingsfw\main\RistoranteStarter.java`.
 
 ## Tutte le informazioni aggiuntive sono disponibili alla [Wiki del progetto](https://github.com/IngSW-unipv/Progetto-H23/wiki)
 ### Presentazione PowerPoint del progetto:
